@@ -4,135 +4,132 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Timeline | IQCOL 2026</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Segoe+UI:wght@400;700;900&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="css/navbar.css">
-    <link rel="stylesheet" href="css/global.css">
+    <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+    <link rel="stylesheet" href="css/shared.css">
     <style>
-        /* ── TIMELINE ── */
-        .timeline-wrapper {
-            position: relative; max-width: 1150px; margin: 0 auto; padding: 20px 0;
-        }
+        .content-wrap { position: relative; z-index: 2; padding: 0 20px 40px; max-width: 1200px; margin: 0 auto; }
+        .timeline-wrapper { position: relative; padding: 20px 0; }
         .timeline-wrapper::before {
-            content: ''; position: absolute; left: 50%; top: 0;
-            width: 2px; height: 100%;
-            background: linear-gradient(to bottom, transparent, var(--node-purple), var(--lavender-bright), var(--node-purple), transparent);
-            transform: translateX(-50%); opacity: 0.7;
-            box-shadow: 0 0 15px rgba(98,0,234,0.3);
+            content: ''; position: absolute; left: 50%; top: 0; width: 2px; height: 100%;
+            background: linear-gradient(to bottom, transparent, var(--teal-mid), var(--primary-teal), var(--teal-mid), transparent);
+            transform: translateX(-50%); opacity: 0.5;
         }
-
-        .module-container {
-            position: relative; width: 100%; margin-bottom: 90px;
-            display: flex; justify-content: flex-start;
-            opacity: 0; transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.2,1,0.3,1);
-        }
+        .module-container { position: relative; width: 100%; margin-bottom: 100px; display: flex; justify-content: flex-start; }
         .module-container:nth-child(even) { justify-content: flex-end; }
-        .module-container.revealed { opacity: 1; transform: translateY(0); }
-
         .tech-card {
-            position: relative; width: 43%; max-width: 470px;
-            background: var(--glass-deep); backdrop-filter: blur(20px);
-            border: 1px solid rgba(179,136,255,0.3);
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-            padding: 32px; border-radius: 4px;
-            margin-left: 4%; margin-right: 4%;
+            position: relative; width: 40%; max-width: 480px;
+            background: var(--glass-frost); border: 1px solid var(--border-teal);
+            backdrop-filter: blur(15px); box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+            padding: 35px; border-radius: 4px; margin-left: 5%; margin-right: 5%;
         }
-        .tech-card::before, .tech-card::after {
-            content: ''; position: absolute; width: 18px; height: 18px;
-            border: 2px solid var(--lavender-bright); filter: drop-shadow(0 0 5px var(--node-purple)); z-index: 5;
-        }
-        .tech-card::before { top: -2px; left: -2px; border-right: none; border-bottom: none; }
-        .tech-card::after { bottom: -2px; right: -2px; border-left: none; border-top: none; }
-
-        .phase-id { display: inline-block; background: var(--node-purple); color: white; padding: 4px 14px; font-size: 11px; font-weight: bold; letter-spacing: 3px; margin-bottom: 14px; border-radius: 2px; }
-        .date-text { display: block; color: var(--lavender-bright); font-size: clamp(0.95rem,3vw,1.1rem); font-weight: 800; margin-bottom: 10px; }
-        .tech-card h2 { margin: 0 0 16px; font-size: clamp(1.1rem,4vw,1.45rem); text-transform: uppercase; letter-spacing: 2px; color: var(--pure-white); border-bottom: 1px solid rgba(179,136,255,0.2); padding-bottom: 8px; }
+        .tech-card::before, .tech-card::after { content: ''; position: absolute; width: 20px; height: 20px; border: 2px solid var(--primary-teal); z-index: 5; }
+        .tech-card::before { top: -3px; left: -3px; border-right: none; border-bottom: none; }
+        .tech-card::after { bottom: -3px; right: -3px; border-left: none; border-top: none; }
+        .phase-id { display: inline-block; background: var(--primary-teal); color: var(--bg-deep); padding: 5px 16px; font-size: 0.78rem; font-weight: 800; letter-spacing: 2.5px; margin-bottom: 16px; border-radius: 3px; text-transform: uppercase; }
+        .date-text { display: block; color: var(--icy-highlight); font-size: clamp(1rem,4vw,1.15rem); font-weight: 800; margin-bottom: 14px; }
+        .tech-card h2 { margin: 0 0 18px; font-size: clamp(1.2rem,5vw,1.5rem); text-transform: uppercase; letter-spacing: 2px; color: var(--primary-teal); border-bottom: 1px solid var(--border-teal); padding-bottom: 10px; }
         .details-list { list-style: none; padding: 0; margin: 0; }
-        .details-list li { position: relative; padding-left: 22px; margin-bottom: 11px; font-size: 0.93rem; line-height: 1.6; color: #e0e0e0; }
-        .details-list li::before { content: ''; position: absolute; left: 0; top: 7px; width: 6px; height: 6px; background: var(--lavender-bright); box-shadow: 0 0 8px var(--node-purple); transform: rotate(45deg); }
-
-        .note-text { text-align: center; max-width: 780px; margin: 50px auto; padding: 0 20px; color: #888; font-size: 0.93rem; line-height: 1.7; }
-
-        /* ── CTA ── */
-        .cta-section {
-            text-align: center; padding: 80px 20px 100px;
-            opacity: 0; transform: scale(0.95); transition: all 1s cubic-bezier(0.175,0.885,0.32,1.275);
+        .details-list li { position: relative; padding-left: 28px; margin-bottom: 12px; font-size: 0.95rem; line-height: 1.6; color: var(--slate-grey); }
+        .details-list li::before { content: "■"; position: absolute; left: 0; top: 0.35em; color: var(--teal-mid); font-size: 1.1rem; line-height: 1; }
+        .tech-card--spacious .details-list { min-height: 150px; padding-top: 18px; padding-bottom: 18px; }
+        .tech-card--spacious .details-list li { margin-bottom: 22px; padding-top: 5px; padding-bottom: 5px; }
+        .cta-section { text-align: center; padding: 100px 20px; }
+        .cta-title { font-size: clamp(1.8rem,7vw,2.4rem); letter-spacing: 8px; text-transform: uppercase; margin-bottom: 40px; color: var(--icy-highlight); font-weight: 900; text-shadow: 0 0 20px rgba(179, 136, 255, 0.4); }
+        .signup-btn {
+            display: inline-block; padding: 18px 50px; border-radius: 50px; text-decoration: none;
+            text-transform: uppercase; letter-spacing: 4px; font-weight: 800; font-size: 0.95rem;
+            transition: all 0.3s ease; min-width: 240px; text-align: center;
+            background: var(--icy-highlight); color: var(--bg-deep); border: 1px solid var(--icy-highlight);
+            box-shadow: 0 10px 30px rgba(179, 136, 255, 0.25);
         }
-        .cta-section.revealed { opacity: 1; transform: scale(1); }
-        .cta-title { font-size: clamp(1.4rem,5vw,2rem); color: var(--pure-white); margin-bottom: 35px; letter-spacing: 4px; text-transform: uppercase; }
-
+        .signup-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(179, 136, 255, 0.45); background: white; }
+        .note-box { text-align: center; max-width: 800px; margin: 30px auto 60px; padding: 0 20px; color: var(--teal-dark); font-size: 0.95rem; line-height: 1.7; }
         @media (max-width: 850px) {
             .timeline-wrapper::before { display: none; }
-            .module-container, .module-container:nth-child(even) { justify-content: center; margin-bottom: 45px; }
-            .tech-card { width: 100%; max-width: 100%; margin: 0; padding: 22px; }
+            .module-container, .module-container:nth-child(even) { justify-content: center; margin-bottom: 60px; }
+            .tech-card { width: 100%; max-width: 100%; margin: 0; padding: 30px 20px; }
         }
+        footer {
+            width: 100%;
+            margin-top: auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+            background: var(--glass-frost);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+        .footer-inner { max-width: 1200px; margin: 0 auto; width: 100%; }
     </style>
 </head>
-<body data-page="timeline">
+<body>
 <canvas id="bg-canvas"></canvas>
-
-<div class="section-header" style="padding-top: 80px; padding-bottom: 0;">
+<div class="page-content">
+<div class="section-header reveal" style="padding: 0 20px;">
     <h2>Timeline</h2>
     <p>Roadmap to IQCOL 2026</p>
 </div>
-
-<div style="padding: 20px 20px 40px; position: relative; z-index: 2;">
-    <div class="timeline-wrapper" id="timeline">
-
-        <div class="module-container">
-            <div class="tech-card">
+<div class="content-wrap">
+    <div class="timeline-wrapper">
+        <div class="module-container reveal">
+            <div class="tech-card tech-card--spacious">
                 <span class="phase-id">PHASE 0</span>
-                <span class="date-text">JULY 2026 – AUGUST 2026</span>
-                <h2>Trial Period</h2>
+                <span class="date-text">JUN – JUL 2026</span>
+                <h2>Pre-IQCOL</h2>
                 <ul class="details-list">
-                    <li><strong>Optional</strong> but highly recommended for all participants.</li>
-                    <li>Submit Project materials for early review by <strong>subject matter experts</strong>.</li>
-                    <li>Receive specialized feedback and guidance.</li>
+                    <li><strong>28 Jun</strong> — Briefing session 1 (online)</li>
+                    <li><strong>5 Jul</strong> — Briefing session 2</li>
                 </ul>
             </div>
         </div>
-
-        <div class="module-container">
+        <div class="module-container reveal">
             <div class="tech-card">
                 <span class="phase-id">PHASE 1</span>
-                <span class="date-text">SEPTEMBER 2026 – OCTOBER 2026</span>
-                <h2>Qualifier Round</h2>
+                <span class="date-text">JUL – SEP 2026</span>
+                <h2>IQCOL Qualifiers</h2>
                 <ul class="details-list">
-                    <li>Formal submission for <strong>official evaluation</strong>.</li>
-                    <li>Projects undergo a rigorous technical review.</li>
-                    <li>Results: <strong>invitation, conditional invitation, or rejection</strong>.</li>
+                    <li><strong>7 Jul</strong> — Early bird payment deadline</li>
+                    <li><strong>8 Aug</strong> — Regular payment deadline</li>
+                    <li><strong>30 Aug</strong> — Regular technical report submission</li>
+                    <li><strong>9 Sep</strong> — Late bird payment deadline</li>
+                    <li><strong>31 Aug – 18 Sep</strong> — Regional judging; qualifications released on a rolling basis</li>
                 </ul>
             </div>
         </div>
-
-        <div class="module-container">
-            <div class="tech-card">
+        <div class="module-container reveal">
+            <div class="tech-card tech-card--spacious">
                 <span class="phase-id">PHASE 2</span>
-                <span class="date-text">NOVEMBER 2026 – DECEMBER 2026</span>
-                <h2>Final Round</h2>
+                <span class="date-text">SEP – OCT 2026</span>
+                <h2>ETO — Emerging Technologies Olympiads</h2>
                 <ul class="details-list">
-                    <li><strong>In-real-life event</strong> at the Host City.</li>
-                    <li><strong>Olympiad Exhibition:</strong> Physical posterboard presentations.</li>
-                    <li><strong>Olympiad Symposium:</strong> High-impact pitch presentations.</li>
+                    <li><strong>20 Sep</strong> — Pitch deck and posterboard submission</li>
+                    <li><strong>8–9 Oct</strong> — Western ETO</li>
+                    <li><strong>10–11 Oct</strong> — Eastern ETO</li>
                 </ul>
             </div>
         </div>
-
+        <div class="module-container reveal">
+            <div class="tech-card tech-card--spacious">
+                <span class="phase-id">PHASE 3</span>
+                <span class="date-text">NOV – DEC 2026</span>
+                <h2>IQCOL Final Evaluation</h2>
+                <ul class="details-list">
+                    <li><strong>30 Nov</strong> — Technical report resubmission due</li>
+                    <li><strong>30 Nov – 18 Dec</strong> — Final evaluation judging</li>
+                    <li><strong>25 Dec</strong> — Results announced</li>
+                </ul>
+            </div>
+        </div>
     </div>
-
-    <div class="note-text">
-        Note: IQCOL accolades are based only on scores from the Olympiad Exhibition; ETO accolades are based on Sponsors' scores from the Olympiad Symposium.
-    </div>
-
-    <div class="cta-section" id="cta">
+    <div class="note-box reveal">Note: IQCOL accolades are based only on scores from the Olympiad Exhibition; ETO accolades are based on Sponsors' scores from the Olympiad Symposium.</div>
+    <div class="cta-section reveal">
         <h2 class="cta-title">Ready to Begin Your Journey?</h2>
-        <a href="registration.html" class="btn btn-primary" style="padding:18px 55px;font-size:1rem;letter-spacing:4px;">Register NOW</a>
+        <a href="registration.html" class="signup-btn">Register NOW</a>
     </div>
+</div>
 </div>
 
 <footer>
-    <div class="footer-line"></div>
+    <div class="footer-divider"></div>
     <div class="footer-inner">
         <div class="footer-cols">
             <div class="footer-col">
@@ -155,18 +152,7 @@
         <p class="footer-copy">© 2026 International Quantum Computing Olympiad (IQCOL Foundation). All Rights Reserved.</p>
     </div>
 </footer>
-
-<script src="js/main.js"></script>
-<script src="js/navbar.js"></script>
-<script>
-    lucide.createIcons();
-    initQuantumBackground(45);
-
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('revealed'); });
-    }, { threshold: 0.1 });
-    document.querySelectorAll('.module-container').forEach(m => observer.observe(m));
-    observer.observe(document.getElementById('cta'));
-</script>
+<script src="js/nav.js"></script>
+<script src="js/shared.js"></script>
 </body>
 </html>

@@ -1,12 +1,9 @@
-// ============================================
-// IQCOL 2026 — Shared Quantum Background + Utils
-// ============================================
-
-// ── Quantum Network Background ──
-function initQuantumBackground(networkCount = 35) {
+/* ── IQCOL 2026 — Home Background Canvas ── */
+(function () {
     const canvas = document.getElementById('bg-canvas');
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
+    const networkCount = 110;
     let networks = [];
 
     class QuantumNetwork {
@@ -71,34 +68,4 @@ function initQuantumBackground(networkCount = 35) {
     initCanvas();
     animate();
     window.addEventListener('resize', initCanvas);
-}
-
-// ── Scroll Reveal ──
-function initScrollReveal(selector = '.reveal', threshold = 0.1) {
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('revealed');
-                entry.target.classList.add('active');
-            }
-        });
-    }, { threshold });
-    document.querySelectorAll(selector).forEach(el => observer.observe(el));
-    return observer;
-}
-
-// ── Collapsible Accordion ──
-function initCollapsibles() {
-    document.querySelectorAll('.collapsible-trigger').forEach(trigger => {
-        trigger.addEventListener('click', () => {
-            const item = trigger.parentElement;
-            const isOpen = item.classList.contains('active');
-            // Close all
-            document.querySelectorAll('.collapsible-item.active').forEach(i => i.classList.remove('active'));
-            // Open clicked (if it was closed)
-            if (!isOpen) item.classList.add('active');
-            // Update lucide icons
-            if (typeof lucide !== 'undefined') lucide.createIcons();
-        });
-    });
-}
+})();

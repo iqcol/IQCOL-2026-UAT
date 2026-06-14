@@ -4,28 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>International Quantum Computing Olympiad | IQCOL 2026</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Segoe+UI:wght@400;700;900&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="css/navbar.css">
-    <link rel="stylesheet" href="css/global.css">
+    <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/shared.css">
     <style>
         body {
+            color: white;
             display: flex;
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
         }
 
-        /* ── HERO ── */
+        .home-snap {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .home-snap .snap-panel {
+            position: relative;
+            min-height: calc(100vh - var(--nav-height));
+            min-height: calc(100dvh - var(--nav-height));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            box-sizing: border-box;
+            padding: 3rem 20px;
+        }
+
+        .home-snap .section-header { margin: 1.5rem 0 2rem; }
+
+        .snap-panel-body {
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Hero */
         #hero-section {
+            position: relative;
             width: 100%;
             max-width: 1200px;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
+            justify-content: center;
             align-items: center;
-            padding: 120px 20px 160px;
+            padding: 1rem 20px 2.5rem;
             text-align: center;
+            box-sizing: border-box;
+        }
+        #hero-section.snap-panel {
+            box-sizing: border-box;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #fff;
+            pointer-events: none;
+            z-index: 2;
+        }
+        .scroll-chevron {
+            display: block;
+            font-size: 1.75rem;
+            line-height: 1;
+            animation: scrollBounce 2s ease-in-out infinite;
+        }
+        @keyframes scrollBounce {
+            0%, 100% { transform: translateY(0); opacity: 0.85; }
+            50% { transform: translateY(8px); opacity: 1; }
         }
 
         .reveal-hero { opacity: 0; clip-path: inset(100% 0 0 0); transform: translateY(20px); animation: curtainReveal 1.4s cubic-bezier(0.19,1,0.22,1) forwards; }
@@ -34,196 +87,555 @@
 
         @keyframes curtainReveal { 0% { opacity:0; clip-path:inset(100% 0 0 0); transform:translateY(20px); } 100% { opacity:1; clip-path:inset(0% 0 0 0); transform:translateY(0); } }
         @keyframes fadeIn { to { opacity:1; transform:translateY(0); } }
+        @keyframes blink { 0%, 100% { opacity:1; } 50% { opacity:0; } }
 
-        .main-logo { width: 560px; max-width: 88%; height: auto; margin-bottom: 20px; filter: drop-shadow(0 0 25px rgba(179,136,255,0.35)); }
+        .hero-brand { display: flex; flex-direction: column; align-items: center; }
+        .main-logo {
+            width: min(420px, 70vw); max-width: 88%; height: auto; margin-top: 30px;
+            margin-bottom: -50px; display: block;
+            filter: drop-shadow(0 0 25px rgba(179,136,255,0.35));
+        }
 
         .brand-title {
-            font-size: clamp(14px, 2.5vw, 26px);
-            font-weight: 800;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            margin-bottom: 55px;
-            text-shadow: 0 0 15px rgba(179,136,255,0.5);
-            color: var(--lavender-bright);
+            font-size: 26px; font-weight: 800; letter-spacing: 5px; text-transform: uppercase;
+            margin: 0 0 20px; position: relative; z-index: 1;
+            text-shadow: 0 0 15px rgba(179,136,255,0.5); color: var(--lavender-bright);
         }
 
         .countdown-subheader {
-            font-size: clamp(12px, 1.5vw, 17px);
-            font-weight: 500;
-            letter-spacing: 6px;
-            text-transform: uppercase;
-            color: var(--lavender-bright);
-            margin-bottom: 25px;
-            text-shadow: 0 0 10px rgba(179,136,255,0.6);
-            border-bottom: 2px solid var(--lavender-orig);
-            padding-bottom: 10px;
-            display: inline-block;
+            font-size: 17px; font-weight: 500; letter-spacing: 6px; text-transform: uppercase;
+            color: var(--lavender-bright); margin-top: 20px; margin-bottom: 16px; text-shadow: 0 0 10px rgba(179,136,255,0.6);
+            border-bottom: 2px solid var(--lavender-orig); padding-bottom: 10px; display: inline-block;
         }
 
-        .countdown-container { display: flex; gap: 18px; justify-content: center; margin-bottom: 40px; flex-wrap: wrap; }
+        .countdown-container { display: flex; gap: 20px; justify-content: center; margin-top: 5px; margin-bottom: 35px; flex-wrap: wrap; }
 
         .time-box {
             display: flex; flex-direction: column; align-items: center;
-            background: var(--glass-deep);
-            backdrop-filter: blur(10px);
+            background: var(--glass-frost);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
             border: 1px solid var(--border-glow);
-            border-radius: 18px;
-            width: 105px; padding: 18px 0;
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+            width: 110px;
+            padding: 20px 0;
         }
+        .time-value { font-size: 48px; font-weight: 900; line-height: 1; font-family: var(--font-mono); color: var(--lavender-bright); }
+        .time-label { font-size: 10px; font-weight: 800; color: var(--lavender-orig); text-transform: uppercase; letter-spacing: 2px; margin-top: 5px; }
 
-        .time-value { font-size: 44px; font-weight: 900; line-height: 1; font-family: var(--font-mono); color: var(--lavender-bright); }
-        .time-label { font-size: 9px; font-weight: 800; color: var(--lavender-orig); text-transform: uppercase; letter-spacing: 2px; margin-top: 5px; }
+        .typed-line { font-family: var(--font-mono); font-size: 1rem; color: var(--lavender-bright); margin-top: 12px; margin-bottom: 10px; padding: 0 10px; }
+        .cursor { display: inline-block; background-color: var(--lavender-bright); width: 3px; height: 20px; margin-left: 5px; animation: blink 1s infinite; vertical-align: middle; }
 
-        .typed-line { font-family: var(--font-mono); font-size: 1rem; color: var(--lavender-bright); margin-top: 20px; padding: 0 10px; }
-        .cursor { display: inline-block; background-color: var(--lavender-bright); width: 3px; height: 18px; margin-left: 4px; animation: blink 1s infinite; vertical-align: middle; }
-        @keyframes blink { 0%,100%{opacity:1}50%{opacity:0} }
-
-        /* ── STATS ── */
-        .stats-wrapper { width: 100%; max-width: 1000px; margin: 20px auto; text-align: center; padding: 0 20px; }
-
+        /* Stats */
+        .stats-wrapper { width: 100%; max-width: 1100px; margin: 0 auto; text-align: center; padding: 0; }
         .stats-section {
-            display: flex; justify-content: center; gap: 20px; flex-wrap: wrap;
-            margin-top: 10px; opacity: 0; transform: translateY(30px); transition: all 1s ease;
+            display: flex; justify-content: center; align-items: stretch; gap: 24px; flex-wrap: wrap; margin-top: 10px;
+            opacity: 0; transform: translateY(30px); transition: all 1s ease;
         }
-        .stats-section.active { opacity: 1; transform: translateY(0); }
-
+        .stats-section.revealed { opacity: 1; transform: translateY(0); }
         .stat-card {
-            background: var(--glass-deep); border: 1px solid var(--border-glow);
-            padding: 25px; border-radius: 20px; min-width: 210px; transition: all 0.3s ease;
+            background: var(--glass-frost);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--border-glow);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+            padding: 35px 25px;
+            border-radius: 20px;
+            flex: 1 1 280px;
+            max-width: 320px;
+            min-height: 160px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
         }
         .stat-card:hover { transform: translateY(-5px); border-color: var(--lavender-bright); background: rgba(98,0,234,0.12); }
-        .stat-number { display: block; font-size: 2.8rem; font-weight: 900; color: var(--lavender-bright); font-family: var(--font-mono); margin-bottom: 5px; }
-        .stat-label { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-soft); opacity: 0.8; }
+        .stat-number { display: block; font-size: 3rem; font-weight: 900; color: var(--lavender-bright); font-family: var(--font-mono); margin-bottom: 8px; }
+        .stat-label { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-soft); opacity: 0.9; line-height: 1.3; }
 
-        /* ── JOURNEY ROADMAP ── */
+        /* Journey roadmap */
+        #section-journey {
+            max-width: 100%;
+            overflow-x: auto;
+            overflow-y: visible;
+            padding-bottom: 8px;
+            scroll-snap-stop: always;
+        }
+        #section-journey .section-header {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        #section-journey.revealed .section-header {
+            opacity: 1;
+            transition-delay: 0s;
+        }
+        #section-journey .roadmap-container { flex: 0 1 auto; }
         .roadmap-container {
-            position: relative; max-width: 1300px; margin: 0 auto; padding: 60px 20px 120px;
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 16px;
+            width: 100%;
+            min-height: 220px;
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+            justify-content: center;
+            flex-wrap: nowrap;
+            gap: 12px;
+            box-sizing: border-box;
         }
         .roadmap-container::before {
-            content: ''; position: absolute; top: 0; left: 50%;
-            width: 2px; height: 100%;
-            background: linear-gradient(to bottom, transparent, #4c1d95 10%, var(--lavender-orig) 50%, var(--lavender-bright) 90%, transparent);
-            transform: translateX(-50%); z-index: 0;
+            content: '';
+            position: absolute;
+            left: 8%;
+            right: 8%;
+            top: 50%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #4c1d95 15%, var(--lavender-orig) 50%, #4c1d95 85%, transparent);
+            transform: translateY(-50%) scaleX(0);
+            transform-origin: left center;
+            z-index: 0;
+            pointer-events: none;
+            transition: transform 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+            transition-delay: 0.4s;
         }
-
+        #section-journey.revealed .roadmap-container::before {
+            transform: translateY(-50%) scaleX(1);
+        }
         .step {
-            position: relative; margin-bottom: 90px; width: 100%;
-            display: flex; justify-content: center; align-items: center;
-            opacity: 0; transform: translateY(50px); transition: all 0.8s ease-out; z-index: 1;
+            position: relative;
+            flex: 1 1 220px;
+            min-width: 180px;
+            margin-bottom: 0;
+            display: flex;
+            justify-content: center;
+            align-items: stretch;
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.35s cubic-bezier(0.22, 1, 0.36, 1);
         }
-        .step.active { opacity: 1; transform: translateY(0); }
-        .step:nth-child(even) { flex-direction: row-reverse; }
-
-        .journey-card {
-            width: 90%; max-width: 620px; padding: 28px 38px;
-            background: var(--glass-deep); backdrop-filter: blur(20px);
-            border: 1px solid var(--border-glow); border-radius: 20px;
-            box-shadow: 0 15px 45px rgba(0,0,0,0.5);
+        #section-journey.revealed .step:nth-child(1) { opacity: 1; transition-delay: 0.12s; }
+        #section-journey.revealed .step:nth-child(3) { opacity: 1; transition-delay: 0.62s; }
+        #section-journey.revealed .step:nth-child(5) { opacity: 1; transition-delay: 1.12s; }
+        #section-journey.revealed .step:nth-child(7) { opacity: 1; transition-delay: 1.62s; }
+        .step-card {
+            position: relative;
+            width: 100%;
+            padding: 28px 24px;
+            min-height: 200px;
+            height: 100%;
+            box-sizing: border-box;
+            background: var(--glass-frost);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid var(--border-glow);
+            border-radius: 4px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
         }
-        .journey-card h2 { color: var(--lavender-bright); margin-top: 0; }
-        .journey-card p { color: #d4c8ff; margin-bottom: 0; }
+        .step-card::before, .step-card::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--lavender-orig);
+            z-index: 5;
+        }
+        .step-card::before { top: -3px; left: -3px; border-right: none; border-bottom: none; }
+        .step-card::after { bottom: -3px; right: -3px; border-left: none; border-top: none; }
+        .step-card h2 {
+            margin: 0 0 12px;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--lavender-orig);
+            border-bottom: 1px solid var(--border-glow);
+            padding-bottom: 10px;
+        }
+        .step-card p { color: #d4c8ff; margin: 0; font-size: 0.95rem; line-height: 1.5; }
+        .roadmap-connector {
+            position: relative;
+            flex: 0 0 auto;
+            align-self: center;
+            width: 28px;
+            text-align: center;
+            color: var(--lavender-bright);
+            font-size: 1.5rem;
+            font-weight: 700;
+            line-height: 1;
+            z-index: 1;
+            opacity: 0;
+            transform: translateY(-5px);
+            transition: opacity 0.45s ease, transform 0.45s ease;
+        }
+        .roadmap-connector::before { content: '›'; display: block; transform: translateY(3px);}
+        #section-journey.revealed .roadmap-connector:nth-child(2) { opacity: 1; transform: translateY(-5px); transition-delay: 0.28s; }
+        #section-journey.revealed .roadmap-connector:nth-child(4) { opacity: 1; transform: translateY(-5px); transition-delay: 0.78s; }
+        #section-journey.revealed .roadmap-connector:nth-child(6) { opacity: 1; transform: translateY(-5px); transition-delay: 1.28s; }
 
-        /* ── TESTIMONIALS ── */
-        .testimonial-slider { width: 100%; max-width: 1050px; margin: 40px auto 120px; position: relative; padding: 20px 70px; }
-        .testimonial-container { width: 100%; overflow: hidden; border-radius: 28px; }
-        .testimonial-track { display: flex; transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1); }
+        /* Testimonials */
+        #section-testimonials .testimonial-slider { flex: 0 1 auto; width: 100%; }
+        .testimonial-slider { width: 100%; max-width: 1100px; margin: 0 auto; position: relative; padding: 12px 80px; }
+        .testimonial-container { width: 100%; overflow: hidden; border-radius: 30px; }
+        .testimonial-track { display: flex; transition: transform 0.6s cubic-bezier(0.23,1,0.32,1); }
         .testimonial-track.no-anim { transition: none !important; }
-
         .t-card {
-            min-width: 100%; padding: 55px 45px;
-            background: var(--glass-deep); border: 1px solid var(--border-glow);
-            backdrop-filter: blur(12px); display: flex; flex-direction: column;
-            align-items: center; text-align: center;
+            min-width: 100%; padding: 32px 28px;
+            background: var(--glass-frost); border: 1px solid var(--border-glow); backdrop-filter: blur(12px);
+            display: flex; flex-direction: column; align-items: center; text-align: center; border-radius: 30px;
         }
-        .t-img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid var(--lavender-orig); margin-bottom: 15px; }
+        .t-img { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; border: 3px solid var(--lavender-orig); margin-bottom: 12px; }
         .t-info h3 { margin: 0; font-size: 1.4rem; color: #fff; }
-        .t-info span { color: var(--lavender-bright); font-size: 0.88rem; font-weight: 700; }
-        .t-body { font-size: 1.1rem; line-height: 1.7; color: #d4c8ff; font-style: italic; max-width: 760px; }
-
+        .t-info span { color: var(--lavender-bright); font-size: 0.9rem; font-weight: 700; }
+        .t-body { font-size: 1rem; line-height: 1.55; color: #d4c8ff; font-style: italic; max-width: 750px; margin-top: 12px; }
+        .t-body p { margin: 0; }
         .arrow {
             position: absolute; top: 50%; transform: translateY(-50%);
-            width: 56px; height: 56px;
-            background: rgba(179,136,255,0.08); border: 1px solid rgba(179,136,255,0.18);
-            border-radius: 50%; color: var(--lavender-bright);
-            display: flex; align-items: center; justify-content: center;
-            cursor: pointer; z-index: 10; transition: background 0.3s; font-size: 1.2rem;
+            width: 55px; height: 55px; background: rgba(179,136,255,0.08); border: 1px solid rgba(179,136,255,0.18);
+            border-radius: 50%; color: var(--lavender-bright); display: flex; align-items: center;
+            justify-content: center; cursor: pointer; z-index: 10; transition: background 0.3s; font-size: 1.2rem;
         }
         .arrow:hover { background: rgba(179,136,255,0.2); }
-        .arrow.prev { left: 8px; }
-        .arrow.next { right: 8px; }
-
-        .dot { width: 9px; height: 9px; background: rgba(179,136,255,0.25); border-radius: 50%; cursor: pointer; transition: 0.3s; }
+        .arrow.prev { left: 10px; }
+        .arrow.next { right: 10px; }
+        .dot { width: 10px; height: 10px; background: rgba(179,136,255,0.25); border-radius: 50%; cursor: pointer; transition: 0.3s; }
         .dot.active { background: var(--lavender-bright); transform: scale(1.4); }
-        .carousel-controls { display: flex; justify-content: center; gap: 14px; margin-top: 35px; }
+        .carousel-controls { display: flex; justify-content: center; gap: 15px; margin-top: 16px; }
 
-        /* ── LOGO WALL ── */
-        .logo-wall { margin-top: 20px; display: flex; flex-wrap: wrap; justify-content: center; max-width: 1200px; margin-left: auto; margin-right: auto; padding: 0 20px; }
-        @keyframes logoFadeIn { 0%{opacity:0;transform:scale(0.9)} 100%{opacity:1;transform:scale(1)} }
-        @keyframes logoFadeOut { 0%{opacity:1;transform:scale(1)} 100%{opacity:0;transform:scale(0.9)} }
+        /* Logo wall */
+        #logo-wall-container {
+            width: 100%;
+            position: relative;
+            display: block;
+        }
+        .logo-wall {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-content: flex-start;
+            padding: 0;
+        }
+        @keyframes logoFadeIn { 0% { opacity:0; transform:scale(0.96); } 100% { opacity:1; transform:scale(1); } }
+        @keyframes logoFadeOut { 0% { opacity:1; transform:scale(1); } 100% { opacity:0; transform:scale(0.96); } }
         .logo-container {
-            padding: 0; margin: 7px; display: flex; justify-content: center; align-items: center;
-            max-width: 175px; height: 95px; position: relative;
-            background: white; border-radius: 10px;
+            padding: 0; margin: 8px; display: flex; justify-content: center; align-items: center;
+            max-width: 180px; height: 100px; background: white; border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
             animation-duration: 0.5s; animation-fill-mode: both; animation-timing-function: ease-in-out;
-            transition: transform 0.3s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
         .show-front .logo-container { animation-name: logoFadeIn; }
         .show-back .logo-container { animation-name: logoFadeOut; }
         .logo-container img { object-fit: contain; width: 80%; height: 80%; }
-        @media(min-width:1200px){.logo-container{width:calc(20% - 14px)}}
-        @media(min-width:600px) and (max-width:1199px){.logo-container{width:calc(33% - 14px)}}
 
-        /* ── FINAL CTA ── */
-        .final-cta-wrapper {
-            width: 100%; min-height: 580px; padding: 90px 20px;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
+        @media (min-width: 1200px) {
+            .logo-container { width: calc(20% - 16px); }
+            #logo-wall-container { min-height: 620px !important; }
+        }
+        @media (min-width: 600px) and (max-width: 1199px) {
+            .logo-container { width: calc(25% - 16px); }
+            #logo-wall-container { min-height: 760px !important; }
+        }
+        @media (max-width: 599px) {
+            .logo-container { width: calc(50% - 16px); height: 80px; }
+            #logo-wall-container { min-height: 480px !important; }
+        }
+
+        /* CTA final panel */
+        #section-final .cta-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            text-align: center;
+            box-sizing: border-box;
+        }
+        .cta-anim-bg { position: relative; display: flex; align-items: center; justify-content: center; z-index: 1; }
+        .cta-content { position: relative; z-index: 4; width: 100%; }
+        .cta-title {
+            font-size: clamp(1.8rem, 5vw, 2.6rem); letter-spacing: 6px; text-transform: uppercase;
+            color: var(--lavender-bright); margin-bottom: 12px; font-weight: 900;
+        }
+        .cta-sub { color: var(--text-soft); margin-bottom: 0; font-size: 1.1rem; }
+        .cta-btn-hero {
+            display: inline-flex; padding: 18px 50px; border-radius: 50px; text-decoration: none;
+            text-transform: uppercase; letter-spacing: 4px; font-weight: 800; font-size: 1rem;
+            transition: all 0.3s ease; align-items: center; gap: 12px;
+            background: var(--lavender-bright); color: var(--bg-deep); border: 1px solid var(--lavender-orig);
+        }
+        .cta-btn-hero:hover { transform: translateY(-3px); background: white; box-shadow: 0 15px 40px rgba(179,136,255,0.4); }
+
+        .brand-zone {
             position: relative;
+            width: 380px !important;
+            height: 380px !important;
+            display: flex; justify-content: center; align-items: center;
         }
-        .brand-zone { position: relative; width: 460px; height: 420px; display: flex; justify-content: center; align-items: center; }
-        #traceCanvas { position: absolute; top:0; left:0; width:100%; height:100%; z-index:2; transition: opacity 1s ease; }
+        #traceCanvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; transition: opacity 1s ease; }
         #logo-reveal-img {
-            width: 460px; z-index:1; opacity:0; transform: scale(0.85);
-            filter: drop-shadow(0 0 35px rgba(179,136,255,0.55));
-            transition: all 1.2s cubic-bezier(0.16,1,0.3,1);
+            width: 380px !important;
+            height: 380px !important;
+            z-index: 1; opacity: 0; transform: scale(0.85);
+            filter: drop-shadow(0 0 35px rgba(179,136,255,0.55)); transition: all 1.2s cubic-bezier(0.16,1,0.3,1);
         }
-        .brand-zone.revealed-inner #logo-reveal-img { opacity:1; transform:scale(1); }
-        .brand-zone.revealed-inner #traceCanvas { opacity:0; pointer-events:none; }
-        .ready-play-overlay {
-            position:absolute; top:20px; font-family:var(--font-mono);
-            font-size:1.8rem; font-weight:900; letter-spacing:12px; text-transform:uppercase;
-            color:var(--lavender-bright); opacity:0; transition:1s ease;
-            text-shadow:0 0 20px rgba(179,136,255,0.6); z-index:3;
-        }
-        .brand-zone.revealed-inner .ready-play-overlay { opacity:1; }
-        .cta-zone { margin-top:-20px; opacity:0; transform:translateY(20px); transition:1s ease 0.5s; text-align:center; z-index:4; }
-        .brand-zone.revealed-inner + .cta-zone { opacity:1; transform:translateY(0); }
+        .brand-zone.revealed-inner #logo-reveal-img { opacity: 1; transform: scale(1); }
+        .brand-zone.revealed-inner #traceCanvas { opacity: 0; pointer-events: none; }
 
-        /* ── MOBILE ── */
-        @media (max-width: 768px) {
-            #hero-section { padding: 90px 15px 80px; }
-            .brand-title { font-size: 14px; letter-spacing: 2px; }
-            .time-box { width: 75px; padding: 13px 0; }
-            .time-value { font-size: 30px; }
-            .roadmap-container::before { left: 20px; }
-            .step { justify-content: flex-start; margin-bottom: 45px; }
-            .step:nth-child(even) { flex-direction: row; }
-            .journey-card { width: calc(100% - 45px); margin-left: 38px; padding: 18px; }
-            .stat-card { min-width: 130px; padding: 14px; }
-            .stat-number { font-size: 2rem; }
-            .testimonial-slider { padding: 20px 8px; margin-bottom: 70px; }
-            .t-card { padding: 35px 18px; }
-            .arrow { width: 38px; height: 38px; }
-            .brand-zone { width: 100%; height: auto; aspect-ratio: 1; }
-            #logo-reveal-img { width: 88%; }
-            .logo-container { width: calc(50% - 14px) !important; height: 75px; }
+        @media (min-width: 769px) {
+            html {
+                scroll-snap-type: y mandatory;
+                scroll-padding-top: var(--nav-height);
+            }
+            .home-snap .snap-panel {
+                scroll-snap-align: start;
+                scroll-snap-stop: always;
+            }
+            .home-snap .stats-wrapper.snap-panel {
+                align-items: center;
+                padding: 0 20px 3rem !important;
+            }
+            .stats-wrapper .stats-content {
+                width: 100%;
+            }
+            .stats-wrapper .section-header {
+                margin: 0 0 1.5rem;
+            }
+            .home-snap #section-testimonials.snap-panel {
+                padding: 4rem 20px !important;
+            }
+            #hero-section.snap-panel {
+                padding: 2rem 20px 0 !important;
+            }
+            #hero-section .main-logo {
+                margin-top: 28px;
+            }
+            #hero-section .snap-panel-body,
+            #section-journey .snap-panel-body {
+                flex: 1 1 auto;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                min-height: 0;
+            }
+            #section-journey.snap-panel {
+                justify-content: flex-start;
+                padding: 4rem 20px 1rem !important;
+            }
+            #section-journey .snap-panel-body {
+                gap: 0;
+            }
+            #section-journey .section-header {
+                margin: 0 0 1.5rem;
+            }
+            .home-snap .snap-panel:has(> .scroll-hint) {
+                position: relative !important;
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: flex-start !important;
+                height: calc(100dvh - var(--nav-height));
+                min-height: calc(100dvh - var(--nav-height));
+                max-height: calc(100dvh - var(--nav-height));
+                overflow: hidden;
+                box-sizing: border-box;
+            }
+            .home-snap .snap-panel:has(> .scroll-hint) > .scroll-hint {
+                position: absolute !important;
+                bottom: 0.75rem !important;
+                left: 50% !important;
+                transform: translateX(-50%) !important;
+                margin-top: 0 !important;
+                align-self: auto !important;
+                flex-shrink: 0;
+                z-index: 3;
+                padding: 0;
+            }
+            #hero-section.snap-panel:has(> .scroll-hint) {
+                height: 100dvh !important;
+                min-height: 100dvh !important;
+                max-height: 100dvh !important;
+                justify-content: flex-start !important;
+                padding-top: var(--nav-height) !important;
+                padding-bottom: 0 !important;
+            }
+            #hero-section.snap-panel:has(> .scroll-hint) > .scroll-hint {
+                position: absolute !important;
+                bottom: 0.75rem !important;
+                left: 50% !important;
+                transform: translateX(-50%) !important;
+            }
+            #hero-section .snap-panel-body {
+                padding-bottom: 2.5rem;
+            }
+            .home-snap .stats-wrapper.snap-panel:has(> .scroll-hint) {
+                justify-content: center !important;
+            }
+            #section-logos.snap-panel {
+                padding: 2rem 20px 1rem !important;
+                justify-content: flex-start;
+                align-items: center;
+            }
+            #section-logos .section-header {
+                margin: 0 0 1rem;
+                flex-shrink: 0;
+            }
+            #section-logos #logo-wall-container {
+                flex: 1 1 auto;
+                min-height: 0 !important;
+                width: 100%;
+                overflow: hidden;
+            }
+            #section-final.snap-panel {
+                max-width: 100%;
+                padding: 0 !important;
+                height: calc(100dvh - var(--nav-height));
+                min-height: calc(100dvh - var(--nav-height));
+                max-height: calc(100dvh - var(--nav-height));
+                overflow: hidden;
+                justify-content: space-between;
+                scroll-snap-align: start;
+                scroll-snap-stop: always;
+            }
+            #section-final .cta-section {
+                flex: 1 1 auto;
+                min-height: 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                padding: 16px 20px 8px;
+                text-align: center;
+                box-sizing: border-box;
+                gap: 12px;
+            }
+            #section-final .brand-zone,
+            #section-final #logo-reveal-img {
+                width: 320px !important;
+                height: 320px !important;
+            }
+            #section-final .cta-title {
+                font-size: clamp(1.4rem, 3vw, 2rem);
+                margin-bottom: 6px;
+            }
+            #section-final .cta-sub {
+                font-size: 0.95rem;
+            }
+            #section-final footer {
+                width: 100%;
+                flex-shrink: 0;
+                margin-top: 0;
+                padding: 0 16px;
+            }
+            #section-final .footer-inner {
+                padding: 16px 12px;
+            }
+            #section-final .footer-cols {
+                gap: 24px;
+                margin-bottom: 12px;
+            }
         }
+
+        @media (max-width: 768px) {
+            html {
+                scroll-snap-type: none !important;
+                scroll-padding-top: 0 !important;
+            }
+            .home-snap .snap-panel {
+                scroll-snap-align: none !important;
+                scroll-snap-stop: normal !important;
+                min-height: auto !important;
+                height: auto !important;
+                max-height: none !important;
+                overflow: visible !important;
+                padding: 60px 15px !important;
+            }
+            .home-snap .snap-panel:has(> .scroll-hint) {
+                height: auto !important;
+                max-height: none !important;
+                overflow: visible !important;
+            }
+
+            .scroll-hint { display: none !important; }
+            #hero-section { padding: 0.5rem 15px 2.5rem; }
+            #hero-section.snap-panel { padding-top: 0.5rem; }
+            .main-logo { margin-bottom: -10px; }
+            .brand-title { font-size: 17px; letter-spacing: 3px; margin-bottom: 14px; }
+            .time-box { width: 80px; padding: 15px 0; }
+            .time-value { font-size: 32px; }
+
+            .roadmap-container {
+                flex-direction: column;
+                align-items: center;
+                padding: 16px 12px;
+                gap: 8px;
+            }
+            .roadmap-container::before {
+                left: 50%; right: auto; top: 8%; bottom: 8%; width: 2px; height: auto;
+                transform: translateX(-50%) scaleY(0); transform-origin: top center;
+            }
+            #section-journey.revealed .roadmap-container::before { transform: translateX(-50%) scaleY(1); }
+            .step { flex: 0 0 auto; width: 100%; max-width: 520px; min-width: 0; }
+            .step-card { min-height: 0; padding: 20px 18px; }
+            .roadmap-connector { width: auto; padding: 4px 0; }
+            .roadmap-connector::before { content: '⌄'; }
+
+            .testimonial-slider { padding: 14px 10px 12px; position: relative; }
+            .arrow { top: 22px; transform: none; width: 45px; height: 45px; }
+            .arrow.prev { left: 20px; }
+            .arrow.next { right: 20px; }
+            .t-card { padding: 24px 16px; }
+            .t-body { font-size: 0.95rem; }
+
+            .stat-card { min-width: 100%; max-width: 100%; min-height: auto; padding: 25px 20px; }
+            .stat-number { font-size: 2.4rem; }
+
+            #section-final.snap-panel {
+                justify-content: flex-start !important;
+                padding: 60px 15px 0 !important;
+                height: auto !important;
+                max-height: none !important;
+                min-height: auto !important;
+                overflow: visible !important;
+            }
+            #section-logos #logo-wall-container {
+                flex: none;
+                min-height: 480px !important;
+                overflow: visible;
+            }
+            #section-final footer { margin-top: 40px; }
+            #section-final .cta-section { margin-top: 0 !important; gap: 24px; padding: 40px 15px; }
+            .brand-zone, #logo-reveal-img { width: 260px !important; height: 260px !important; }
+            #cta-text-content { top: 0 !important; transform: translateY(0) !important; margin-bottom: 5px; }
+            #cta-btn-content { margin-top: 5px !important; transform: translateY(0) !important; }
+            .cta-btn-hero { padding: 12px 32px !important; font-size: 0.85rem !important; letter-spacing: 2px !important; }
+            .cta-title { font-size: 1.4rem !important; letter-spacing: 3px !important; }
+            .cta-sub { font-size: 0.9rem !important; }
+        }
+        footer {
+            width: 100%; margin-top: auto; padding: 0px 20px; box-sizing: border-box;
+            background: var(--glass-frost); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+        }
+        .footer-inner { max-width: 1200px; margin: 0 auto; width: 100%; }
     </style>
 </head>
-<body data-page="index">
+<body>
+
 <canvas id="bg-canvas"></canvas>
 
-<div id="hero-section">
-    <div class="reveal-hero">
+<main class="home-snap">
+
+<section id="hero-section" class="snap-panel">
+    <div class="snap-panel-body">
+    <div class="reveal-hero hero-brand">
         <img src="https://cdn.kb.institute/eto-2026/IQCOL/Logo/Square_Dark_Background_2026_500.png" class="main-logo" alt="IQCOL Logo">
         <div class="brand-title">International Quantum Computing Olympiad 2026</div>
     </div>
@@ -237,258 +649,406 @@
             <div class="time-box"><span class="time-value" id="minutes">00</span><span class="time-label">Mins</span></div>
             <div class="time-box"><span class="time-value" id="seconds">00</span><span class="time-label">Secs</span></div>
         </div>
-        <div class="typed-line">&gt; <span id="typed-text"></span><span class="cursor"></span></div>
+        <div class="typed-line">
+            &gt; <span id="typed-text"></span><span class="cursor"></span>
+        </div>
     </div>
-</div>
+    </div>
+    <div class="scroll-hint" aria-hidden="true">
+        <span class="scroll-chevron">⌄</span>
+    </div>
+</section>
 
-<div class="stats-wrapper">
+<section class="stats-wrapper snap-panel">
+    <div class="stats-content">
     <div class="section-header"><h2>Competition Impact</h2></div>
     <div class="stats-section" id="stats-container">
         <div class="stat-card"><span class="stat-number" data-target="120">0</span><span class="stat-label">Participating Countries</span></div>
         <div class="stat-card"><span class="stat-number" data-target="1000">0</span><span class="stat-label">Global Participants</span></div>
         <div class="stat-card"><span class="stat-number" data-target="200">0</span><span class="stat-label">Academic Institutions</span></div>
     </div>
-</div>
+    </div>
+    <div class="scroll-hint" aria-hidden="true">
+        <span class="scroll-chevron">⌄</span>
+    </div>
+</section>
 
-<div class="section-header" style="padding-top:80px;"><h1>The Journey</h1></div>
-<div class="roadmap-container">
-    <div class="step">
-        <div class="journey-card"><h2>Registration</h2><p>Secure your spot and verify credentials to gain entry to the IQCOL ecosystem.</p></div>
+<section class="snap-panel" id="section-journey">
+    <div class="snap-panel-body">
+    <div class="section-header"><h1>The Journey</h1></div>
+    <div class="roadmap-container">
+        <div class="step"><div class="step-card"><h2>Registration</h2><p>Secure your spot and verify credentials to gain entry to the IQCOL ecosystem.</p></div></div>
+        <span class="roadmap-connector" aria-hidden="true"></span>
+        <div class="step"><div class="step-card"><h2>Training</h2><p>Master advanced methodologies in KBI's Skillsprint to elevate your technical proficiency.</p></div></div>
+        <span class="roadmap-connector" aria-hidden="true"></span>
+        <div class="step"><div class="step-card"><h2>Creation</h2><p>Architect an original project that translates complex insights into real-world solutions.</p></div></div>
+        <span class="roadmap-connector" aria-hidden="true"></span>
+        <div class="step"><div class="step-card"><h2>Submission</h2><p>Finalize and upload your project for evaluation by our international board of experts.</p></div></div>
     </div>
-    <div class="step">
-        <div class="journey-card"><h2>Training</h2><p>Master advanced methodologies in KBI's Skillsprint to elevate your technical proficiency.</p></div>
     </div>
-    <div class="step">
-        <div class="journey-card"><h2>Creation</h2><p>Architect an original project that translates complex insights into real-world solutions.</p></div>
+    <div class="scroll-hint" aria-hidden="true">
+        <span class="scroll-chevron">⌄</span>
     </div>
-    <div class="step">
-        <div class="journey-card"><h2>Submission</h2><p>Finalize and upload your project for evaluation by our international board of experts.</p></div>
-    </div>
-</div>
+</section>
 
-<div class="section-header"><h1>Alumni &amp; Partner Impact</h1></div>
-<div class="testimonial-slider">
-    <div class="arrow prev" onclick="moveSlide(-1)">&#10094;</div>
-    <div class="arrow next" onclick="moveSlide(1)">&#10095;</div>
-    <div class="testimonial-container">
-        <div class="testimonial-track" id="t-track">
-            <div class="t-card">
-                <img src="https://cdn.kb.institute/eto-2026/general/testimonial/kbi-profile-nikkia-lo-2025.jpg" class="t-img" alt="Nikkia Lo">
-                <div class="t-info"><h3>Nikkia Lo</h3><span>&#127822; HKU</span></div>
-                <div class="t-body"><p>"The organization has had a huge influence on me, and I'm excited to pursue my ultimate goal of incubating a startup at HKSTP."</p></div>
-            </div>
-            <div class="t-card">
-                <img src="https://cdn.kb.institute/eto-2026/general/testimonial/kbi-profile-sakib-rabbani.jpg" class="t-img" alt="Sakib Rabbani">
-                <div class="t-info"><h3>Sakib Rabbani</h3><span>&#127822; JP Morgan HK</span></div>
-                <div class="t-body"><p>"The IBCOL, IDSOL, and KBI network connect me with industry professionals, which helped me get a job in Software Engineering at JP Morgan HK."</p></div>
-            </div>
-            <div class="t-card">
-                <img src="https://cdn.kb.institute/eto-2026/general/testimonial/kbi-profile-rebeca-borrego-cavazos.jpg" class="t-img" alt="Rebeca Borrego Cavazos">
-                <div class="t-info"><h3>Rebeca Borrego Cavazos</h3><span>&#127474;&#127485; Universidad de Monterrey (UdM)</span></div>
-                <div class="t-body"><p>"It gave me the invaluable opportunity to connect with professionals in these areas and explore the vast range of applications for these transformative technologies."</p></div>
-            </div>
-            <div class="t-card">
-                <img src="https://cdn.kb.institute/eto-2026/general/testimonial/kbi-profile-zhanel-tagayeva.jpg" class="t-img" alt="Zhanel Tagayeva">
-                <div class="t-info"><h3>Zhanel Tagayeva</h3><span>&#127472;&#127487; FIZMAT / &#127822; Lingnan University (LU)</span></div>
-                <div class="t-body"><p>"KBI helped me to get accepted to participate in the internship program which is sponsored by METI of Japan."</p></div>
-            </div>
-            <div class="t-card">
-                <img src="https://cdn.kb.institute/eto-2026/general/testimonial/kbi-profile-isabel-yan.jpg" class="t-img" alt="Dr. Prof. Isabel Yan">
-                <div class="t-info"><h3>Dr. Prof. Isabel Yan</h3><span>&#127822; CityU</span></div>
-                <div class="t-body"><p>"The Königsberger Bridges Institute comprises a great team of professionals… They are very dedicated to advancing students' knowledge and application skills."</p></div>
-            </div>
-        </div>
-    </div>
-    <div class="carousel-controls" id="t-dots">
-        <div class="dot active" onclick="gotoDot(0)"></div>
-        <div class="dot" onclick="gotoDot(1)"></div>
-        <div class="dot" onclick="gotoDot(2)"></div>
-        <div class="dot" onclick="gotoDot(3)"></div>
-        <div class="dot" onclick="gotoDot(4)"></div>
-    </div>
-</div>
-
-<div class="section-header"><h1>Global Connections</h1></div>
-<div id="logo-wall-container"></div>
-
-<div class="final-cta-wrapper" id="trigger-final">
-    <div class="brand-zone" id="brand-box">
-        <div class="ready-play-overlay">Ready to Play?</div>
-        <canvas id="traceCanvas"></canvas>
-        <img id="logo-reveal-img" src="https://cdn.kb.institute/KBI-logo-light.png" alt="KBI Logo">
-    </div>
-    <div class="cta-zone">
-        <a href="registration.html" class="btn btn-primary" style="font-size:0.9rem;padding:18px 45px;letter-spacing:4px;">
-            Register Now <i data-lucide="play" style="width:16px;height:16px;"></i>
-        </a>
-    </div>
-</div>
-
-<footer>
-    <div class="footer-line"></div>
-    <div class="footer-inner">
-        <div class="footer-cols">
-            <div class="footer-col">
-                <h4>IQCOL: International Quantum Computing Olympiad</h4>
-                <div class="footer-icons">
-                    <a href="https://2026.iqcol.org/iqcol" target="_blank" rel="noopener"><i data-lucide="globe"></i></a>
-                    <a href="https://ee.linkedin.com/company/iqcol-org" target="_blank" rel="noopener"><i data-lucide="linkedin"></i></a>
-                    <a href="https://www.instagram.com/iqcol_org/" target="_blank" rel="noopener"><i data-lucide="instagram"></i></a>
+<section class="snap-panel" id="section-testimonials">
+    <div class="section-header reveal"><h1>Alumni &amp; Partner Impact</h1></div>
+    <div class="testimonial-slider">
+        <div class="arrow prev" role="button" tabindex="0" aria-label="Previous" onclick="moveSlide(-1)">&#10094;</div>
+        <div class="arrow next" role="button" tabindex="0" aria-label="Next" onclick="moveSlide(1)">&#10095;</div>
+        <div class="testimonial-container">
+            <div class="testimonial-track" id="t-track">
+                <div class="t-card">
+                    <img src="https://cdn.kb.institute/eto-2026/general/testimonial/kbi-profile-nikkia-lo-2025.jpg" class="t-img" alt="Nikkia Lo">
+                    <div class="t-info"><h3>Nikkia Lo</h3><span>🇭🇰 University of Hong Kong</span></div>
+                    <div class="t-body"><p>"The organization has had a huge influence on me, and I'm excited to pursue my ultimate goal of incubating a startup at HKSTP."</p></div>
                 </div>
-            </div>
-            <div class="footer-col">
-                <h4>KBI: Königsberger Bridges Institute</h4>
-                <div class="footer-icons">
-                    <a href="https://www.kb.institute/" target="_blank" rel="noopener"><i data-lucide="globe"></i></a>
-                    <a href="https://www.linkedin.com/company/kbi-eu/" target="_blank" rel="noopener"><i data-lucide="linkedin"></i></a>
-                    <a href="https://www.instagram.com/kbi.eu/" target="_blank" rel="noopener"><i data-lucide="instagram"></i></a>
+                <div class="t-card">
+                    <img src="https://cdn.kb.institute/eto-2026/general/testimonial/kbi-profile-sakib-rabbani.jpg" class="t-img" alt="Sakib Rabbani">
+                    <div class="t-info"><h3>Sakib Rabbani</h3><span>🇭🇰 JP Morgan HK</span></div>
+                    <div class="t-body"><p>"The IBCOL, IDSOL, and KBI network connect me with industry professionals, which helped me get a job in Software Engineering at JP Morgan HK."</p></div>
+                </div>
+                <div class="t-card">
+                    <img src="https://cdn.kb.institute/eto-2026/general/testimonial/kbi-profile-rebeca-borrego-cavazos.jpg" class="t-img" alt="Rebeca Borrego Cavazos">
+                    <div class="t-info"><h3>Rebeca Borrego Cavazos</h3><span>🇲🇽 Universidad de Monterrey (UdM)</span></div>
+                    <div class="t-body"><p>"It gave me the invaluable opportunity to connect with professionals in these areas and explore the vast range of applications for these transformative technologies."</p></div>
+                </div>
+                <div class="t-card">
+                    <img src="https://cdn.kb.institute/eto-2026/general/testimonial/kbi-profile-zhanel-tagayeva.jpg" class="t-img" alt="Zhanel Tagayeva">
+                    <div class="t-info"><h3>Zhanel Tagayev</h3><span><span class="t-affil">🇰🇿 National School of Physics & Math (FIZMAT) </span><span class="t-affil">🇭🇰 Lingnan University (LU)</span></span></div>
+
+                    <div class="t-body"><p>"KBI helped me to get accepted to participate in the internship program which is sponsored by METI of Japan."</p></div>
+                </div>
+                <div class="t-card">
+                    <img src="https://cdn.kb.institute/eto-2026/general/testimonial/kbi-profile-isabel-yan.jpg" class="t-img" alt="Dr. Prof. Isabel Yan">
+                    <div class="t-info"><h3>Dr. Prof. Isabel Yan</h3><span>🇭🇰 City University of Hong Kong (CityUHK)</span></div>
+                    <div class="t-body"><p>"The Königsberger Bridges Institute comprises a great team of professionals… They are very dedicated to advancing students' knowledge and application skills."</p></div>
                 </div>
             </div>
         </div>
-        <p class="footer-copy">© 2026 International Quantum Computing Olympiad (IQCOL Foundation). All Rights Reserved.</p>
+        <div class="carousel-controls" id="carousel-dots"></div>
     </div>
-</footer>
+    <div class="scroll-hint" aria-hidden="true">
+        <span class="scroll-chevron">⌄</span>
+    </div>
+</section>
 
-<script src="js/main.js"></script>
-<script src="js/navbar.js"></script>
+<section class="snap-panel" id="section-logos">
+    <div class="section-header reveal"><h1>Global Connections</h1></div>
+    <div id="logo-wall-container" class="reveal"></div>
+    <div class="scroll-hint" aria-hidden="true">
+        <span class="scroll-chevron">⌄</span>
+    </div>
+</section>
+
+<section class="snap-panel" id="section-final">
+
+    <div class="cta-section">
+        <div class="cta-content" id="cta-text-content" style="opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; text-align: center;">
+            <div class="cta-title">Ready to Play?</div>
+            <p class="cta-sub">Join quantum computing innovators from over 120 countries at IQCOL 2026.</p>
+        </div>
+
+        <div class="cta-anim-bg" id="trigger-final">
+            <div class="brand-zone" id="brand-box">
+                <canvas id="traceCanvas"></canvas>
+                <img id="logo-reveal-img" src="https://cdn.kb.institute/KBI-logo-light.png" alt="KBI Logo">
+            </div>
+        </div>
+
+        <div class="cta-content" id="cta-btn-content" style="opacity: 0; transform: translateY(20px); transition: opacity 0.8s ease, transform 0.8s ease; text-align: center;">
+            <a href="registration.html" class="cta-btn-hero">
+                Register Now
+                <i data-lucide="play"></i>
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-line"></div>
+        <div class="footer-inner">
+            <div class="footer-cols">
+                <div class="footer-col">
+                    <h4>IQCOL: International Quantum Computing Olympiad</h4>
+                    <div class="footer-icons">
+                        <a href="https://2026.iqcol.org/iqcol" target="_blank" rel="noopener"><i data-lucide="globe"></i></a>
+                        <a href="https://ee.linkedin.com/company/iqcol-org" target="_blank" rel="noopener"><i data-lucide="linkedin"></i></a>
+                        <a href="https://www.instagram.com/iqcol_org/" target="_blank" rel="noopener"><i data-lucide="instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>KBI: Königsberger Bridges Institute</h4>
+                    <div class="footer-icons">
+                        <a href="https://www.kb.institute/" target="_blank" rel="noopener"><i data-lucide="globe"></i></a>
+                        <a href="https://www.linkedin.com/company/kbi-eu/" target="_blank" rel="noopener"><i data-lucide="linkedin"></i></a>
+                        <a href="https://www.instagram.com/kbi.eu/" target="_blank" rel="noopener"><i data-lucide="instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <p class="footer-copy">© 2026 International Quantum Computing Olympiad (IQCOL Foundation). All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</section>
+
+</main>
+
+<script src="js/bg-canvas-home.js"></script>
+<script src="js/nav.js"></script>
 <script>
-lucide.createIcons();
-initQuantumBackground(110);
-
-// Countdown
+/* Countdown */
 const target = new Date('2026-09-01T00:00:00');
 function updateCountdown() {
     const now = new Date();
     const diff = target - now;
-    if (diff > 0) {
-        document.getElementById('days').textContent = String(Math.floor(diff/86400000)).padStart(2,'0');
-        document.getElementById('hours').textContent = String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
-        document.getElementById('minutes').textContent = String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
-        document.getElementById('seconds').textContent = String(Math.floor((diff%60000)/1000)).padStart(2,'0');
+    if (diff <= 0) {
+        document.getElementById('days').textContent = '00';
+        document.getElementById('hours').textContent = '00';
+        document.getElementById('minutes').textContent = '00';
+        document.getElementById('seconds').textContent = '00';
+        return;
+    }
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const s = Math.floor((diff % 60000) / 1000);
+    document.getElementById('days').textContent = String(d).padStart(2, '0');
+    document.getElementById('hours').textContent = String(h).padStart(2, '0');
+    document.getElementById('minutes').textContent = String(m).padStart(2, '0');
+    document.getElementById('seconds').textContent = String(s).padStart(2, '0');
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+/* Typed text */
+const lines = ['Build innovative projects...', 'Forge global partnerships...', 'Accelerate your learning curve...'];
+let li = 0, ci = 0, deleting = false;
+function typeWriter() {
+    const el = document.getElementById('typed-text');
+    const cur = lines[li];
+    if (!deleting) {
+        el.textContent = cur.substring(0, ++ci);
+        if (ci === cur.length) { deleting = true; setTimeout(typeWriter, 2000); return; }
+    } else {
+        el.textContent = cur.substring(0, --ci);
+        if (ci === 0) { deleting = false; li = (li + 1) % lines.length; }
+    }
+    setTimeout(typeWriter, deleting ? 50 : 100);
+}
+setTimeout(typeWriter, 1500);
+
+/* Counter animation */
+function animateCounter(el, target) {
+    const dur = 2000, step = 20;
+    let cur = 0;
+    const inc = target / (dur / step);
+    const t = setInterval(() => {
+        cur = Math.min(cur + inc, target);
+        el.textContent = (target >= 1000 ? Math.floor(cur).toLocaleString() : Math.floor(cur)) + '+';
+        if (cur >= target) clearInterval(t);
+    }, step);
+}
+
+const statsObs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+            entry.target.querySelectorAll('.stat-number').forEach(el => {
+                animateCounter(el, parseInt(el.getAttribute('data-target'), 10));
+            });
+            statsObs.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.3 });
+const statsEl = document.getElementById('stats-container');
+if (statsEl) statsObs.observe(statsEl);
+
+const journeyEl = document.getElementById('section-journey');
+if (journeyEl) {
+    const journeyObs = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                journeyObs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.3 });
+    journeyObs.observe(journeyEl);
+}
+
+/* Testimonial slider */
+let curSlide = 0, totalSlides = 0, autoSlide;
+function buildDots() {
+    const track = document.getElementById('t-track');
+    if (!track) return;
+    totalSlides = track.children.length;
+    const dc = document.getElementById('carousel-dots');
+    if (!dc) return;
+    dc.innerHTML = '';
+    for (let i = 0; i < totalSlides; i++) {
+        const d = document.createElement('span');
+        d.className = 'dot' + (i === 0 ? ' active' : '');
+        d.onclick = () => goSlide(i);
+        dc.appendChild(d);
     }
 }
-setInterval(updateCountdown, 1000);
-updateCountdown();
-
-// Typed text
-const textArray = ["Build innovative projects...", "Forge global partnerships...", "Accelerate your learning curve..."];
-let textIdx = 0, charIdx = 0, isDeleting = false;
-const typedTarget = document.getElementById("typed-text");
-function type() {
-    const cur = textArray[textIdx];
-    typedTarget.textContent = isDeleting ? cur.substring(0,charIdx-1) : cur.substring(0,charIdx+1);
-    charIdx += isDeleting ? -1 : 1;
-    let speed = isDeleting ? 50 : 100;
-    if (!isDeleting && charIdx === cur.length) { isDeleting = true; speed = 2000; }
-    else if (isDeleting && charIdx === 0) { isDeleting = false; textIdx = (textIdx+1)%textArray.length; speed = 500; }
-    setTimeout(type, speed);
+function goSlide(n) {
+    curSlide = (n + totalSlides) % totalSlides;
+    const track = document.getElementById('t-track');
+    if (track) track.style.transform = `translateX(-${curSlide * 100}%)`;
+    document.querySelectorAll('#carousel-dots .dot').forEach((d, i) => d.classList.toggle('active', i === curSlide));
 }
-setTimeout(type, 1500);
-
-// Stats counter
-function startCounting() {
-    document.querySelectorAll('.stat-number').forEach(el => {
-        const target = +el.dataset.target;
-        let current = 0;
-        const step = Math.max(1, Math.floor(target / 80));
-        const interval = setInterval(() => {
-            current = Math.min(current + step, target);
-            el.textContent = current.toLocaleString();
-            if (current >= target) clearInterval(interval);
-        }, 20);
-    });
+window.moveSlide = (dir) => { goSlide(curSlide + dir); resetAuto(); };
+function resetAuto() {
+    clearInterval(autoSlide);
+    autoSlide = setInterval(() => goSlide(curSlide + 1), 5000);
 }
+buildDots();
+resetAuto();
 
-// Scroll observer
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('active');
-        if (entry.target.id === 'stats-container') startCounting();
-        if (entry.target.id === 'trigger-final' && !traceStarted) { traceStarted = true; runTrace(); }
-    });
-}, { threshold: 0.2 });
-document.querySelectorAll('.step, #stats-container, .final-cta-wrapper').forEach(el => observer.observe(el));
-
-// Logo wall
+/* Global connections logo wall */
 const LOGO_SOURCES = [
     "https://cdn.kb.institute/logo/ABN-AMRO.png","https://cdn.kb.institute/logo/Alchemy.png","https://cdn.kb.institute/logo/Alibaba.png",
     "https://cdn.kb.institute/logo/Amazon.png","https://cdn.kb.institute/logo/Apple.png","https://cdn.kb.institute/logo/ASML.png",
-    "https://cdn.kb.institute/logo/ASTRI.png","https://cdn.kb.institute/logo/Baidu.png","https://cdn.kb.institute/logo/Bain-&-Company.png",
-    "https://cdn.kb.institute/logo/Bloomberg.png","https://cdn.kb.institute/logo/BNP-Paribas.png","https://cdn.kb.institute/logo/ByteDance.png",
-    "https://cdn.kb.institute/logo/City-University-of-Hong-Kong-(CityU).png","https://cdn.kb.institute/logo/Coinbase.png",
-    "https://cdn.kb.institute/logo/Conseil-Européen-pour-la-Recherche-Nucléaire-(CERN).png","https://cdn.kb.institute/logo/Deloitte.png",
-    "https://cdn.kb.institute/logo/Deutsche-Bank.png","https://cdn.kb.institute/logo/Google.png","https://cdn.kb.institute/logo/GitHub.png",
-    "https://cdn.kb.institute/logo/HSBC.png","https://cdn.kb.institute/logo/Massachusetts-Institute-of-Technology-(MIT).png",
-    "https://cdn.kb.institute/logo/McKinsey-&-Company.png","https://cdn.kb.institute/logo/Microsoft.png",
+    "https://cdn.kb.institute/logo/ASTRI.png","https://cdn.kb.institute/logo/Bloomberg.png","https://cdn.kb.institute/logo/BNP-Paribas.png",
+    "https://cdn.kb.institute/logo/ByteDance.png","https://cdn.kb.institute/logo/Coinbase.png","https://cdn.kb.institute/logo/Deloitte.png",
+    "https://cdn.kb.institute/logo/Deutsche-Bank.png","https://cdn.kb.institute/logo/Duolingo.png","https://cdn.kb.institute/logo/GitHub.png",
+    "https://cdn.kb.institute/logo/Google.png","https://cdn.kb.institute/logo/HSBC.png","https://cdn.kb.institute/logo/Indeed.png",
+    "https://cdn.kb.institute/logo/JP-Morgan-Chase.png","https://cdn.kb.institute/logo/LinkedIn.png","https://cdn.kb.institute/logo/Lyft.png",
+    "https://cdn.kb.institute/logo/MasterCard.png","https://cdn.kb.institute/logo/McKinsey-&-Company.png","https://cdn.kb.institute/logo/Microsoft.png",
     "https://cdn.kb.institute/logo/Morgan-Stanley.png","https://cdn.kb.institute/logo/Netflix.png","https://cdn.kb.institute/logo/NVIDIA-AI-Technology-Centre.png",
     "https://cdn.kb.institute/logo/Open-AI.png","https://cdn.kb.institute/logo/Palantir.png","https://cdn.kb.institute/logo/PwC.png",
-    "https://cdn.kb.institute/logo/Shopify.png","https://cdn.kb.institute/logo/Singapore-Exchange-(SGX).png",
-    "https://cdn.kb.institute/logo/The-University-of-Hong-Kong-(HKU).png","https://cdn.kb.institute/logo/TikTok.png",
-    "https://cdn.kb.institute/logo/Union-Bank-of-Switzerland-(UBS).png","https://cdn.kb.institute/logo/University-of-Waterloo-(UW).png",
-    "https://cdn.kb.institute/logo/Waymo.png","https://cdn.kb.institute/logo/JP-Morgan-Chase.png",
-    "https://cdn.kb.institute/logo/National-University-of-Singapore-(NUS).png","https://cdn.kb.institute/logo/Duolingo.png",
-    "https://cdn.kb.institute/logo/LinkedIn.png","https://cdn.kb.institute/logo/Lyft.png"
+    "https://cdn.kb.institute/logo/Reddit.png","https://cdn.kb.institute/logo/Shopify.png","https://cdn.kb.institute/logo/TikTok.png",
+    "https://cdn.kb.institute/logo/Massachusetts-Institute-of-Technology-(MIT).png","https://cdn.kb.institute/logo/National-University-of-Singapore-(NUS).png",
+    "https://cdn.kb.institute/logo/S&P-Global.png", "https://cdn.kb.institute/logo/The-University-of-Hong-Kong-(HKU).png","https://cdn.kb.institute/logo/University-of-Waterloo-(UW).png",
+    "https://cdn.kb.institute/logo/Waymo.png","https://cdn.kb.institute/logo/Zoox.png"
 ];
-const wallContainer = document.getElementById("logo-wall-container");
-const wall = document.createElement("div"); wall.className = "logo-wall"; wallContainer.appendChild(wall);
-const ITEMS_PER_PAGE = 21; let rotationIndex = 0;
-function populateWall(page) {
-    wall.innerHTML = '';
-    const start = page * ITEMS_PER_PAGE, end = Math.min(start + ITEMS_PER_PAGE, LOGO_SOURCES.length);
-    for (let i = start; i < end; i++) {
-        const container = document.createElement("div"); container.className = "logo-container";
-        container.style.animationDelay = `${(i - start) * 40}ms`;
-        const img = new Image(); img.src = LOGO_SOURCES[i]; img.alt = "";
-        container.appendChild(img); wall.appendChild(container);
+
+const logoWallContainer = document.getElementById('logo-wall-container');
+if (logoWallContainer) {
+    const logoWall = document.createElement('div');
+    logoWall.className = 'logo-wall show-front';
+    logoWallContainer.appendChild(logoWall);
+
+    let rotationIndex = 0;
+
+    function getItemsPerPage() {
+        const width = window.innerWidth;
+        if (width < 600) return 8;
+        if (width < 1200) return 12;
+        return 21;
     }
-}
-populateWall(0); wall.classList.add("show-front");
-setInterval(() => {
-    wall.classList.replace("show-front","show-back");
-    setTimeout(() => {
-        rotationIndex = (rotationIndex+1) % Math.ceil(LOGO_SOURCES.length/ITEMS_PER_PAGE);
-        populateWall(rotationIndex);
-        wall.classList.replace("show-back","show-front");
-    }, 500);
-}, 5000);
 
-// Testimonial slider
-let slideIndex = 0;
-const totalSlides = 5;
-const track = document.getElementById('t-track');
-function updateSlider(smooth=true) {
-    if (!smooth) track.classList.add('no-anim');
-    track.style.transform = `translateX(-${slideIndex * 100}%)`;
-    if (!smooth) requestAnimationFrame(() => requestAnimationFrame(() => track.classList.remove('no-anim')));
-    document.querySelectorAll('.dot').forEach((d,i) => d.classList.toggle('active', i === slideIndex));
-}
-function moveSlide(dir) {
-    slideIndex = (slideIndex + dir + totalSlides) % totalSlides;
-    updateSlider();
-}
-function gotoDot(i) { slideIndex = i; updateSlider(); }
-let autoPlay = setInterval(() => moveSlide(1), 5000);
-document.querySelector('.testimonial-slider').addEventListener('mouseenter', () => clearInterval(autoPlay));
-document.querySelector('.testimonial-slider').addEventListener('mouseleave', () => { autoPlay = setInterval(() => moveSlide(1), 5000); });
+    function populateWall(page) {
+        const fragment = document.createDocumentFragment();
+        const itemsPerPage = getItemsPerPage();
+        const start = page * itemsPerPage;
+        const end = Math.min(start + itemsPerPage, LOGO_SOURCES.length);
 
-// Trace canvas
-const tCanvas = document.getElementById('traceCanvas');
-const tCtx = tCanvas.getContext('2d');
-const pts = [{x:230,y:125},{x:368,y:318},{x:92,y:318},{x:230,y:125}];
-let traceProg = 0, traceStarted = false;
-function runTrace() {
-    tCanvas.width = 460; tCanvas.height = 460; tCtx.clearRect(0,0,460,460);
-    const cur = Math.floor(traceProg*3), sub = (traceProg*3)%1;
-    tCtx.lineWidth=2; tCtx.strokeStyle="rgba(179,136,255,0.4)";
-    for(let i=0;i<cur;i++){tCtx.beginPath();tCtx.moveTo(pts[i].x,pts[i].y);tCtx.lineTo(pts[i+1].x,pts[i+1].y);tCtx.stroke();}
-    if(traceProg<1){
-        tCtx.beginPath();tCtx.moveTo(pts[cur].x,pts[cur].y);
-        tCtx.lineTo(pts[cur].x+(pts[cur+1].x-pts[cur].x)*sub,pts[cur].y+(pts[cur+1].y-pts[cur].y)*sub);
-        tCtx.strokeStyle="#d1b3ff";tCtx.stroke();
-        traceProg+=0.025;requestAnimationFrame(runTrace);
-    } else { document.getElementById('brand-box').classList.add('revealed-inner'); }
+        for (let i = start; i < end; i++) {
+            const container = document.createElement('div');
+            container.className = 'logo-container';
+            container.style.animationDelay = `${(i - start) * 35}ms`;
+            const img = document.createElement('img');
+            img.src = LOGO_SOURCES[i];
+            img.alt = 'Partner logo';
+            img.loading = 'lazy';
+            container.appendChild(img);
+            fragment.appendChild(container);
+        }
+        logoWall.replaceChildren(fragment);
+    }
+
+    populateWall(0);
+    setInterval(() => {
+        logoWall.classList.replace('show-front', 'show-back');
+        setTimeout(() => {
+            const itemsPerPage = getItemsPerPage();
+            rotationIndex = (rotationIndex + 1) % Math.ceil(LOGO_SOURCES.length / itemsPerPage);
+            populateWall(rotationIndex);
+            logoWall.classList.replace('show-back', 'show-front');
+        }, 500);
+    }, 5000);
+
+    window.addEventListener('resize', () => {
+        populateWall(0);
+        rotationIndex = 0;
+    });
+}
+
+/* End CTA trace animation */
+const triggerFinal = document.getElementById('trigger-final');
+const brandBox = document.getElementById('brand-box');
+const traceCanvas = document.getElementById('traceCanvas');
+const ctaTextContent = document.getElementById('cta-text-content');
+const ctaBtnContent = document.getElementById('cta-btn-content');
+
+if (triggerFinal && brandBox && traceCanvas) {
+    const tCtx = traceCanvas.getContext('2d');
+    const pts = [{ x: 190, y: 103 }, { x: 304, y: 263 }, { x: 76, y: 263 }, { x: 190, y: 103 }];
+    let traceStarted = false;
+    let traceProg = 0;
+
+    function runTrace() {
+        traceCanvas.width = 380;
+        traceCanvas.height = 380;
+        tCtx.clearRect(0, 0, 380, 380);
+
+        const cur = Math.floor(traceProg * 3);
+        const sub = (traceProg * 3) % 1;
+
+        tCtx.lineWidth = 2;
+        tCtx.strokeStyle = 'rgba(179,136,255,0.4)';
+        for (let i = 0; i < cur; i++) {
+            tCtx.beginPath();
+            tCtx.moveTo(pts[i].x, pts[i].y);
+            tCtx.lineTo(pts[i + 1].x, pts[i + 1].y);
+            tCtx.stroke();
+        }
+
+        if (traceProg < 1) {
+            tCtx.beginPath();
+            tCtx.moveTo(pts[cur].x, pts[cur].y);
+            tCtx.lineTo(
+                pts[cur].x + (pts[cur + 1].x - pts[cur].x) * sub,
+                pts[cur].y + (pts[cur + 1].y - pts[cur].y) * sub
+            );
+            tCtx.strokeStyle = '#d1b3ff';
+            tCtx.stroke();
+
+            traceProg += 0.025;
+            requestAnimationFrame(runTrace);
+        } else {
+            brandBox.classList.add('revealed-inner');
+
+            setTimeout(() => {
+                if (ctaTextContent) {
+                    ctaTextContent.style.opacity = '1';
+                    ctaTextContent.style.transform = 'translateY(0)';
+                }
+            }, 300);
+
+            setTimeout(() => {
+                if (ctaBtnContent) {
+                    ctaBtnContent.style.opacity = '1';
+                    ctaBtnContent.style.transform = 'translateY(0)';
+                }
+            }, 850);
+        }
+    }
+
+    const finalObs = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting && !traceStarted) {
+                traceStarted = true;
+                runTrace();
+            }
+        });
+    }, { threshold: 0.2 });
+
+    finalObs.observe(triggerFinal);
 }
 </script>
+<script src="js/shared.js"></script>
 </body>
 </html>

@@ -4,147 +4,149 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us | IQCOL 2026</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Segoe+UI:wght@400;700;900&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link rel="stylesheet" href="css/navbar.css">
-    <link rel="stylesheet" href="css/global.css">
+    <script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+    <link rel="stylesheet" href="css/shared.css">
     <style>
-        body { display: flex; flex-direction: column; min-height: 100vh; }
+        .section-header { margin: 80px 0 60px; }
+        .section-header h2 { font-size: clamp(2rem, 6vw, 2.7rem); letter-spacing: 10px; }
 
-        .page-header {
-            text-align: center;
-            padding: 90px 20px 70px;
-            position: relative; z-index: 1;
-        }
-        .page-header h2 {
-            font-size: clamp(2rem, 8vw, 2.9rem);
-            text-transform: uppercase;
-            letter-spacing: 10px;
-            color: var(--lavender-bright);
-            margin: 0;
-            display: inline-block;
-            background: linear-gradient(90deg, transparent, var(--node-purple), transparent) bottom/100% 1px no-repeat;
-            padding-bottom: 15px;
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px 100px;
+            width: 100%;
+            box-sizing: border-box;
+            position: relative;
+            z-index: 1;
         }
 
-        .container { flex: 1; padding-top: 0 !important; }
-
-        /* ── CONTACT CARDS ── */
-        .contact-info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-
+        .contact-info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 25px; }
         .info-card-link { text-decoration: none; color: inherit; display: block; }
-
         .info-card {
-            padding: 48px 28px; background: rgba(5,0,15,0.9);
-            border: 1px solid rgba(179,136,255,0.2); border-radius: 4px;
-            text-align: center; transition: all 0.4s cubic-bezier(0.175,0.885,0.32,1.275);
-            backdrop-filter: blur(25px);
+            padding: 50px 30px;
+            background: rgba(10, 5, 25, 0.6);
+            border: 1px solid var(--border-teal);
+            border-radius: 4px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+            height: 100%;
+            box-sizing: border-box;
         }
-        .info-card:hover {
-            border-color: var(--pure-white); background: rgba(98,0,234,0.15);
-            transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0,0,0,0.9);
+        .info-card-link:hover .info-card {
+            transform: translateY(-8px);
+            border-color: var(--primary-teal);
+            background: rgba(10, 5, 25, 0.85);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+        }
+        .info-card i { color: var(--icy-highlight); margin-bottom: 20px; }
+        .info-card h3 {
+            color: var(--icy-highlight);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 0 0 12px;
+            font-size: 1rem;
+        }
+        .info-card p { color: var(--slate-grey); font-size: 0.9rem; margin: 0; line-height: 1.6; }
+        .info-card .contact-value {
+            color: #fff;
+            font-size: 0.95rem;
+            margin-top: 10px;
+            font-weight: 600;
+            word-break: break-all;
         }
 
-        .icon-box { margin-bottom: 18px; color: var(--lavender-orig); transition: color 0.3s; }
-        .info-card:hover .icon-box { color: var(--pure-white); }
-
-        .info-card h4 {
-            margin: 0 0 13px; letter-spacing: 3px;
-            text-transform: uppercase; font-size: 0.78rem;
-            color: var(--pure-white); font-weight: 700;
-        }
-        .info-card p { margin: 0; color: var(--lavender-orig); font-size: 1.05rem; font-weight: 600; letter-spacing: 1px; transition: color 0.3s; }
-
-        .click-hint {
-            display: block; margin-top: 18px;
-            font-size: 0.68rem; text-transform: uppercase;
-            letter-spacing: 2px; color: #4a3a63; transition: color 0.3s;
-        }
-        .info-card:hover .click-hint { color: var(--lavender-orig); }
-
-        /* ── EXTRA INFO ── */
         .extra-section { margin-top: 80px; text-align: center; }
-        .extra-section h3 { color: var(--lavender-bright); text-transform: uppercase; letter-spacing: 4px; font-size: 1.2rem; margin-bottom: 20px; }
-        .extra-section p { color: #aaa; font-size: 0.93rem; max-width: 600px; margin: 0 auto 30px; line-height: 1.7; }
+        .extra-section h3 { color: var(--icy-highlight); text-transform: uppercase; letter-spacing: 4px; font-size: 1.2rem; margin-bottom: 20px; }
+        .extra-section p { color: var(--slate-grey); font-size: 0.93rem; max-width: 600px; margin: 0 auto 30px; line-height: 1.7; }
         .social-row { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
         .social-btn {
             display: inline-flex; align-items: center; gap: 8px;
             padding: 12px 24px; border-radius: 50px; text-decoration: none;
             font-size: 0.82rem; font-weight: 700; letter-spacing: 1.5px;
             text-transform: uppercase; transition: all 0.3s;
-            border: 1px solid rgba(179,136,255,0.3); color: rgba(209,179,255,0.8);
-            background: rgba(179,136,255,0.06);
+            border: 1px solid var(--border-teal); color: var(--icy-highlight);
+            background: rgba(179, 136, 255, 0.06);
         }
-        .social-btn:hover { background: rgba(179,136,255,0.14); border-color: var(--lavender-bright); color: var(--pure-white); transform: translateY(-2px); }
+        .social-btn:hover { background: rgba(179, 136, 255, 0.14); border-color: var(--primary-teal); color: #fff; transform: translateY(-2px); }
 
-        @media (max-width: 850px) {
-            .page-header h2 { font-size: 1.8rem; letter-spacing: 5px; }
-            .contact-info-grid { grid-template-columns: 1fr; }
+        @media (max-width: 900px) { .contact-info-grid { grid-template-columns: 1fr; } }
+        @media (max-width: 600px) { .section-header h2 { font-size: 1.8rem; letter-spacing: 5px; } }
+        footer {
+            width: 100%;
+            margin-top: auto;
+            padding: 0 20px;
+            box-sizing: border-box;
+            background: var(--glass-frost);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
+        .footer-inner { max-width: 1200px; margin: 0 auto; width: 100%; }
     </style>
 </head>
-<body data-page="contact">
+<body>
 <canvas id="bg-canvas"></canvas>
 
-<div class="page-header reveal">
-    <h2>Connect with Us</h2>
-</div>
-
-<div class="container">
-
-    <div class="contact-info-grid">
-        <a href="mailto:2026@iqcol.org?subject=General Inquiry" class="info-card-link reveal">
-            <div class="info-card">
-                <div class="icon-box"><i data-lucide="mail" size="30"></i></div>
-                <h4>General Enquiries</h4>
-                <p>2026@iqcol.org</p>
-                <span class="click-hint">Click to Compose</span>
-            </div>
-        </a>
-        <a href="mailto:volunteer@iqcol.org?subject=Volunteer Application" class="info-card-link reveal">
-            <div class="info-card">
-                <div class="icon-box"><i data-lucide="users" size="30"></i></div>
-                <h4>Join as a Volunteer</h4>
-                <p>volunteer@iqcol.org</p>
-                <span class="click-hint">Click to Compose</span>
-            </div>
-        </a>
-        <a href="mailto:pr@iqcol.org?subject=Media Inquiry" class="info-card-link reveal">
-            <div class="info-card">
-                <div class="icon-box"><i data-lucide="award" size="30"></i></div>
-                <h4>Media &amp; Press</h4>
-                <p>pr@iqcol.org</p>
-                <span class="click-hint">Click to Compose</span>
-            </div>
-        </a>
+<div class="page-content">
+    <div class="section-header reveal" style="text-align:center;padding:0 20px;">
+        <h2>Contact Us</h2>
     </div>
 
-    <div class="extra-section reveal">
-        <div class="divider" style="margin: 60px auto;"></div>
-        <h3>Follow IQCOL</h3>
-        <p>Stay up to date with the latest announcements, competition updates, and community highlights from IQCOL 2026.</p>
-        <div class="social-row">
-            <a href="https://2026.iqcol.org/iqcol" target="_blank" rel="noopener" class="social-btn">
-                <i data-lucide="globe" size="16"></i> Website
+    <div class="container">
+        <div class="contact-info-grid">
+            <a href="mailto:2026@iqcol.org?subject=General%20Inquiry%20-%20IQCOL%202026" class="info-card-link reveal">
+                <div class="info-card">
+                    <i data-lucide="mail" style="width:40px;height:40px;"></i>
+                    <h3>General Enquiries</h3>
+                    <p>For all general questions about IQCOL 2026.</p>
+                    <div class="contact-value">2026@iqcol.org</div>
+                </div>
             </a>
-            <a href="https://ee.linkedin.com/company/iqcol-org" target="_blank" rel="noopener" class="social-btn">
-                <i data-lucide="linkedin" size="16"></i> LinkedIn
+            <a href="mailto:volunteer@iqcol.org?subject=Volunteer%20Application%20-%20IQCOL%202026" class="info-card-link reveal">
+                <div class="info-card">
+                    <i data-lucide="users" style="width:40px;height:40px;"></i>
+                    <h3>Join as a Volunteer</h3>
+                    <p>Interested in supporting IQCOL 2026 as a volunteer?</p>
+                    <div class="contact-value">volunteer@iqcol.org</div>
+                </div>
             </a>
-            <a href="https://www.instagram.com/iqcol_org/" target="_blank" rel="noopener" class="social-btn">
-                <i data-lucide="instagram" size="16"></i> Instagram
+            <a href="mailto:pr@iqcol.org?subject=Media%20Inquiry%20-%20IQCOL%202026" class="info-card-link reveal">
+                <div class="info-card">
+                    <i data-lucide="award" style="width:40px;height:40px;"></i>
+                    <h3>Media &amp; Press</h3>
+                    <p>Press enquiries and media partnership requests.</p>
+                    <div class="contact-value">pr@iqcol.org</div>
+                </div>
             </a>
         </div>
-        <div class="social-row" style="margin-top:16px;">
-            <a href="registration.html" class="btn btn-primary" style="margin-top:30px;font-size:0.88rem;padding:16px 40px;">
-                Register for IQCOL 2026
-            </a>
+
+        <div class="extra-section reveal">
+            <div class="divider" style="margin: 60px auto;"></div>
+            <h3>Follow IQCOL</h3>
+            <p>Stay up to date with the latest announcements, competition updates, and community highlights from IQCOL 2026.</p>
+            <div class="social-row">
+                <a href="https://2026.iqcol.org/iqcol" target="_blank" rel="noopener" class="social-btn">
+                    <i data-lucide="globe" style="width:16px;height:16px;"></i> Website
+                </a>
+                <a href="https://ee.linkedin.com/company/iqcol-org" target="_blank" rel="noopener" class="social-btn">
+                    <i data-lucide="linkedin" style="width:16px;height:16px;"></i> LinkedIn
+                </a>
+                <a href="https://www.instagram.com/iqcol_org/" target="_blank" rel="noopener" class="social-btn">
+                    <i data-lucide="instagram" style="width:16px;height:16px;"></i> Instagram
+                </a>
+            </div>
+            <div class="social-row" style="margin-top:16px;">
+                <a href="registration.html" class="btn btn-primary" style="margin-top:30px;font-size:0.88rem;padding:16px 40px;">
+                    Register for IQCOL 2026
+                </a>
+            </div>
         </div>
     </div>
-
 </div>
 
 <footer>
-    <div class="footer-line"></div>
+    <div class="footer-divider"></div>
     <div class="footer-inner">
         <div class="footer-cols">
             <div class="footer-col">
@@ -167,13 +169,7 @@
         <p class="footer-copy">© 2026 International Quantum Computing Olympiad (IQCOL Foundation). All Rights Reserved.</p>
     </div>
 </footer>
-
-<script src="js/main.js"></script>
-<script src="js/navbar.js"></script>
-<script>
-    lucide.createIcons();
-    initQuantumBackground(35);
-    initScrollReveal('.reveal', 0.1);
-</script>
+<script src="js/nav.js"></script>
+<script src="js/shared.js"></script>
 </body>
 </html>
