@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submission Materials | IQCOL 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Segoe+UI:wght@400;700;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/global.css">
+    <style>
+        body { display: flex; flex-direction: column; min-height: 100vh; }
+        .container { flex: 1; }
+        --font-mono: 'Roboto Mono', monospace;
+
+        /* ── DELIVERABLES GRID ── */
+        .deliverables-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-bottom: 20px; align-items: stretch; }
+
+        .spec-card {
+            background: var(--glass-deep); border: 1px solid rgba(179,136,255,0.3);
+            padding: 38px; border-radius: 4px; position: relative;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5); display: flex; flex-direction: column;
+            backdrop-filter: blur(25px); height: 100%; box-sizing: border-box;
+        }
+        .optional-tag { position: absolute; top: 14px; right: 14px; font-size: 0.6rem; background: rgba(179,136,255,0.1); padding: 2px 8px; border-radius: 2px; color: var(--lavender-bright); border: 1px solid var(--lavender-bright); font-weight: 800; }
+        .spec-card h3 { color: var(--lavender-bright); text-transform: uppercase; letter-spacing: 2px; margin: 0 0 22px; font-size: 1.05rem; border-bottom: 1px solid var(--node-purple); padding-bottom: 14px; }
+        .spec-card ul { list-style: none; padding: 0; margin: 0; flex-grow: 1; display: flex; flex-direction: column; }
+        .spec-card li { font-size: 0.87rem; color: #e0e0e0; padding-left: 20px; position: relative; line-height: 1.5; margin-bottom: 16px; }
+        .spec-card li:last-child { margin-bottom: 0; }
+        .spec-card li::before { content: ">"; position: absolute; left: 0; color: var(--lavender-bright); font-weight: bold; }
+        .spec-card b { color: var(--lavender-bright); }
+        .spec-card a { color: var(--lavender-bright); text-decoration: none; border-bottom: 1px solid transparent; transition: 0.3s; }
+        .spec-card a:hover { border-bottom-color: var(--lavender-bright); color: white; }
+        .sub-link { display: block; font-size: 0.77rem; color: #aaa; margin-top: 9px; padding-left: 11px; border-left: 1px solid var(--node-purple); }
+
+        .pitch-deck-card li, .prototype-card li { margin-bottom: 36px !important; line-height: 1.8 !important; }
+
+        @media (max-width: 850px) { .deliverables-grid { grid-template-columns: 1fr; } }
+
+        /* ── ROADMAP TABLE ── */
+        .roadmap-table {
+            width: 100%; border-collapse: collapse; background: rgba(179,136,255,0.08);
+            border: 1px solid rgba(179,136,255,0.3); backdrop-filter: blur(15px); margin-bottom: 70px;
+        }
+        .roadmap-table th { background: rgba(98,0,234,0.25); color: var(--lavender-bright); text-transform: uppercase; letter-spacing: 2px; padding: 18px; text-align: left; font-size: 0.83rem; border-bottom: 2px solid var(--node-purple); }
+        .roadmap-table td { padding: 22px 18px; border-bottom: 1px solid rgba(179,136,255,0.2); vertical-align: top; }
+        .roadmap-table td:first-child { width: 18%; font-weight: 800; color: var(--lavender-bright); text-transform: uppercase; letter-spacing: 1px; font-size: 0.74rem; background: rgba(40,20,60,0.5); }
+        .roadmap-h { color: var(--lavender-bright); margin-bottom: 7px; font-size: 0.95rem; display: block; text-transform: uppercase; letter-spacing: 1px; }
+        .sub-text { font-size: 0.84rem; color: #e5e5e5; margin: 0; line-height: 1.6; }
+
+        @media (max-width: 700px) {
+            .roadmap-table thead { display: none; }
+            .roadmap-table, .roadmap-table tbody, .roadmap-table tr { display: block; width: 100%; }
+            .roadmap-table tr { margin-bottom: 22px; border: 1px solid rgba(179,136,255,0.3); }
+            .roadmap-table td { display: block; border-bottom: 1px solid rgba(179,136,255,0.15); }
+            .roadmap-table td:first-child { background: var(--node-purple); color: #fff; text-align: center; }
+        }
+
+        /* ── EVALUATION CRITERIA ── */
+        .criteria-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 35px; margin-bottom: 70px; }
+        @media (max-width: 850px) { .criteria-grid { grid-template-columns: 1fr; } }
+
+        .criteria-card { border: 1px solid rgba(179,136,255,0.2); padding: clamp(22px,5vw,42px); background: rgba(10,5,20,0.4); border-radius: 4px; backdrop-filter: blur(10px); }
+        .criteria-card h3 { color: var(--lavender-bright); margin-top: 0; letter-spacing: clamp(2px,1vw,5px); text-transform: uppercase; font-size: clamp(1.05rem,4vw,1.35rem); border-bottom: 1px solid var(--lavender-orig); padding-bottom: 14px; margin-bottom: 30px; text-align: center; font-weight: 900; }
+
+        .metric-block { margin-bottom: 20px; padding-bottom: 28px; border-bottom: 1px solid rgba(179,136,255,0.2); }
+        .metric-block:last-child { border-bottom: none; padding-bottom: 0; }
+        .metric-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .metric-title { color: var(--lavender-bright); text-transform: uppercase; font-weight: 800; letter-spacing: 2px; font-size: 0.95rem; }
+        .metric-pct { color: var(--lavender-bright); font-weight: 800; font-size: 2rem; font-family: 'Roboto Mono', monospace; letter-spacing: -1px; }
+        .metric-question { display: block; font-style: italic; color: #aaa; font-size: 0.83rem; margin-bottom: 16px; padding-left: 13px; border-left: 2px solid var(--node-purple); }
+        .metric-details { list-style: none; padding-left: 0; margin: 0; }
+        .metric-details li { font-size: 0.86rem; color: #e5e5e5; margin-bottom: 10px; padding-left: 18px; position: relative; }
+        .metric-details li::before { content: "—"; position: absolute; left: 0; color: var(--lavender-bright); }
+        .bar-bg { height: 2px; background: rgba(255,255,255,0.05); margin-top: 22px; }
+        .bar-fill { height: 100%; background: var(--lavender-orig); box-shadow: 0 0 15px rgba(179,136,255,0.5); }
+
+        /* ── CTA ── */
+        .final-cta { text-align: center; padding: 60px 20px 80px; }
+        .final-cta h2 { font-size: clamp(1.4rem,4vw,2rem); letter-spacing: 4px; text-transform: uppercase; margin-bottom: 35px; color: var(--lavender-bright); }
+        .cta-btn-group { display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; }
+    </style>
+</head>
+<body data-page="submission">
+<canvas id="bg-canvas"></canvas>
+
+<div class="container">
+
+    <div class="section-header reveal">
+        <h2>Submission Materials</h2>
+        <p>What to Prepare &amp; Submit</p>
+    </div>
+
+    <div class="deliverables-grid reveal">
+        <div class="spec-card pitch-deck-card">
+            <h3>Pitch Deck</h3>
+            <ul>
+                <li><b>Format:</b> PDF or PowerPoint (max 20 slides).</li>
+                <li><b>Language:</b> English only.</li>
+                <li><b>Content:</b> Problem statement, proposed quantum solution, methodology, expected outcomes, team bios.</li>
+                <li><b>Visuals:</b> Diagrams, circuit designs, and flowcharts are encouraged.</li>
+            </ul>
+        </div>
+        <div class="spec-card">
+            <h3>Technical Report</h3>
+            <ul>
+                <li><b>Format:</b> PDF, max 15 pages (excluding references).</li>
+                <li><b>Structure:</b> Abstract, Introduction, Methodology, Results, Discussion, Conclusion.</li>
+                <li><b>Citations:</b> IEEE or APA format required.</li>
+                <li><b>Equations:</b> LaTeX formatting preferred for quantum expressions.</li>
+            </ul>
+        </div>
+        <div class="spec-card prototype-card">
+            <span class="optional-tag">Optional</span>
+            <h3>Prototype / Demo</h3>
+            <ul>
+                <li><b>Format:</b> Link to GitHub repository, simulation, or video demo (max 5 min).</li>
+                <li><b>Code:</b> Must be original; third-party libraries must be declared.</li>
+                <li>Simulation using Qiskit, Cirq, or similar frameworks is accepted.</li>
+            </ul>
+        </div>
+        <div class="spec-card">
+            <span class="optional-tag">Optional</span>
+            <h3>Posterboard</h3>
+            <ul>
+                <li><b>Size:</b> A0 portrait (841mm × 1189mm).</li>
+                <li><b>File:</b> High-resolution PDF submitted digitally; physical print at Finals.</li>
+                <li>Summarizes project visually for the Olympiad Exhibition.</li>
+                <li class="sub-link">Required for in-person Finals participation.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="divider reveal"></div>
+
+    <div class="section-header reveal">
+        <h2>Submission Roadmap</h2>
+        <p>Phase-by-Phase Deliverables</p>
+    </div>
+
+    <div class="reveal">
+        <table class="roadmap-table">
+            <thead>
+                <tr>
+                    <th>Phase</th>
+                    <th>Deliverable</th>
+                    <th>Notes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Phase 0</td>
+                    <td>
+                        <b class="roadmap-h">Draft Submission</b>
+                        <p class="sub-text">Pitch Deck + optional Technical Report draft.</p>
+                    </td>
+                    <td><p class="sub-text">Optional; for early expert feedback.</p></td>
+                </tr>
+                <tr>
+                    <td>Phase 1</td>
+                    <td>
+                        <b class="roadmap-h">Full Submission</b>
+                        <p class="sub-text">Pitch Deck + Technical Report (mandatory). Prototype link optional.</p>
+                    </td>
+                    <td><p class="sub-text">Formal evaluation begins. Results sent within 4 weeks.</p></td>
+                </tr>
+                <tr>
+                    <td>Phase 2</td>
+                    <td>
+                        <b class="roadmap-h">Finals Package</b>
+                        <p class="sub-text">Updated Pitch Deck + Posterboard PDF. Physical poster at venue.</p>
+                    </td>
+                    <td><p class="sub-text">Required for Olympiad Exhibition &amp; Symposium.</p></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section-header reveal">
+        <h2>Evaluation Criteria</h2>
+        <p>How Projects are Scored</p>
+    </div>
+
+    <div class="criteria-grid reveal">
+        <div class="criteria-card">
+            <h3>EXP Stream</h3>
+            <div class="metric-block">
+                <div class="metric-header"><span class="metric-title">Scientific Rigor</span><span class="metric-pct">30%</span></div>
+                <span class="metric-question">"Is the research methodology sound and reproducible?"</span>
+                <ul class="metric-details">
+                    <li>Validity of quantum formalism and notation</li>
+                    <li>Quality of citations and prior art review</li>
+                    <li>Reproducibility of proposed experiments</li>
+                </ul>
+                <div class="bar-bg"><div class="bar-fill" style="width:30%"></div></div>
+            </div>
+            <div class="metric-block">
+                <div class="metric-header"><span class="metric-title">Innovation</span><span class="metric-pct">35%</span></div>
+                <span class="metric-question">"Does this advance the state-of-the-art?"</span>
+                <ul class="metric-details">
+                    <li>Novelty of research approach</li>
+                    <li>Potential impact on QCIT field</li>
+                    <li>Differentiation from existing literature</li>
+                </ul>
+                <div class="bar-bg"><div class="bar-fill" style="width:35%"></div></div>
+            </div>
+            <div class="metric-block">
+                <div class="metric-header"><span class="metric-title">Presentation</span><span class="metric-pct">35%</span></div>
+                <span class="metric-question">"Is the work communicated clearly?"</span>
+                <ul class="metric-details">
+                    <li>Clarity of pitch deck and report</li>
+                    <li>Quality of posterboard design</li>
+                    <li>Oral presentation at Finals</li>
+                </ul>
+                <div class="bar-bg"><div class="bar-fill" style="width:35%"></div></div>
+            </div>
+        </div>
+        <div class="criteria-card">
+            <h3>APP Stream</h3>
+            <div class="metric-block">
+                <div class="metric-header"><span class="metric-title">Technical Depth</span><span class="metric-pct">30%</span></div>
+                <span class="metric-question">"Is the quantum application technically sound?"</span>
+                <ul class="metric-details">
+                    <li>Correctness of quantum algorithms used</li>
+                    <li>Feasibility of the proposed implementation</li>
+                    <li>Handling of real-world constraints</li>
+                </ul>
+                <div class="bar-bg"><div class="bar-fill" style="width:30%"></div></div>
+            </div>
+            <div class="metric-block">
+                <div class="metric-header"><span class="metric-title">Impact &amp; Relevance</span><span class="metric-pct">35%</span></div>
+                <span class="metric-question">"Does this solve a meaningful real-world problem?"</span>
+                <ul class="metric-details">
+                    <li>Clarity of problem definition</li>
+                    <li>Scalability of the proposed solution</li>
+                    <li>Alignment with industry or societal needs</li>
+                </ul>
+                <div class="bar-bg"><div class="bar-fill" style="width:35%"></div></div>
+            </div>
+            <div class="metric-block">
+                <div class="metric-header"><span class="metric-title">Presentation</span><span class="metric-pct">35%</span></div>
+                <span class="metric-question">"Is the application well communicated?"</span>
+                <ul class="metric-details">
+                    <li>Clarity of pitch and report</li>
+                    <li>Quality of demo/prototype (if provided)</li>
+                    <li>Effectiveness at Finals exhibition</li>
+                </ul>
+                <div class="bar-bg"><div class="bar-fill" style="width:35%"></div></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="final-cta reveal">
+        <h2>Ready to Submit?</h2>
+        <div class="cta-btn-group">
+            <a href="timeline.html" class="btn btn-outline">View Timeline</a>
+            <a href="registration.html" class="btn btn-primary">Register NOW!</a>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <div class="footer-line"></div>
+    <div class="footer-inner">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <h4>IQCOL: International Quantum Computing Olympiad</h4>
+                <div class="footer-icons">
+                    <a href="https://2026.iqcol.org/iqcol" target="_blank" rel="noopener"><i data-lucide="globe"></i></a>
+                    <a href="https://ee.linkedin.com/company/iqcol-org" target="_blank" rel="noopener"><i data-lucide="linkedin"></i></a>
+                    <a href="https://www.instagram.com/iqcol_org/" target="_blank" rel="noopener"><i data-lucide="instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>KBI: Königsberger Bridges Institute</h4>
+                <div class="footer-icons">
+                    <a href="https://www.kb.institute/" target="_blank" rel="noopener"><i data-lucide="globe"></i></a>
+                    <a href="https://www.linkedin.com/company/kbi-eu/" target="_blank" rel="noopener"><i data-lucide="linkedin"></i></a>
+                    <a href="https://www.instagram.com/kbi.eu/" target="_blank" rel="noopener"><i data-lucide="instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <p class="footer-copy">© 2026 International Quantum Computing Olympiad (IQCOL Foundation). All Rights Reserved.</p>
+    </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/navbar.js"></script>
+<script>
+    lucide.createIcons();
+    initQuantumBackground(35);
+    initScrollReveal('.reveal', 0.1);
+</script>
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accolades &amp; Achievements | IQCOL 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Segoe+UI:wght@400;700;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/global.css">
+    <style>
+        /* ── MEDAL GRID ── */
+        .medal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 22px; margin-bottom: 40px; }
+        .tech-card {
+            background: var(--glass-deep); border: 1px solid rgba(179,136,255,0.3);
+            padding: 38px; border-radius: 4px; text-align: center;
+            backdrop-filter: blur(25px); transition: all 0.3s; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .tech-card:hover { transform: translateY(-5px); border-color: var(--lavender-bright); box-shadow: 0 15px 40px rgba(179,136,255,0.2); }
+        .medal-icon { font-size: 3.2rem; margin-bottom: 18px; display: block; filter: drop-shadow(0 0 10px rgba(179,136,255,0.3)); }
+        .medal-title { color: var(--lavender-bright); text-transform: uppercase; letter-spacing: 2px; margin: 10px 0 18px; font-size: 1.15rem; border-bottom: 1px solid var(--node-purple); padding-bottom: 14px; }
+
+        .list-items { list-style: none; padding: 0; margin-top: 18px; text-align: left; }
+        .list-items li { font-size: 0.86rem; padding: 9px 0; color: #e5e5e5; display: flex; align-items: center; gap: 11px; border-bottom: 1px solid rgba(179,136,255,0.2); }
+        .list-items li:last-child { border-bottom: none; }
+        .list-items li::before { content: ">"; color: var(--lavender-bright); font-weight: bold; font-family: 'Roboto Mono', monospace; flex-shrink: 0; }
+
+        /* ── BENEFIT GRID ── */
+        .benefit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 18px; margin-bottom: 60px; }
+        .benefit-item {
+            background: rgba(179,136,255,0.05); padding: 28px 22px;
+            border: 1px solid rgba(179,136,255,0.2); border-radius: 4px;
+            text-align: center; transition: all 0.3s; backdrop-filter: blur(10px);
+        }
+        .benefit-item:hover { background: rgba(179,136,255,0.12); border-color: var(--lavender-bright); }
+        .benefit-item i { color: var(--lavender-bright); margin-bottom: 13px; }
+        .benefit-item h4 { margin: 8px 0 7px; font-size: 0.88rem; text-transform: uppercase; color: var(--lavender-bright); letter-spacing: 1px; }
+        .benefit-item p { font-size: 0.78rem; color: #aaa; margin: 0; line-height: 1.4; }
+
+        /* ── ACADEMIC / PARTNER ── */
+        .academic-grid, .expanded-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-bottom: 40px; }
+        @media (max-width: 850px) { .academic-grid, .expanded-grid { grid-template-columns: 1fr; } }
+
+        .academic-box, .feature-box {
+            background: var(--glass-deep); border: 1px solid rgba(179,136,255,0.3);
+            padding: 48px 38px; border-radius: 4px; text-align: center;
+            backdrop-filter: blur(25px); display: flex; flex-direction: column;
+            align-items: center; justify-content: center; box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .academic-box h3, .feature-box h2 { color: var(--lavender-bright); text-transform: uppercase; letter-spacing: 4px; margin: 18px 0 14px; font-size: 1.25rem; }
+        .academic-box p, .feature-box p { font-size: 0.93rem; color: #bbb; margin: 0; max-width: 400px; line-height: 1.6; }
+
+        .institution-tag {
+            background: rgba(179,136,255,0.1); color: var(--lavender-bright);
+            border: 1px solid var(--node-purple); padding: 6px 18px; font-size: 0.74rem;
+            border-radius: 50px; display: inline-block; margin-top: 22px;
+            text-transform: uppercase; letter-spacing: 1px; font-weight: 700;
+        }
+
+        /* ── CTA ── */
+        .final-cta { text-align: center; padding: 80px 20px; }
+        .final-cta h2 { font-size: clamp(1.4rem,4vw,2.1rem); letter-spacing: 5px; text-transform: uppercase; margin-bottom: 35px; color: var(--lavender-bright); }
+
+        .awards-note { text-align: center; max-width: 800px; margin: 50px auto; padding: 0 20px; color: #888; font-size: 0.93rem; line-height: 1.7; }
+    </style>
+</head>
+<body data-page="accolades">
+<canvas id="bg-canvas"></canvas>
+
+<div class="container">
+
+    <div class="section-header reveal">
+        <h1>Accolades &amp; Achievements</h1>
+        <p>Rewarding excellence in quantum innovation and institutional leadership.</p>
+    </div>
+
+    <div class="section-header reveal" style="margin-top:0;">
+        <h2>Global Excellence</h2>
+        <p>International Medals &amp; Career Rewards</p>
+    </div>
+
+    <section class="medal-grid">
+        <div class="tech-card reveal">
+            <span class="medal-icon">🥇</span>
+            <h2 class="medal-title">Gold Medal</h2>
+            <ul class="list-items">
+                <li>IQCOL 2026 2D EXP Gold</li>
+                <li>IQCOL 2026 2D APP Gold</li>
+                <li>IQCOL 2026 3D EXP Gold</li>
+                <li>IQCOL 2026 3D APP Gold</li>
+            </ul>
+        </div>
+        <div class="tech-card reveal">
+            <span class="medal-icon">🥈</span>
+            <h2 class="medal-title">Silver Medal</h2>
+            <ul class="list-items">
+                <li>IQCOL 2026 2D EXP Silver</li>
+                <li>IQCOL 2026 2D APP Silver</li>
+                <li>IQCOL 2026 3D EXP Silver</li>
+                <li>IQCOL 2026 3D APP Silver</li>
+            </ul>
+        </div>
+        <div class="tech-card reveal">
+            <span class="medal-icon">🥉</span>
+            <h2 class="medal-title">Bronze Medal</h2>
+            <ul class="list-items">
+                <li>IQCOL 2026 2D EXP Bronze</li>
+                <li>IQCOL 2026 2D APP Bronze</li>
+                <li>IQCOL 2026 3D EXP Bronze</li>
+                <li>IQCOL 2026 3D APP Bronze</li>
+            </ul>
+        </div>
+    </section>
+
+    <div class="benefit-grid reveal">
+        <div class="benefit-item"><i data-lucide="briefcase" size="28"></i><h4>Career Pipeline</h4><p>Interview access for KBI network jobs.</p></div>
+        <div class="benefit-item"><i data-lucide="file-text" size="28"></i><h4>KBI Library</h4><p>Whitepaper publishing opportunities.</p></div>
+        <div class="benefit-item"><i data-lucide="shield-check" size="28"></i><h4>Credentials</h4><p>Verifiable digital assets.</p></div>
+        <div class="benefit-item"><i data-lucide="globe" size="28"></i><h4>Recognition</h4><p>Global institutional validation.</p></div>
+    </div>
+
+    <div class="divider reveal"></div>
+
+    <div class="section-header reveal">
+        <h2>Project Standing</h2>
+        <p>Academic Merit &amp; Finalist Status</p>
+    </div>
+
+    <div class="academic-grid">
+        <div class="academic-box reveal">
+            <i data-lucide="star" size="48" color="#d1b3ff"></i>
+            <h3>Award of Merit</h3>
+            <p>Conferred to projects scoring above 75%. Provides a verifiable credential for research and internships.</p>
+        </div>
+        <div class="academic-box reveal">
+            <i data-lucide="check-circle" size="48" color="#b388ff"></i>
+            <h3>Olympiad Finalist</h3>
+            <p>Issued to all projects that accepted the invitation to compete in the International Finals.</p>
+        </div>
+    </div>
+
+    <div class="divider reveal"></div>
+
+    <div class="section-header reveal">
+        <h2>Partner Recognition</h2>
+        <p>Institutional &amp; Industry Awards</p>
+    </div>
+
+    <div class="expanded-grid">
+        <div class="feature-box reveal">
+            <i data-lucide="graduation-cap" size="52" color="#d1b3ff"></i>
+            <h2>School Medals</h2>
+            <p>Exclusive recognition for the top-performing teams within their own academic institution.</p>
+            <div class="institution-tag">Top Awardees at {{Institution}}</div>
+        </div>
+        <div class="feature-box reveal">
+            <i data-lucide="landmark" size="52" color="#d1b3ff"></i>
+            <h2>Sponsor Awards</h2>
+            <p>Industry partners provide independent accolades based on specialized technical criteria.</p>
+            <div class="institution-tag">Top Awardees for {{Sponsor}}</div>
+        </div>
+    </div>
+
+    <div class="awards-note reveal">
+        International medals will be awarded at the Competition Finals.<br>
+        Other accolades shall be sent directly to awardees as verifiable digital credentials.
+    </div>
+
+    <div class="final-cta reveal">
+        <h2>Do you have what it takes?</h2>
+        <a href="registration.html" class="btn btn-primary" style="padding:18px 50px;font-size:0.9rem;letter-spacing:4px;">Register NOW!</a>
+    </div>
+
+</div>
+
+<footer>
+    <div class="footer-line"></div>
+    <div class="footer-inner">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <h4>IQCOL: International Quantum Computing Olympiad</h4>
+                <div class="footer-icons">
+                    <a href="https://2026.iqcol.org/iqcol" target="_blank" rel="noopener"><i data-lucide="globe"></i></a>
+                    <a href="https://ee.linkedin.com/company/iqcol-org" target="_blank" rel="noopener"><i data-lucide="linkedin"></i></a>
+                    <a href="https://www.instagram.com/iqcol_org/" target="_blank" rel="noopener"><i data-lucide="instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>KBI: Königsberger Bridges Institute</h4>
+                <div class="footer-icons">
+                    <a href="https://www.kb.institute/" target="_blank" rel="noopener"><i data-lucide="globe"></i></a>
+                    <a href="https://www.linkedin.com/company/kbi-eu/" target="_blank" rel="noopener"><i data-lucide="linkedin"></i></a>
+                    <a href="https://www.instagram.com/kbi.eu/" target="_blank" rel="noopener"><i data-lucide="instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <p class="footer-copy">© 2026 International Quantum Computing Olympiad (IQCOL Foundation). All Rights Reserved.</p>
+    </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/navbar.js"></script>
+<script>
+    lucide.createIcons();
+    initQuantumBackground(35);
+    initScrollReveal('.reveal', 0.1);
+</script>
+</body>
+</html>

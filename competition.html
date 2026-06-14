@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Competition | IQCOL 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Segoe+UI:wght@400;700;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/global.css">
+    <style>
+        /* ── PAGE TITLE ── */
+        .page-title-section { text-align: center; margin: 50px 0 55px; }
+        .page-title-section h1 {
+            font-size: clamp(1.8rem, 8vw, 3.2rem);
+            text-transform: uppercase; letter-spacing: clamp(4px, 2vw, 10px);
+            color: var(--lavender-bright); margin: 0; display: inline-block;
+            background: linear-gradient(90deg, transparent, var(--node-purple), transparent);
+            background-size: 100% 1px; background-repeat: no-repeat; background-position: bottom; padding-bottom: 15px;
+        }
+
+        /* ── HERO SPLIT ── */
+        .hero-split {
+            display: grid; grid-template-columns: 1fr 1.2fr;
+            align-items: stretch; margin-bottom: 60px;
+            background: var(--glass-deep); border: 1px solid rgba(179,136,255,0.3);
+            border-radius: 4px; overflow: hidden; backdrop-filter: blur(15px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .hero-visual {
+            min-height: 250px;
+            background-image: url('https://cdn.kb.institute/eto-2026/general/others/2024_ETO.JPG');
+            background-size: cover; background-position: center;
+        }
+        .hero-text { padding: clamp(25px,5vw,50px); display: flex; align-items: center; background: rgba(40,20,70,0.4); }
+        .hero-text h1 { font-weight: 300; font-size: clamp(1.1rem,4vw,1.35rem); color: #e5e5e5; margin: 0; line-height: 1.6; text-transform: none; letter-spacing: normal; }
+        .hero-text b { color: var(--lavender-bright); font-weight: 600; }
+
+        /* ── MISSION SEQUENCE ── */
+        .mission-sequence { display: flex; gap: 0; margin-bottom: 60px; min-height: 190px; }
+        .mission-box {
+            flex: 1; position: relative; background: var(--glass-deep);
+            border: 1px solid rgba(179,136,255,0.3); padding: 30px 50px 30px 30px;
+            display: flex; flex-direction: column; justify-content: center;
+            clip-path: polygon(0% 0%, calc(100% - 40px) 0%, 100% 50%, calc(100% - 40px) 100%, 0% 100%, 40px 50%);
+            transition: all 0.4s; backdrop-filter: blur(15px);
+        }
+        .mission-box::before {
+            content: ""; position: absolute; left: 0; top: 0; width: 42px; height: 100%;
+            background: var(--node-purple); opacity: 0.6;
+            clip-path: polygon(0% 0%, 40px 50%, 0% 100%, 4px 100%, 44px 50%, 4px 0%);
+            pointer-events: none;
+        }
+        .mission-box:first-child { clip-path: polygon(0% 0%, calc(100% - 40px) 0%, 100% 50%, calc(100% - 40px) 100%, 0% 100%); }
+        .mission-box:first-child::before { display: none; }
+        .mission-box:last-child { clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 40px 50%); padding-right: 30px; }
+        .mission-box:not(:first-child) { margin-left: -40px; padding-left: 70px; }
+        .mission-box h4 { color: var(--lavender-bright); text-transform: uppercase; letter-spacing: 2px; margin: 0 0 10px; font-size: 0.95rem; font-weight: 800; }
+        .mission-box p { margin: 0; font-size: 0.9rem; color: #e0e0e0; font-weight: 300; line-height: 1.5; }
+
+        /* ── STREAM ARENA ── */
+        .stream-arena { display: flex; flex-direction: column; gap: 20px; }
+        .arena-card {
+            display: grid; grid-template-columns: 140px 1fr 200px;
+            background: rgba(10,5,20,0.4); border: 1px solid rgba(179,136,255,0.3);
+            border-radius: 4px; overflow: hidden; align-items: stretch; min-height: 150px;
+            backdrop-filter: blur(15px); transition: all 0.3s;
+        }
+        .arena-card:hover { border-color: var(--lavender-bright); background: rgba(30,10,60,0.5); }
+        .arena-label { display: flex; align-items: center; justify-content: center; background: rgba(98,0,234,0.2); font-size: 1.4rem; font-weight: 900; color: var(--lavender-bright); letter-spacing: 3px; border-right: 1px solid rgba(179,136,255,0.2); }
+        .arena-info { padding: 25px; display: flex; flex-direction: column; justify-content: center; }
+        .arena-info h3 { margin: 0 0 10px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--lavender-bright); font-size: 1.1rem; }
+        .arena-info p { margin: 0; font-size: 0.95rem; color: #ccc; line-height: 1.5; }
+        .stream-visual { background-size: cover; background-position: center; opacity: 0.3; filter: grayscale(100%); transition: all 0.3s; }
+        .arena-card:hover .stream-visual { opacity: 0.6; filter: grayscale(0%); }
+        .exp-bg { background-image: url('https://cdn.kb.institute/eto-2026/IDSOL/Photograph/2024_ETO_Venue_2.JPG'); }
+        .app-bg { background-image: url('https://cdn.kb.institute/eto-2026/IDSOL/Photograph/2024_ETO_Venue_3.JPG'); }
+
+        /* ── CTA ── */
+        .cta-section { text-align: center; padding: 60px 10px 100px; background: radial-gradient(circle at center, rgba(98,0,234,0.08) 0%, transparent 70%); }
+        .btn-group { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; margin-top: 30px; }
+        .signup-btn { display: inline-block; background: var(--lavender-bright); color: var(--bg-darker); padding: 16px 35px; border-radius: 50px; text-decoration: none; text-transform: uppercase; letter-spacing: 2px; font-weight: 800; font-size: 0.85rem; box-shadow: 0 10px 30px rgba(179,136,255,0.3); transition: all 0.3s; border: 1px solid var(--lavender-bright); max-width: 280px; }
+        .signup-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(179,136,255,0.5); background: #fff; }
+        .secondary-btn { background: transparent; color: var(--lavender-bright); box-shadow: none; }
+        .secondary-btn:hover { background: rgba(179,136,255,0.08); }
+
+        /* ── STAGGER ── */
+        .stagger-1 { transition-delay: 0.1s; }
+        .stagger-2 { transition-delay: 0.2s; }
+        .stagger-3 { transition-delay: 0.3s; }
+
+        @media (max-width: 850px) {
+            .hero-split { grid-template-columns: 1fr; }
+            .hero-visual { min-height: 180px; }
+            .mission-sequence { flex-direction: column; gap: 12px; }
+            .mission-box { clip-path: none !important; padding: 22px !important; margin: 0 !important; border-radius: 4px; }
+            .mission-box::before { display: none; }
+            .arena-card { grid-template-columns: 1fr; text-align: center; }
+            .arena-label { padding: 15px; border-right: none; border-bottom: 1px solid rgba(179,136,255,0.2); }
+            .stream-visual { display: none; }
+            .btn-group { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body data-page="competition">
+<canvas id="bg-canvas"></canvas>
+
+<div class="container">
+
+    <div class="page-title-section reveal">
+        <h1>The Olympiad</h1>
+    </div>
+
+    <div class="hero-split reveal">
+        <div class="hero-visual"></div>
+        <div class="hero-text">
+            <h1>The <b>1st International Quantum Science Olympiad (IQCOL 2026)</b> is a design competition where students apply first principles to propose practical use cases for <b>Quantum Computing and Information Theory (QCIT)</b>.</h1>
+        </div>
+    </div>
+
+    <div class="divider reveal"></div>
+
+    <div class="section-header reveal">
+        <h2>Mission &amp; Vision</h2>
+    </div>
+
+    <div class="mission-sequence">
+        <div class="mission-box reveal stagger-1">
+            <h4>The Problem</h4>
+            <p>Traditional education often fails to test the complexities of real-world data application and architectural resilience.</p>
+        </div>
+        <div class="mission-box reveal stagger-2">
+            <h4>The Solution</h4>
+            <p>IQCOL 2026 provides a global stage for <b>Quantum Computing</b>, where engineering rigor meets creative problem-solving.</p>
+        </div>
+        <div class="mission-box reveal stagger-3">
+            <h4>The Goal</h4>
+            <p>Bridging the gap between academic theory and enterprise-ready solutions through standardized benchmarking.</p>
+        </div>
+    </div>
+
+    <div class="divider reveal"></div>
+
+    <div class="section-header reveal">
+        <h2>Competition Categories</h2>
+    </div>
+
+    <div class="stream-arena">
+        <div class="arena-card reveal stagger-1">
+            <div class="arena-label">EXP</div>
+            <div class="arena-info">
+                <h3>Exploration Proposals</h3>
+                <p>Designed for advancing the states-of-the-art in QCIT through research to improve performance, scalability, and exploring new frameworks.</p>
+            </div>
+            <div class="stream-visual exp-bg"></div>
+        </div>
+        <div class="arena-card reveal stagger-2">
+            <div class="arena-label">APP</div>
+            <div class="arena-info">
+                <h3>Application Proposals</h3>
+                <p>Designed for applying the states-of-the-art in QCIT across a plethora of use cases found throughout various verticals in academia, government, and industry.</p>
+            </div>
+            <div class="stream-visual app-bg"></div>
+        </div>
+    </div>
+
+    <div class="cta-section reveal">
+        <h2 style="font-size:clamp(1.5rem,5vw,2.1rem);text-transform:uppercase;margin-bottom:10px;color:var(--lavender-bright);">Design the Future</h2>
+        <p style="opacity:0.6;font-size:1rem;margin-bottom:10px;">Is your project elite enough to qualify for IQCOL 2026?</p>
+        <div class="btn-group">
+            <a href="eligibility.html" class="signup-btn secondary-btn">View Requirements</a>
+            <a href="registration.html" class="signup-btn">Register Now!</a>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <div class="footer-line"></div>
+    <div class="footer-inner">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <h4>IQCOL: International Quantum Computing Olympiad</h4>
+                <div class="footer-icons">
+                    <a href="https://2026.iqcol.org/iqcol" target="_blank" rel="noopener"><i data-lucide="globe"></i></a>
+                    <a href="https://ee.linkedin.com/company/iqcol-org" target="_blank" rel="noopener"><i data-lucide="linkedin"></i></a>
+                    <a href="https://www.instagram.com/iqcol_org/" target="_blank" rel="noopener"><i data-lucide="instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>KBI: Königsberger Bridges Institute</h4>
+                <div class="footer-icons">
+                    <a href="https://www.kb.institute/" target="_blank" rel="noopener"><i data-lucide="globe"></i></a>
+                    <a href="https://www.linkedin.com/company/kbi-eu/" target="_blank" rel="noopener"><i data-lucide="linkedin"></i></a>
+                    <a href="https://www.instagram.com/kbi.eu/" target="_blank" rel="noopener"><i data-lucide="instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <p class="footer-copy">© 2026 International Quantum Computing Olympiad (IQCOL Foundation). All Rights Reserved.</p>
+    </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/navbar.js"></script>
+<script>
+    lucide.createIcons();
+    initQuantumBackground(35);
+    initScrollReveal('.reveal', 0.1);
+</script>
+</body>
+</html>

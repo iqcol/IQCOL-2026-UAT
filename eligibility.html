@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eligibility | IQCOL 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Segoe+UI:wght@400;700;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/global.css">
+    <style>
+        body { display: flex; flex-direction: column; min-height: 100vh; }
+        .container { flex: 1; }
+
+        /* ── TABLE ── */
+        .eligibility-table {
+            width: 100%; border-collapse: collapse;
+            background: rgba(179,136,255,0.08); border: 1px solid rgba(179,136,255,0.3);
+            backdrop-filter: blur(15px);
+        }
+        .eligibility-table th {
+            background: rgba(98,0,234,0.25); color: var(--lavender-bright);
+            text-transform: uppercase; letter-spacing: 2px;
+            padding: 20px; text-align: left; font-size: 0.85rem;
+            border-bottom: 2px solid var(--node-purple);
+        }
+        .eligibility-table td {
+            padding: 24px 20px; border-bottom: 1px solid rgba(179,136,255,0.2); vertical-align: top;
+        }
+        .eligibility-table td:first-child {
+            width: 18%; font-weight: 800; color: var(--lavender-bright);
+            text-transform: uppercase; letter-spacing: 1px; font-size: 0.75rem;
+            background: rgba(40,20,60,0.5);
+        }
+        .stream-h { color: var(--lavender-bright); margin-bottom: 6px; font-size: 1rem; display: block; }
+        .sub-text { font-size: 0.85rem; color: #e5e5e5; margin: 0; line-height: 1.6; }
+
+        @media (max-width: 850px) {
+            .eligibility-table thead { display: none; }
+            .eligibility-table, .eligibility-table tbody, .eligibility-table tr { display: block; width: 100%; }
+            .eligibility-table tr { margin-bottom: 28px; border: 1px solid rgba(179,136,255,0.3); background: rgba(40,20,60,0.4); }
+            .eligibility-table td { display: block; width: 100% !important; border-bottom: 1px solid rgba(179,136,255,0.2); }
+            .eligibility-table td:first-child { background: var(--node-purple); color: #fff; padding: 12px 20px; font-size: 0.9rem; text-align: center; }
+        }
+
+        /* ── ARENA ── */
+        .arena-container { display: grid; grid-template-columns: 1fr; gap: 35px; }
+        .arena-block { border: 1px solid rgba(179,136,255,0.2); background: rgba(10,5,20,0.4); border-radius: 4px; overflow: hidden; }
+        .arena-header { background: rgba(98,0,234,0.15); padding: 18px 22px; border-bottom: 1px solid var(--node-purple); display: flex; align-items: center; gap: 14px; }
+        .arena-header h3 { margin: 0; font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; color: var(--lavender-bright); }
+        .arena-content { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(179,136,255,0.2); }
+        .arena-cell { background: rgba(5,0,15,0.8); padding: 28px; }
+        .label-pill { display: inline-block; background: var(--node-purple); color: white; font-size: 0.7rem; font-weight: bold; padding: 4px 12px; border-radius: 2px; margin-bottom: 14px; text-transform: uppercase; }
+        @media (max-width: 600px) { .arena-content { grid-template-columns: 1fr; } }
+
+        /* ── VALIDITY ── */
+        .validity-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); gap: 20px; }
+        .validity-box {
+            background: var(--glass-deep); border: 1px solid rgba(179,136,255,0.3);
+            padding: 30px; border-radius: 4px; backdrop-filter: blur(25px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .validity-box h3 { color: var(--lavender-bright); font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; margin-top: 0; margin-bottom: 22px; border-bottom: 1px solid var(--node-purple); padding-bottom: 12px; }
+        .param-item { margin-bottom: 16px; position: relative; padding-left: 18px; }
+        .param-item::before { content: ">"; position: absolute; left: 0; color: var(--lavender-bright); font-weight: bold; }
+        .param-item b { color: var(--lavender-bright); font-size: 0.9rem; display: block; margin-bottom: 2px; }
+        .param-item p { margin: 0; font-size: 0.83rem; color: #ccc; }
+
+        .note-text { text-align: center; max-width: 800px; margin: 55px auto; padding: 0 20px; color: #888; font-size: 0.93rem; line-height: 1.7; font-weight: 500; }
+
+        /* ── CTA ── */
+        .final-cta { text-align: center; padding: 40px 20px 80px; }
+        .final-cta h2 { font-size: clamp(1.4rem,4vw,2rem); letter-spacing: 4px; text-transform: uppercase; margin-bottom: 35px; color: var(--lavender-bright); }
+        .cta-btn-group { display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; }
+    </style>
+</head>
+<body data-page="eligibility">
+<canvas id="bg-canvas"></canvas>
+
+<div class="container">
+
+    <div class="section-header reveal">
+        <h2>Eligibility</h2>
+        <p>Stream Requirements</p>
+    </div>
+
+    <div class="reveal">
+        <table class="eligibility-table">
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Schoolers Stream</th>
+                    <th>Students Stream</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Contestants</td>
+                    <td><b class="stream-h">ISCED Level 1-3</b><p class="sub-text">Registered student in good standing studying at the schooler level.</p></td>
+                    <td><b class="stream-h">ISCED Level 4-8</b><p class="sub-text">Registered tertiary student or recent alumni (within 3 years of cessation).</p></td>
+                </tr>
+                <tr>
+                    <td>Teams</td>
+                    <td><b class="stream-h">Schoolers Team</b><p class="sub-text">Comprised strictly only of schooler stream contestants.</p></td>
+                    <td><b class="stream-h">Students Team</b><p class="sub-text">Comprised of either only students or a mix of schoolers and students.</p></td>
+                </tr>
+                <tr>
+                    <td>Projects</td>
+                    <td><b class="stream-h">Schoolers Project</b><p class="sub-text">Registered project delivered by a Schoolers Stream Team.</p></td>
+                    <td><b class="stream-h">Students Project</b><p class="sub-text">Registered project delivered by a Students Stream Team.</p></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="divider reveal"></div>
+
+    <div class="section-header reveal">
+        <h2>Competition Categories</h2>
+        <p>Project Classification</p>
+    </div>
+
+    <div class="arena-container">
+        <div class="arena-block reveal">
+            <div class="arena-header">
+                <i data-lucide="shield-half" size="20" color="#d1b3ff"></i>
+                <h3>Exploration Proposals (EXP)</h3>
+            </div>
+            <div class="arena-content">
+                <div class="arena-cell"><span class="label-pill">Schoolers Stream</span><p class="sub-text">Competition arena for Schoolers Stream Olympiad Projects submitted according to the EXP Stream parameters.</p></div>
+                <div class="arena-cell"><span class="label-pill">Students Stream</span><p class="sub-text">Competition arena for Students Stream Olympiad Projects submitted according to the EXP Stream parameters.</p></div>
+            </div>
+        </div>
+        <div class="arena-block reveal">
+            <div class="arena-header">
+                <i data-lucide="package" size="20" color="#d1b3ff"></i>
+                <h3>Application Proposals (APP)</h3>
+            </div>
+            <div class="arena-content">
+                <div class="arena-cell"><span class="label-pill">Schoolers Stream</span><p class="sub-text">Competition arena for Schoolers Stream Olympiad Projects submitted according to the APP Stream parameters.</p></div>
+                <div class="arena-cell"><span class="label-pill">Students Stream</span><p class="sub-text">Competition arena for Students Stream Olympiad Projects submitted according to the APP Stream parameters.</p></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="divider reveal"></div>
+
+    <div class="section-header reveal">
+        <h2>Validity Parameters</h2>
+        <p>Criteria for Project Acceptance</p>
+    </div>
+
+    <div class="validity-grid reveal">
+        <div class="validity-box">
+            <h3>Team Validity</h3>
+            <div class="param-item"><b>Team Name</b><p>Must match the project name exactly.</p></div>
+            <div class="param-item"><b>Team Size</b><p>1 to 6 eligible participants per team.</p></div>
+            <div class="param-item"><b>Leadership (C/AC)</b><p>Captain and Assistant must be designated for communication.</p></div>
+            <div class="param-item"><b>Supervision</b><p>Required (18+) if all members are minors.</p></div>
+            <div class="param-item"><b>Representation</b><p>Determined by the majority of teammates.</p></div>
+        </div>
+        <div class="validity-box">
+            <h3>Project Validity</h3>
+            <div class="param-item"><b>Project Name</b><p>Must match the team name exactly.</p></div>
+            <div class="param-item"><b>Project Type</b><p>Classified as Enterprise-Orientated Infrastructure (INFRA) or Consumer-Orientated Products (PROD).</p></div>
+            <div class="param-item"><b>Representation</b><p>Must align with Team Representation.</p></div>
+        </div>
+        <div class="validity-box">
+            <h3>Name Validity</h3>
+            <div class="param-item"><b>Meaning &amp; IP</b><p>Names must be descriptive and respect existing intellectual property.</p></div>
+            <div class="param-item"><b>Harmonious</b><p>No offensive, political, or unethical content allowed.</p></div>
+            <div class="param-item"><b>Length</b><p>3–4 words maximum; taglines are encouraged.</p></div>
+        </div>
+    </div>
+
+    <div class="note-text reveal">
+        KBI reserves the right to amend or disqualify a team or project if these parameters are not met or if amendments are not accepted.
+    </div>
+
+    <div class="final-cta reveal">
+        <h2>Claim your place in the 2026 cohort</h2>
+        <div class="cta-btn-group">
+            <a href="timeline.html" class="btn btn-outline">See Timeline</a>
+            <a href="registration.html" class="btn btn-primary">Register NOW!</a>
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    <div class="footer-line"></div>
+    <div class="footer-inner">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <h4>IQCOL: International Quantum Computing Olympiad</h4>
+                <div class="footer-icons">
+                    <a href="https://2026.iqcol.org/iqcol" target="_blank" rel="noopener"><i data-lucide="globe"></i></a>
+                    <a href="https://ee.linkedin.com/company/iqcol-org" target="_blank" rel="noopener"><i data-lucide="linkedin"></i></a>
+                    <a href="https://www.instagram.com/iqcol_org/" target="_blank" rel="noopener"><i data-lucide="instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>KBI: Königsberger Bridges Institute</h4>
+                <div class="footer-icons">
+                    <a href="https://www.kb.institute/" target="_blank" rel="noopener"><i data-lucide="globe"></i></a>
+                    <a href="https://www.linkedin.com/company/kbi-eu/" target="_blank" rel="noopener"><i data-lucide="linkedin"></i></a>
+                    <a href="https://www.instagram.com/kbi.eu/" target="_blank" rel="noopener"><i data-lucide="instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <p class="footer-copy">© 2026 International Quantum Computing Olympiad (IQCOL Foundation). All Rights Reserved.</p>
+    </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/navbar.js"></script>
+<script>
+    lucide.createIcons();
+    initQuantumBackground(35);
+    initScrollReveal('.reveal', 0.1);
+</script>
+</body>
+</html>

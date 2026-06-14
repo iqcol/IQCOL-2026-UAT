@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timeline | IQCOL 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Segoe+UI:wght@400;700;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/global.css">
+    <style>
+        /* ── TIMELINE ── */
+        .timeline-wrapper {
+            position: relative; max-width: 1150px; margin: 0 auto; padding: 20px 0;
+        }
+        .timeline-wrapper::before {
+            content: ''; position: absolute; left: 50%; top: 0;
+            width: 2px; height: 100%;
+            background: linear-gradient(to bottom, transparent, var(--node-purple), var(--lavender-bright), var(--node-purple), transparent);
+            transform: translateX(-50%); opacity: 0.7;
+            box-shadow: 0 0 15px rgba(98,0,234,0.3);
+        }
+
+        .module-container {
+            position: relative; width: 100%; margin-bottom: 90px;
+            display: flex; justify-content: flex-start;
+            opacity: 0; transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.2,1,0.3,1);
+        }
+        .module-container:nth-child(even) { justify-content: flex-end; }
+        .module-container.revealed { opacity: 1; transform: translateY(0); }
+
+        .tech-card {
+            position: relative; width: 43%; max-width: 470px;
+            background: var(--glass-deep); backdrop-filter: blur(20px);
+            border: 1px solid rgba(179,136,255,0.3);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            padding: 32px; border-radius: 4px;
+            margin-left: 4%; margin-right: 4%;
+        }
+        .tech-card::before, .tech-card::after {
+            content: ''; position: absolute; width: 18px; height: 18px;
+            border: 2px solid var(--lavender-bright); filter: drop-shadow(0 0 5px var(--node-purple)); z-index: 5;
+        }
+        .tech-card::before { top: -2px; left: -2px; border-right: none; border-bottom: none; }
+        .tech-card::after { bottom: -2px; right: -2px; border-left: none; border-top: none; }
+
+        .phase-id { display: inline-block; background: var(--node-purple); color: white; padding: 4px 14px; font-size: 11px; font-weight: bold; letter-spacing: 3px; margin-bottom: 14px; border-radius: 2px; }
+        .date-text { display: block; color: var(--lavender-bright); font-size: clamp(0.95rem,3vw,1.1rem); font-weight: 800; margin-bottom: 10px; }
+        .tech-card h2 { margin: 0 0 16px; font-size: clamp(1.1rem,4vw,1.45rem); text-transform: uppercase; letter-spacing: 2px; color: var(--pure-white); border-bottom: 1px solid rgba(179,136,255,0.2); padding-bottom: 8px; }
+        .details-list { list-style: none; padding: 0; margin: 0; }
+        .details-list li { position: relative; padding-left: 22px; margin-bottom: 11px; font-size: 0.93rem; line-height: 1.6; color: #e0e0e0; }
+        .details-list li::before { content: ''; position: absolute; left: 0; top: 7px; width: 6px; height: 6px; background: var(--lavender-bright); box-shadow: 0 0 8px var(--node-purple); transform: rotate(45deg); }
+
+        .note-text { text-align: center; max-width: 780px; margin: 50px auto; padding: 0 20px; color: #888; font-size: 0.93rem; line-height: 1.7; }
+
+        /* ── CTA ── */
+        .cta-section {
+            text-align: center; padding: 80px 20px 100px;
+            opacity: 0; transform: scale(0.95); transition: all 1s cubic-bezier(0.175,0.885,0.32,1.275);
+        }
+        .cta-section.revealed { opacity: 1; transform: scale(1); }
+        .cta-title { font-size: clamp(1.4rem,5vw,2rem); color: var(--pure-white); margin-bottom: 35px; letter-spacing: 4px; text-transform: uppercase; }
+
+        @media (max-width: 850px) {
+            .timeline-wrapper::before { display: none; }
+            .module-container, .module-container:nth-child(even) { justify-content: center; margin-bottom: 45px; }
+            .tech-card { width: 100%; max-width: 100%; margin: 0; padding: 22px; }
+        }
+    </style>
+</head>
+<body data-page="timeline">
+<canvas id="bg-canvas"></canvas>
+
+<div class="section-header" style="padding-top: 80px; padding-bottom: 0;">
+    <h2>Timeline</h2>
+    <p>Roadmap to IQCOL 2026</p>
+</div>
+
+<div style="padding: 20px 20px 40px; position: relative; z-index: 2;">
+    <div class="timeline-wrapper" id="timeline">
+
+        <div class="module-container">
+            <div class="tech-card">
+                <span class="phase-id">PHASE 0</span>
+                <span class="date-text">JULY 2026 – AUGUST 2026</span>
+                <h2>Trial Period</h2>
+                <ul class="details-list">
+                    <li><strong>Optional</strong> but highly recommended for all participants.</li>
+                    <li>Submit Project materials for early review by <strong>subject matter experts</strong>.</li>
+                    <li>Receive specialized feedback and guidance.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="module-container">
+            <div class="tech-card">
+                <span class="phase-id">PHASE 1</span>
+                <span class="date-text">SEPTEMBER 2026 – OCTOBER 2026</span>
+                <h2>Qualifier Round</h2>
+                <ul class="details-list">
+                    <li>Formal submission for <strong>official evaluation</strong>.</li>
+                    <li>Projects undergo a rigorous technical review.</li>
+                    <li>Results: <strong>invitation, conditional invitation, or rejection</strong>.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="module-container">
+            <div class="tech-card">
+                <span class="phase-id">PHASE 2</span>
+                <span class="date-text">NOVEMBER 2026 – DECEMBER 2026</span>
+                <h2>Final Round</h2>
+                <ul class="details-list">
+                    <li><strong>In-real-life event</strong> at the Host City.</li>
+                    <li><strong>Olympiad Exhibition:</strong> Physical posterboard presentations.</li>
+                    <li><strong>Olympiad Symposium:</strong> High-impact pitch presentations.</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="note-text">
+        Note: IQCOL accolades are based only on scores from the Olympiad Exhibition; ETO accolades are based on Sponsors' scores from the Olympiad Symposium.
+    </div>
+
+    <div class="cta-section" id="cta">
+        <h2 class="cta-title">Ready to Begin Your Journey?</h2>
+        <a href="registration.html" class="btn btn-primary" style="padding:18px 55px;font-size:1rem;letter-spacing:4px;">Register NOW</a>
+    </div>
+</div>
+
+<footer>
+    <div class="footer-line"></div>
+    <div class="footer-inner">
+        <div class="footer-cols">
+            <div class="footer-col">
+                <h4>IQCOL: International Quantum Computing Olympiad</h4>
+                <div class="footer-icons">
+                    <a href="https://2026.iqcol.org/iqcol" target="_blank" rel="noopener"><i data-lucide="globe"></i></a>
+                    <a href="https://ee.linkedin.com/company/iqcol-org" target="_blank" rel="noopener"><i data-lucide="linkedin"></i></a>
+                    <a href="https://www.instagram.com/iqcol_org/" target="_blank" rel="noopener"><i data-lucide="instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>KBI: Königsberger Bridges Institute</h4>
+                <div class="footer-icons">
+                    <a href="https://www.kb.institute/" target="_blank" rel="noopener"><i data-lucide="globe"></i></a>
+                    <a href="https://www.linkedin.com/company/kbi-eu/" target="_blank" rel="noopener"><i data-lucide="linkedin"></i></a>
+                    <a href="https://www.instagram.com/kbi.eu/" target="_blank" rel="noopener"><i data-lucide="instagram"></i></a>
+                </div>
+            </div>
+        </div>
+        <p class="footer-copy">© 2026 International Quantum Computing Olympiad (IQCOL Foundation). All Rights Reserved.</p>
+    </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/navbar.js"></script>
+<script>
+    lucide.createIcons();
+    initQuantumBackground(45);
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('revealed'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.module-container').forEach(m => observer.observe(m));
+    observer.observe(document.getElementById('cta'));
+</script>
+</body>
+</html>
