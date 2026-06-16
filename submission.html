@@ -11,16 +11,16 @@
 
         .deliverables-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(clamp(280px, 100%, 480px), 1fr)); gap: 25px; margin-bottom: 40px; }
         .spec-card {
-            background: var(--glass-frost); border: 1px solid var(--border-teal);
-            padding: clamp(25px, 5vw, 40px); border-radius: 4px; backdrop-filter: blur(15px);
+            background: var(--glass-deep); border: 1px solid var(--border-bright);
+            padding: clamp(25px, 5vw, 40px); border-radius: 4px; backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(15px);
             position: relative; overflow: hidden; display: flex; flex-direction: column;
         }
         .optional-tag { position: absolute; top: 15px; right: 15px; font-size: 0.6rem; background: var(--teal-dark); color: white; padding: 4px 10px; border-radius: 3px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; }
-        .spec-card h3 { color: var(--primary-teal); font-size: 1.2rem; text-transform: uppercase; letter-spacing: 2px; margin: 0 0 25px; font-weight: 800; border-bottom: 1px solid var(--teal-mid); padding-bottom: 12px; }
+        .spec-card h3 { color: var(--lavender-bright); font-size: 1.2rem; text-transform: uppercase; letter-spacing: 2px; margin: 0 0 25px; font-weight: 800; border-bottom: 1px solid var(--node-blue); padding-bottom: 12px; }
         .spec-card ul { list-style: none; padding: 0; margin: 0; flex-grow: 1; }
         .spec-card li { font-size: 0.94rem; margin-bottom: 18px; padding-left: 28px; position: relative; line-height: 1.58; color: var(--slate-grey); }
-        .spec-card li::before { content: "■"; position: absolute; left: 0; top: 0.35em; line-height: 1; color: var(--teal-mid); font-size: 1.1rem; }
+        .spec-card li::before { content: "■"; position: absolute; left: 0; top: 0.35em; line-height: 1; color: var(--lavender-orig); font-size: 1.1rem; }
         .spec-card:nth-child(1) li,
         .spec-card:nth-child(4) li { margin-bottom: 26px; padding-top: 4px; padding-bottom: 4px; }
         .spec-card:nth-child(2) li,
@@ -44,9 +44,9 @@
             line-height: 1;
             font-size: 1.1rem;
             font-weight: 400;
-            color: var(--teal-mid);
+            color: var(--lavender-orig);
         }
-        .spec-card:nth-child(1) b { color: var(--icy-highlight); font-weight: 700; }
+        .spec-card:nth-child(1) b { color: var(--lavender-bright); font-weight: 700; }
         .spec-card:nth-child(1) .sub-link {
             font-size: 0.88rem;
             color: #fff;
@@ -79,26 +79,26 @@
         .roadmap-table {
             width: 100%;
             border-collapse: collapse;
-            background: rgba(179, 136, 255, 0.03);
-            border: 1px solid var(--border-teal);
+            background: rgba(179, 136, 255, 0.08);
+            border: 1px solid var(--border-bright);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             table-layout: fixed;
         }
         .roadmap-table th {
-            background: rgba(98, 0, 234, 0.12);
-            color: var(--icy-highlight);
+            background: rgba(98, 0, 234, 0.25);
+            color: var(--lavender-bright);
             text-transform: uppercase;
             letter-spacing: 2px;
             padding: 14px 20px;
             text-align: left;
             font-size: 0.88rem;
             font-weight: 800;
-            border-bottom: 2px solid var(--primary-teal);
+            border-bottom: 2px solid var(--node-blue);
         }
         .roadmap-table td {
             padding: 16px 20px;
-            border-bottom: 1px solid var(--border-teal);
+            border-bottom: 1px solid var(--border-muted);
             vertical-align: middle;
             color: var(--slate-grey);
             font-size: 0.88rem;
@@ -106,28 +106,28 @@
         .roadmap-table td:first-child {
             width: 34%;
             font-weight: 800;
-            color: var(--primary-teal);
+            color: var(--lavender-bright);
             text-transform: uppercase;
             letter-spacing: 1px;
             font-size: 0.82rem;
             line-height: 1.4;
-            background: rgba(0,0,0,0.2);
+            background: rgba(40, 20, 60, 0.5);
         }
         .roadmap-table td:first-child small {
             display: block;
             margin-top: 5px;
             font-size: 0.74rem;
             letter-spacing: 1.5px;
-            color: var(--icy-highlight);
+            color: var(--lavender-bright);
             font-weight: 700;
         }
         .roadmap-table .sub-text { font-size: 0.92rem; color: var(--slate-grey); margin: 0 0 6px; line-height: 1.45; }
         .roadmap-table .sub-text:last-child { margin-bottom: 0; }
-        .white-item { color: var(--icy-highlight); font-weight: 600; }
+        .white-item { color: var(--lavender-bright); font-weight: 600; }
 
         .criteria-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-bottom: 80px; }
-        .criteria-card { border: 1px solid var(--border-teal); padding: clamp(25px, 5vw, 45px); background: var(--glass-frost); border-radius: 4px; backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px); }
-        .criteria-card h3 { color: var(--primary-teal); margin-top: 0; letter-spacing: clamp(2px, 1vw, 5px); text-transform: uppercase; font-size: clamp(1.1rem, 4vw, 1.4rem); border-bottom: 1px solid var(--teal-mid); padding-bottom: 15px; margin-bottom: 35px; text-align: center; font-weight: 900; }
+        .criteria-card { border: 1px solid var(--border-bright); padding: clamp(25px, 5vw, 45px); background: var(--glass-deep); border-radius: 4px; backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .criteria-card h3 { color: var(--lavender-bright); margin-top: 0; letter-spacing: clamp(2px, 1vw, 5px); text-transform: uppercase; font-size: clamp(1.1rem, 4vw, 1.4rem); border-bottom: 1px solid var(--node-blue); padding-bottom: 15px; margin-bottom: 35px; text-align: center; font-weight: 900; }
         .metric-block { margin-bottom: 40px; }
         .metric-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; gap: 10px; }
         .metric-title { color: var(--icy-highlight); text-transform: uppercase; font-weight: 800; letter-spacing: 1px; font-size: 0.9rem; }
@@ -137,13 +137,20 @@
         .metric-details li { font-size: 0.9rem; color: var(--slate-grey); margin-bottom: 10px; padding-left: 18px; position: relative; }
         .metric-details li::before { content: "⁃"; position: absolute; left: 0; color: var(--primary-teal); }
         .bar-bg { height: 2px; background: rgba(179, 136, 255, 0.15); margin-top: 20px; }
-        .bar-fill { height: 100%; background: var(--primary-teal); box-shadow: 0 0 15px rgba(179, 136, 255, 0.5); }
+        .bar-fill { height: 100%; background: var(--node-blue); box-shadow: 0 0 15px rgba(98, 0, 234, 0.5); }
 
-        .note-box { text-align: center; max-width: 800px; margin: 60px auto; padding: 0 20px; color: var(--teal-dark); font-size: 0.95rem; line-height: 1.7; }
+        .note-box { text-align: center; max-width: 800px; margin: 60px auto; padding: 0 20px; color: #ccc; font-size: 0.95rem; line-height: 1.7; }
 
-        .final-cta { text-align: center; padding: clamp(60px, 10vw, 100px) 20px; }
-        .final-cta h2 { font-size: clamp(1.5rem, 6vw, 2.4rem); letter-spacing: clamp(3px, 1vw, 8px); text-transform: uppercase; margin-bottom: 40px; color: var(--icy-highlight); font-weight: 900; text-shadow: 0 0 20px rgba(179, 136, 255, 0.4); }
-        .cta-btn-group { display: flex; gap: 15px; justify-content: center; flex-wrap: wrap; }
+        .cta-section { text-align: center; padding: clamp(60px, 10vw, 100px) 20px; }
+        .cta-title { font-size: clamp(1.5rem, 6vw, 2.4rem); letter-spacing: clamp(3px, 1vw, 8px); text-transform: uppercase; margin-bottom: 40px; color: var(--lavender-bright); font-weight: 900; text-shadow: 0 0 20px rgba(179,136,255,0.4); }
+        .signup-btn {
+            display: inline-block; padding: clamp(14px,4vw,18px) clamp(32px,8vw,50px);
+            border-radius: 50px; text-decoration: none; text-transform: uppercase; letter-spacing: 4px;
+            font-weight: 800; font-size: clamp(0.85rem,4vw,0.95rem); transition: all 0.3s ease;
+            background: var(--lavender-bright); color: var(--bg-deep); border: 1px solid var(--lavender-bright);
+            box-shadow: 0 10px 30px rgba(179,136,255,0.2);
+        }
+        .signup-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(179,136,255,0.4); background: white; }
 
         @media (max-width: 850px) {
             .roadmap-block { width: 100%; }
@@ -258,13 +265,13 @@
     <div class="section-header reveal"><h2>Evaluation Criteria</h2></div>
     <div class="criteria-grid">
         <div class="criteria-card reveal">
-            <h3>IQCOL EXP</h3>
+            <h3>Solution Architecture (ARC)</h3>
             <div class="metric-block">
-                <div class="metric-header"><span class="metric-title">Exploratory Thinking Competency</span><span class="metric-pct">40%</span></div>
-                <span class="metric-question">"How deep are you thinking about QCIT?"</span>
+                <div class="metric-header"><span class="metric-title">Design Thinking Competency</span><span class="metric-pct">40%</span></div>
+                <span class="metric-question">"How well are you solving the problem?"</span>
                 <ul class="metric-details">
-                    <li>The project demonstrates innovative approaches to advancing QCIT by identifying novel research questions, hypotheses, or frameworks that push the boundaries of quantum performance and scalability.</li>
-                    <li>The project incorporates iterative exploration methods, such as theoretical modeling or simulation, to validate potential improvements in quantum algorithms or hardware concepts.</li>
+                    <li>The project addresses a well-defined problem area with succinct value propositions uniquely leveraging QCIT principles.</li>
+                    <li>The project is comprehensive and complete, addressing key stakeholder requirements and challenges.</li>
                 </ul>
                 <div class="bar-bg"><div class="bar-fill" style="width:40%"></div></div>
             </div>
@@ -272,8 +279,8 @@
                 <div class="metric-header"><span class="metric-title">First Principles Competency</span><span class="metric-pct">30%</span></div>
                 <span class="metric-question">"Do you understand what you are doing?"</span>
                 <ul class="metric-details">
-                    <li>The project deconstructs QCIT challenges into fundamental quantum principles, like superposition, entanglement, and decoherence, to build robust exploratory foundations.</li>
-                    <li>The project applies logical reasoning from basic axioms to propose new solutions, ensuring alignment with core quantum mechanics without unsubstantiated assumptions.</li>
+                    <li>The project team shows understanding of QCIT concepts from first principles.</li>
+                    <li>The project correctly applies QCIT principles, anticipating and managing risks.</li>
                 </ul>
                 <div class="bar-bg"><div class="bar-fill" style="width:30%"></div></div>
             </div>
@@ -281,8 +288,8 @@
                 <div class="metric-header"><span class="metric-title">Presentability (Explainability)</span><span class="metric-pct">20%</span></div>
                 <span class="metric-question">"Do others understand what you are doing?"</span>
                 <ul class="metric-details">
-                    <li>The project clearly articulates complex quantum concepts and exploratory rationale through structured narratives, diagrams, or mathematical derivations accessible to experts and non-experts.</li>
-                    <li>The project highlights key exploratory decisions, trade-offs, and potential impacts in a logical manner to enhance understanding of the proposed advancements.</li>
+                    <li>The project's components, flow, and rationale are clearly articulated via diagrams, narratives, or visual aids.</li>
+                    <li>The project's technicality is explained in accessible language for non-experts.</li>
                 </ul>
                 <div class="bar-bg"><div class="bar-fill" style="width:20%"></div></div>
             </div>
@@ -290,20 +297,20 @@
                 <div class="metric-header"><span class="metric-title">Quality (Originality)</span><span class="metric-pct">10%</span></div>
                 <span class="metric-question">"How are you contributing to the frontier?"</span>
                 <ul class="metric-details">
-                    <li>The project introduces unique ideas or syntheses in QCIT that differentiate from existing research, supported by comparisons to prior work.</li>
-                    <li>The project ensures ethical originality by properly citing influences while showcasing independent contributions to quantum exploration.</li>
+                    <li>The project proposes a new way to solve well-established problems or addresses relatively new problems.</li>
+                    <li>The project cites prior art and improves on the state-of-the-art proportionate to problem complexity.</li>
                 </ul>
                 <div class="bar-bg"><div class="bar-fill" style="width:10%"></div></div>
             </div>
         </div>
         <div class="criteria-card reveal">
-            <h3>IQCOL APP</h3>
+            <h3>Solution Development (DEV)</h3>
             <div class="metric-block">
-                <div class="metric-header"><span class="metric-title">Application Design Competency</span><span class="metric-pct">40%</span></div>
-                <span class="metric-question">"How well are you solving the problem?"</span>
+                <div class="metric-header"><span class="metric-title">Solution Design Competency</span><span class="metric-pct">40%</span></div>
+                <span class="metric-question">"How well are you achieving your development goal?"</span>
                 <ul class="metric-details">
-                    <li>The project effectively applies QCIT principles to real-world scenarios, designing solutions that integrate quantum techniques like qubits or quantum circuits into practical use cases across verticals.</li>
-                    <li>The project focuses on usability and impact, incorporating testing or prototyping to demonstrate how the application addresses specific challenges in academia, government, or industry.</li>
+                    <li>The project demonstrates quality in engineering design, such as modularity and effective use of external resources.</li>
+                    <li>The project accounts for non-tech and off-chain support systems, such as governance and trust frameworks.</li>
                 </ul>
                 <div class="bar-bg"><div class="bar-fill" style="width:40%"></div></div>
             </div>
@@ -311,8 +318,8 @@
                 <div class="metric-header"><span class="metric-title">First Principles Competency</span><span class="metric-pct">30%</span></div>
                 <span class="metric-question">"Do you understand what you are doing?"</span>
                 <ul class="metric-details">
-                    <li>The project grounds the application in elemental QCIT truths, such as quantum information processing and error correction, to ensure a solid preparatory base.</li>
-                    <li>The project anticipates application-specific hurdles by reasoning from basics, enabling adaptive designs that maintain quantum integrity in diverse contexts.</li>
+                    <li>The project shows a structured approach to applying elemental QCIT principles in technical specifications.</li>
+                    <li>The project anticipates challenges of adapting QCIT elements with adaptation or mitigation strategies.</li>
                 </ul>
                 <div class="bar-bg"><div class="bar-fill" style="width:30%"></div></div>
             </div>
@@ -320,57 +327,30 @@
                 <div class="metric-header"><span class="metric-title">Presentability (Communication)</span><span class="metric-pct">20%</span></div>
                 <span class="metric-question">"Do others understand what you are doing?"</span>
                 <ul class="metric-details">
-                    <li>The project communicates the application's functionality, benefits, and limitations through engaging demos, case studies, or documentation tailored to varied audiences.</li>
-                    <li>The project uses visual or narrative aids to convey how QCIT is applied, fostering stakeholder understanding and potential adoption.</li>
+                    <li>The project specifications clearly communicate functionality, structure, and intended outcomes.</li>
+                    <li>The project documentation is clearly organized for comprehension by non-experts or engineers.</li>
                 </ul>
                 <div class="bar-bg"><div class="bar-fill" style="width:20%"></div></div>
             </div>
             <div class="metric-block">
                 <div class="metric-header"><span class="metric-title">Quality (Completeness)</span><span class="metric-pct">10%</span></div>
-                <span class="metric-question">"How are you contributing to the frontier?"</span>
+                <span class="metric-question">"How robust is your result?"</span>
                 <ul class="metric-details">
-                    <li>The project delivers a comprehensive application with all essential QCIT components implemented, tested for reliability in targeted scenarios.</li>
-                    <li>The project includes thorough documentation and consideration of edge cases to ensure the solution is polished and deployable in real-world settings.</li>
+                    <li>The project excels in fulfilment of specifications, quality of functionalities, and consideration of performance and scalability.</li>
+                    <li>The project includes strategies for stress testing and edge cases, including cybersecurity and security IRL.</li>
                 </ul>
                 <div class="bar-bg"><div class="bar-fill" style="width:10%"></div></div>
             </div>
         </div>
     </div>
     <div class="note-box reveal">KBI reserves the right to amend or disqualify a team or project if these parameters are not met or if amendments are not accepted.</div>
-    <div class="final-cta reveal">
-        <h2>Ready to Submit?</h2>
-        <div class="cta-btn-group">
-            <a href="timeline.html" class="btn btn-outline">View Timeline</a>
-            <a href="registration.html" class="btn btn-primary">Register NOW!</a>
-        </div>
+    <div class="cta-section reveal">
+        <h2 class="cta-title">Ready to compete?</h2>
+        <a href="registration.html" class="signup-btn">Register NOW!</a>
     </div>
 </div>
 </div>
 
-<footer>
-    <div class="footer-divider"></div>
-    <div class="footer-inner">
-        <div class="footer-cols">
-            <div class="footer-col">
-                <h4>IQCOL: International Quantum Computing Olympiad</h4>
-                <div class="footer-icons">
-                    <a href="https://2026.iqcol.org/iqcol" target="_blank" rel="noopener"><i data-lucide="globe"></i></a>
-                    <a href="https://ee.linkedin.com/company/iqcol-org" target="_blank" rel="noopener"><i data-lucide="linkedin"></i></a>
-                    <a href="https://www.instagram.com/iqcol_org/" target="_blank" rel="noopener"><i data-lucide="instagram"></i></a>
-                </div>
-            </div>
-            <div class="footer-col">
-                <h4>KBI: Königsberger Bridges Institute</h4>
-                <div class="footer-icons">
-                    <a href="https://www.kb.institute/" target="_blank" rel="noopener"><i data-lucide="globe"></i></a>
-                    <a href="https://www.linkedin.com/company/kbi-eu/" target="_blank" rel="noopener"><i data-lucide="linkedin"></i></a>
-                    <a href="https://www.instagram.com/kbi.eu/" target="_blank" rel="noopener"><i data-lucide="instagram"></i></a>
-                </div>
-            </div>
-        </div>
-        <p class="footer-copy">© 2026 International Quantum Computing Olympiad (IQCOL Foundation). All Rights Reserved.</p>
-    </div>
-</footer>
 <script src="js/nav.js"></script>
 <script src="js/shared.js"></script>
 </body>

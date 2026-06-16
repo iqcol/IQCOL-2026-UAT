@@ -19,14 +19,14 @@
         .page-title-section { text-align: center; margin: 40px 0 50px; }
         .page-title-section h1 {
             font-size: clamp(1.8rem, 8vw, 3.2rem); text-transform: uppercase;
-            letter-spacing: clamp(6px,2vw,12px); color: var(--icy-highlight); margin: 0; font-weight: 900;
-            background: linear-gradient(90deg, transparent, var(--teal-mid), transparent);
+            letter-spacing: clamp(4px,2vw,10px); color: var(--lavender-bright); margin: 0; font-weight: 900;
+            background: linear-gradient(90deg, transparent, var(--node-blue), transparent);
             background-size: 100% 1px; background-repeat: no-repeat; background-position: bottom; padding-bottom: 15px;
         }
         .hero-split {
             display: grid; grid-template-columns: 1fr 1.2fr;
-            background: var(--glass-frost); border: 1px solid var(--border-teal); border-radius: 4px;
-            overflow: hidden; backdrop-filter: blur(15px); margin-bottom: 60px; align-items: stretch;
+            background: var(--glass-deep); border: 1px solid var(--border-bright); border-radius: 4px;
+            overflow: hidden; backdrop-filter: blur(20px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); margin-bottom: 60px; align-items: stretch;
         }
         .hero-visual {
             min-height: 250px;
@@ -34,21 +34,21 @@
             background-size: cover; background-position: center;
         }
         .hero-text { padding: clamp(25px,5vw,45px); display: flex; align-items: center; }
-        .hero-text h1 { font-weight: 400; font-size: clamp(1.1rem,4vw,1.4rem); color: var(--slate-grey); margin: 0; line-height: 1.65; }
-        .hero-text b { color: var(--icy-highlight); font-weight: 700; }
+        .hero-text h1 { font-weight: 400; font-size: clamp(1.1rem,4vw,1.4rem); color: #e5e5e5; margin: 0; line-height: 1.65; }
+        .hero-text b { color: var(--lavender-bright); font-weight: 700; }
         .stagger-1 { transition-delay: 0.1s; }
         .stagger-2 { transition-delay: 0.2s; }
         .stagger-3 { transition-delay: 0.3s; }
         .mission-sequence { display: flex; gap: 0; margin-bottom: 60px; min-height: 200px; }
         .mission-box {
-            flex: 1; position: relative; background: var(--glass-frost); border: 1px solid var(--border-teal);
+            flex: 1; position: relative; background: var(--glass-deep); border: 1px solid var(--border-bright);
             padding: 30px 50px 30px 30px; display: flex; flex-direction: column; justify-content: center;
             clip-path: polygon(0% 0%, calc(100% - 40px) 0%, 100% 50%, calc(100% - 40px) 100%, 0% 100%, 40px 50%);
             transition: all 0.4s ease; backdrop-filter: blur(15px);
         }
         .mission-box::before {
             content: ""; position: absolute; left: 0; top: 0; width: 42px; height: 100%;
-            background: var(--primary-teal); opacity: 0.4;
+            background: var(--node-blue); opacity: 0.4;
             clip-path: polygon(0% 0%, 40px 50%, 0% 100%, 4px 100%, 44px 50%, 4px 0%);
             pointer-events: none;
         }
@@ -56,27 +56,34 @@
         .mission-box:first-child::before { display: none; }
         .mission-box:last-child { clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%, 40px 50%); padding-right: 30px; }
         .mission-box:not(:first-child) { margin-left: -40px; padding-left: 70px; }
-        .mission-box h4 { color: var(--primary-teal); text-transform: uppercase; letter-spacing: 2px; margin: 0 0 10px; font-size: 0.95rem; font-weight: 800; }
-        .mission-box p { margin: 0; font-size: 0.9rem; color: var(--slate-grey); font-weight: 300; line-height: 1.5; }
+        .mission-box h4 { color: var(--lavender-bright); text-transform: uppercase; letter-spacing: 2px; margin: 0 0 10px; font-size: 0.95rem; font-weight: 800; }
+        .mission-box p { margin: 0; font-size: 0.9rem; color: #e0e0e0; font-weight: 300; line-height: 1.5; }
         .stream-arena { display: flex; flex-direction: column; gap: 20px; }
         .arena-card {
-            display: grid; grid-template-columns: 140px 1fr; background: var(--glass-frost);
-            border: 1px solid var(--border-teal); border-radius: 4px; overflow: hidden;
-            align-items: stretch; min-height: 150px; backdrop-filter: blur(15px); transition: all 0.3s ease;
+            display: grid; grid-template-columns: 140px 1fr; background: var(--glass-deep);
+            border: 1px solid var(--border-bright); border-radius: 4px; overflow: hidden;
+            align-items: stretch; min-height: 150px; backdrop-filter: blur(20px); transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.35);
         }
-        .arena-card:hover { transform: translateY(-4px) scale(1.015); border-color: var(--primary-teal); box-shadow: 0 12px 32px rgba(179, 136, 255, 0.18); }
+        .arena-card:hover { transform: translateY(-4px) scale(1.015); border-color: var(--lavender-bright); box-shadow: 0 12px 32px rgba(98, 0, 234, 0.25); }
         .arena-label {
             display: flex; align-items: center; justify-content: center;
-            background: rgba(179, 136, 255, 0.12); font-size: 1.4rem; font-weight: 900;
-            color: var(--icy-highlight); letter-spacing: 3px; border-right: 1px solid var(--border-teal);
+            background: rgba(98, 0, 234, 0.15); font-size: 1.4rem; font-weight: 900;
+            color: var(--lavender-bright); letter-spacing: 3px; border-right: 1px solid var(--border-muted);
         }
         .arena-info { padding: 25px; display: flex; flex-direction: column; justify-content: center; }
-        .arena-info h3 { margin: 0 0 10px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--primary-teal); font-size: 1.1rem; font-weight: 800; }
-        .arena-info p { margin: 0; font-size: 0.95rem; color: var(--slate-grey); line-height: 1.5; }
+        .arena-info h3 { margin: 0 0 10px; text-transform: uppercase; letter-spacing: 1.5px; color: var(--lavender-bright); font-size: 1.1rem; font-weight: 800; }
+        .arena-info p { margin: 0; font-size: 0.95rem; color: #e0e0e0; line-height: 1.5; }
         .cta-section { text-align: center; padding: 80px 20px 100px; }
-        .cta-section h2 { font-size: clamp(1.8rem,7vw,2.4rem); letter-spacing: clamp(4px,1.8vw,8px); text-transform: uppercase; margin-bottom: 16px; color: var(--icy-highlight); font-weight: 900; }
-        .cta-section p { font-size: 1.05rem; color: var(--slate-grey); opacity: 0.9; margin-bottom: 35px; }
-        .btn-group { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
+        .cta-title { font-size: clamp(1.8rem,7vw,2.4rem); letter-spacing: clamp(4px,1.8vw,8px); text-transform: uppercase; margin-bottom: 40px; color: var(--lavender-bright); font-weight: 900; text-shadow: 0 0 20px rgba(179,136,255,0.4); }
+        .signup-btn {
+            display: inline-block; padding: clamp(14px,4vw,18px) clamp(32px,8vw,50px);
+            border-radius: 50px; text-decoration: none; text-transform: uppercase; letter-spacing: 4px;
+            font-weight: 800; font-size: clamp(0.85rem,4vw,0.95rem); transition: all 0.3s ease;
+            background: var(--lavender-bright); color: var(--bg-deep); border: 1px solid var(--lavender-bright);
+            box-shadow: 0 10px 30px rgba(179,136,255,0.2);
+        }
+        .signup-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(179,136,255,0.4); background: white; }
         @media (max-width: 850px) {
             .hero-split, .arena-card { grid-template-columns: 1fr; }
             .arena-label { padding: 15px; border-right: none; border-bottom: 1px solid var(--border-teal); }
@@ -133,57 +140,28 @@
     <div class="section-header reveal"><h2>Competition Categories</h2></div>
     <div class="stream-arena">
         <div class="arena-card reveal stagger-1">
-            <div class="arena-label">EXP</div>
+            <div class="arena-label">ARC</div>
             <div class="arena-info">
-                <h3>Exploration Proposals</h3>
-                <p>Designed for advancing the states-of-the-art in QCIT through research to improve performance, scalability, and exploring new frameworks.</p>
+                <h3>Solution Architecture</h3>
+                <p>A design-centric category focusing on the first principles of QCIT to architect resilient, large-scale quantum frameworks and infrastructures for enterprise and social impact.</p>
             </div>
         </div>
         <div class="arena-card reveal stagger-2">
-            <div class="arena-label">APP</div>
+            <div class="arena-label">DEV</div>
             <div class="arena-info">
-                <h3>Application Proposals</h3>
-                <p>Designed for applying the states-of-the-art in QCIT across a plethora of use cases found throughout various verticals in academia, government, and industry.</p>
+                <h3>Solution Development</h3>
+                <p>An execution-focused category prioritizing technical engineering and modularity to build robust quantum applications, algorithms, and integrated computing frameworks.</p>
             </div>
         </div>
     </div>
     <div class="cta-section reveal">
-        <h2>Design the Future</h2>
-        <p>Is your project elite enough to qualify for IQCOL 2026?</p>
-        <div class="btn-group">
-            <a href="eligibility.html" class="btn btn-outline">View Requirements</a>
-            <a href="registration.html" class="btn btn-primary">Register Now!</a>
-        </div>
+        <h2 class="cta-title">Design the Future</h2>
+        <a href="registration.html" class="signup-btn">Register NOW!</a>
     </div>
 </div>
 </div>
 
-<footer>
-    <div class="footer-divider"></div>
-    <div class="footer-inner">
-        <div class="footer-cols">
-            <div class="footer-col">
-                <h4>IQCOL: International Quantum Computing Olympiad</h4>
-                <div class="footer-icons">
-                    <a href="https://2026.iqcol.org/iqcol" target="_blank" rel="noopener"><i data-lucide="globe"></i></a>
-                    <a href="https://ee.linkedin.com/company/iqcol-org" target="_blank" rel="noopener"><i data-lucide="linkedin"></i></a>
-                    <a href="https://www.instagram.com/iqcol_org/" target="_blank" rel="noopener"><i data-lucide="instagram"></i></a>
-                </div>
-            </div>
-            <div class="footer-col">
-                <h4>KBI: Königsberger Bridges Institute</h4>
-                <div class="footer-icons">
-                    <a href="https://www.kb.institute/" target="_blank" rel="noopener"><i data-lucide="globe"></i></a>
-                    <a href="https://www.linkedin.com/company/kbi-eu/" target="_blank" rel="noopener"><i data-lucide="linkedin"></i></a>
-                    <a href="https://www.instagram.com/kbi.eu/" target="_blank" rel="noopener"><i data-lucide="instagram"></i></a>
-                </div>
-            </div>
-        </div>
-        <p class="footer-copy">© 2026 International Quantum Computing Olympiad (IQCOL Foundation). All Rights Reserved.</p>
-    </div>
-</footer>
 <script src="js/nav.js"></script>
-<script src="js/registration-fee.js"></script>
 <script src="js/shared.js"></script>
 </body>
 </html>

@@ -9,46 +9,48 @@
     <style>
         .medal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px,1fr)); gap: 30px; margin-bottom: 60px; }
         .tech-card {
-            background: var(--glass-frost); border: 1px solid var(--border-teal);
-            padding: 40px; border-radius: 4px; backdrop-filter: blur(15px);
+            background: var(--glass-deep); border: 1px solid var(--border-bright);
+            padding: 40px; border-radius: 4px; backdrop-filter: blur(20px);
             text-align: center; box-shadow: 0 10px 40px rgba(0,0,0,0.5); transition: transform 0.3s ease;
         }
-        .tech-card:hover { transform: translateY(-5px); border-color: var(--primary-teal); }
-        .medal-icon { font-size: 4rem; margin-bottom: 20px; display: block; filter: drop-shadow(0 0 12px rgba(179, 136, 255, 0.4)); }
-        .medal-title { color: var(--primary-teal); text-transform: uppercase; letter-spacing: 2px; margin: 0 0 25px; font-size: 1.4rem; font-weight: 800; border-bottom: 1px solid var(--border-teal); padding-bottom: 12px; }
+        .tech-card:hover { transform: translateY(-5px); border-color: var(--lavender-bright); }
+        .medal-icon { font-size: 4rem; margin-bottom: 20px; display: block; filter: drop-shadow(0 0 12px rgba(98, 0, 234, 0.4)); }
+        .medal-title { color: var(--lavender-bright); text-transform: uppercase; letter-spacing: 2px; margin: 0 0 25px; font-size: 1.4rem; font-weight: 800; border-bottom: 1px solid var(--node-blue); padding-bottom: 12px; }
         .list-items { list-style: none; padding: 0; margin: 0; text-align: left; }
-        .list-items li { font-size: 0.94rem; color: var(--slate-grey); padding: 10px 0 10px 24px; position: relative; line-height: 1.6; }
-        .list-items li::before { content: "■"; position: absolute; left: 0; color: var(--teal-mid); font-size: 1.1rem; }
+        .list-items li { font-size: 0.94rem; color: #e0e0e0; padding: 10px 0 10px 24px; position: relative; line-height: 1.6; }
+        .list-items li::before { content: "■"; position: absolute; left: 0; color: var(--lavender-orig); font-size: 1.1rem; }
         .benefit-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 25px; margin-bottom: 60px; }
         .benefit-item {
-            background: var(--glass-frost); border: 1px solid var(--border-teal);
+            background: var(--glass-deep); border: 1px solid var(--border-bright);
             padding: 30px 25px; border-radius: 4px; text-align: center;
-            backdrop-filter: blur(15px); transition: all 0.3s ease;
+            backdrop-filter: blur(20px); transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.35);
         }
-        .benefit-item:hover { background: rgba(179, 136, 255, 0.12); border-color: var(--primary-teal); }
-        .benefit-item i { color: var(--primary-teal); margin-bottom: 15px; }
-        .benefit-item h4 { margin: 10px 0 8px; font-size: 0.95rem; text-transform: uppercase; color: var(--icy-highlight); letter-spacing: 1.5px; font-weight: 800; }
-        .benefit-item p { font-size: 0.88rem; color: var(--slate-grey); margin: 0; line-height: 1.55; }
+        .benefit-item:hover { background: rgba(98, 0, 234, 0.12); border-color: var(--lavender-bright); }
+        .benefit-item i { color: var(--node-blue); margin-bottom: 15px; }
+        .benefit-item h4 { margin: 10px 0 8px; font-size: 0.95rem; text-transform: uppercase; color: var(--lavender-bright); letter-spacing: 1.5px; font-weight: 800; }
+        .benefit-item p { font-size: 0.88rem; color: #e0e0e0; margin: 0; line-height: 1.55; }
         .academic-grid, .expanded-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 60px; }
         .academic-box, .feature-box {
-            background: var(--glass-frost); border: 1px solid var(--border-teal); padding: 50px 40px;
-            border-radius: 4px; text-align: center; backdrop-filter: blur(15px);
+            background: var(--glass-deep); border: 1px solid var(--border-bright); padding: 50px 40px;
+            border-radius: 4px; text-align: center; backdrop-filter: blur(20px);
             display: flex; flex-direction: column; align-items: center; justify-content: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.35);
         }
-        .academic-box h3, .feature-box h2 { color: var(--primary-teal); text-transform: uppercase; letter-spacing: 3px; margin: 20px 0 15px; font-size: 1.35rem; font-weight: 900; }
-        .academic-box p, .feature-box p { font-size: 0.94rem; color: var(--slate-grey); margin: 0; max-width: 420px; line-height: 1.6; }
-        .institution-tag { background: rgba(179, 136, 255, 0.12); color: var(--icy-highlight); border: 1px solid var(--primary-teal); padding: 6px 20px; font-size: 0.78rem; border-radius: 50px; display: inline-block; margin-top: 25px; text-transform: uppercase; letter-spacing: 1.2px; font-weight: 800; }
-        .award-note { text-align: center; max-width: 800px; margin: 40px auto 80px; padding: 0 20px; color: var(--teal-dark); font-size: 0.95rem; line-height: 1.7; }
+        .academic-box h3, .feature-box h2 { color: var(--lavender-bright); text-transform: uppercase; letter-spacing: 3px; margin: 20px 0 15px; font-size: 1.35rem; font-weight: 900; }
+        .academic-box p, .feature-box p { font-size: 0.94rem; color: #e0e0e0; margin: 0; max-width: 420px; line-height: 1.6; }
+        .institution-tag { background: rgba(98, 0, 234, 0.15); color: var(--lavender-bright); border: 1px solid var(--node-blue); padding: 6px 20px; font-size: 0.78rem; border-radius: 50px; display: inline-block; margin-top: 25px; text-transform: uppercase; letter-spacing: 1.2px; font-weight: 800; }
+        .award-note { text-align: center; max-width: 800px; margin: 40px auto 80px; padding: 0 20px; color: #ccc; font-size: 0.95rem; line-height: 1.7; }
         .cta-section { text-align: center; padding: 100px 20px; }
-        .cta-title { font-size: clamp(1.8rem,7vw,2.4rem); letter-spacing: 8px; text-transform: uppercase; margin-bottom: 40px; color: var(--icy-highlight); font-weight: 900; text-shadow: 0 0 20px rgba(179, 136, 255, 0.4); }
+        .cta-title { font-size: clamp(1.8rem,7vw,2.4rem); letter-spacing: 8px; text-transform: uppercase; margin-bottom: 40px; color: var(--lavender-bright); font-weight: 900; }
         .signup-btn {
             display: inline-block; padding: clamp(14px,4vw,18px) clamp(32px,8vw,50px);
             border-radius: 50px; text-decoration: none; text-transform: uppercase; letter-spacing: 4px;
             font-weight: 800; font-size: clamp(0.85rem,4vw,0.95rem); transition: all 0.3s ease;
-            background: var(--icy-highlight); color: var(--bg-deep); border: 1px solid var(--icy-highlight);
-            box-shadow: 0 10px 30px rgba(179, 136, 255, 0.2);
+            background: var(--lavender-bright); color: var(--bg-darker); border: 1px solid var(--lavender-bright);
+            box-shadow: 0 10px 30px rgba(179, 136, 255, 0.3);
         }
-        .signup-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(179, 136, 255, 0.4); background: white; }
+        .signup-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(179, 136, 255, 0.5); background: white; }
         @media (max-width: 850px) { .medal-grid, .benefit-grid, .academic-grid, .expanded-grid { grid-template-columns: 1fr; } }
         footer {
             width: 100%;
@@ -73,30 +75,30 @@
             <span class="medal-icon">🥇</span>
             <h2 class="medal-title">Gold Medal</h2>
             <ul class="list-items">
-                <li>IQCOL 2026 2D EXP Gold</li>
-                <li>IQCOL 2026 2D APP Gold</li>
-                <li>IQCOL 2026 3D EXP Gold</li>
-                <li>IQCOL 2026 3D APP Gold</li>
+                <li>IQCOL 2026 2D ARC Gold</li>
+                <li>IQCOL 2026 2D DEV Gold</li>
+                <li>IQCOL 2026 3D ARC Gold</li>
+                <li>IQCOL 2026 3D DEV Gold</li>
             </ul>
         </div>
         <div class="tech-card reveal">
             <span class="medal-icon">🥈</span>
             <h2 class="medal-title">Silver Medal</h2>
             <ul class="list-items">
-                <li>IQCOL 2026 2D EXP Silver</li>
-                <li>IQCOL 2026 2D APP Silver</li>
-                <li>IQCOL 2026 3D EXP Silver</li>
-                <li>IQCOL 2026 3D APP Silver</li>
+                <li>IQCOL 2026 2D ARC Silver</li>
+                <li>IQCOL 2026 2D DEV Silver</li>
+                <li>IQCOL 2026 3D ARC Silver</li>
+                <li>IQCOL 2026 3D DEV Silver</li>
             </ul>
         </div>
         <div class="tech-card reveal">
             <span class="medal-icon">🥉</span>
             <h2 class="medal-title">Bronze Medal</h2>
             <ul class="list-items">
-                <li>IQCOL 2026 2D EXP Bronze</li>
-                <li>IQCOL 2026 2D APP Bronze</li>
-                <li>IQCOL 2026 3D EXP Bronze</li>
-                <li>IQCOL 2026 3D APP Bronze</li>
+                <li>IQCOL 2026 2D ARC Bronze</li>
+                <li>IQCOL 2026 2D DEV Bronze</li>
+                <li>IQCOL 2026 3D ARC Bronze</li>
+                <li>IQCOL 2026 3D DEV Bronze</li>
             </ul>
         </div>
     </section>
@@ -149,32 +151,7 @@
 </div>
 </div>
 
-<footer>
-    <div class="footer-divider"></div>
-    <div class="footer-inner">
-        <div class="footer-cols">
-            <div class="footer-col">
-                <h4>IQCOL: International Quantum Computing Olympiad</h4>
-                <div class="footer-icons">
-                    <a href="https://2026.iqcol.org/iqcol" target="_blank" rel="noopener"><i data-lucide="globe"></i></a>
-                    <a href="https://ee.linkedin.com/company/iqcol-org" target="_blank" rel="noopener"><i data-lucide="linkedin"></i></a>
-                    <a href="https://www.instagram.com/iqcol_org/" target="_blank" rel="noopener"><i data-lucide="instagram"></i></a>
-                </div>
-            </div>
-            <div class="footer-col">
-                <h4>KBI: Königsberger Bridges Institute</h4>
-                <div class="footer-icons">
-                    <a href="https://www.kb.institute/" target="_blank" rel="noopener"><i data-lucide="globe"></i></a>
-                    <a href="https://www.linkedin.com/company/kbi-eu/" target="_blank" rel="noopener"><i data-lucide="linkedin"></i></a>
-                    <a href="https://www.instagram.com/kbi.eu/" target="_blank" rel="noopener"><i data-lucide="instagram"></i></a>
-                </div>
-            </div>
-        </div>
-        <p class="footer-copy">© 2026 International Quantum Computing Olympiad (IQCOL Foundation). All Rights Reserved.</p>
-    </div>
-</footer>
 <script src="js/nav.js"></script>
-<script src="js/registration-fee.js"></script>
 <script src="js/shared.js"></script>
 </body>
 </html>

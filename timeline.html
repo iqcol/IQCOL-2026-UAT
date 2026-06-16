@@ -11,39 +11,49 @@
         .timeline-wrapper { position: relative; padding: 20px 0; }
         .timeline-wrapper::before {
             content: ''; position: absolute; left: 50%; top: 0; width: 2px; height: 100%;
-            background: linear-gradient(to bottom, transparent, var(--teal-mid), var(--primary-teal), var(--teal-mid), transparent);
-            transform: translateX(-50%); opacity: 0.5;
+            background: linear-gradient(to bottom, transparent, var(--node-blue), var(--lavender-bright), var(--node-blue), transparent);
+            transform: translateX(-50%); opacity: 0.7;
+            box-shadow: 0 0 15px rgba(98, 0, 234, 0.3);
         }
         .module-container { position: relative; width: 100%; margin-bottom: 100px; display: flex; justify-content: flex-start; }
         .module-container:nth-child(even) { justify-content: flex-end; }
         .tech-card {
-            position: relative; width: 40%; max-width: 480px;
-            background: var(--glass-frost); border: 1px solid var(--border-teal);
-            backdrop-filter: blur(15px); box-shadow: 0 8px 30px rgba(0,0,0,0.35);
-            padding: 35px; border-radius: 4px; margin-left: 5%; margin-right: 5%;
+            position: relative; width: 42%; max-width: 480px;
+            background: var(--glass-deep); border: 1px solid var(--border-bright);
+            backdrop-filter: blur(20px); box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            padding: 35px; border-radius: 4px; margin-left: 4%; margin-right: 4%;
         }
-        .tech-card::before, .tech-card::after { content: ''; position: absolute; width: 20px; height: 20px; border: 2px solid var(--primary-teal); z-index: 5; }
-        .tech-card::before { top: -3px; left: -3px; border-right: none; border-bottom: none; }
-        .tech-card::after { bottom: -3px; right: -3px; border-left: none; border-top: none; }
-        .phase-id { display: inline-block; background: var(--primary-teal); color: var(--bg-deep); padding: 5px 16px; font-size: 0.78rem; font-weight: 800; letter-spacing: 2.5px; margin-bottom: 16px; border-radius: 3px; text-transform: uppercase; }
-        .date-text { display: block; color: var(--icy-highlight); font-size: clamp(1rem,4vw,1.15rem); font-weight: 800; margin-bottom: 14px; }
-        .tech-card h2 { margin: 0 0 18px; font-size: clamp(1.2rem,5vw,1.5rem); text-transform: uppercase; letter-spacing: 2px; color: var(--primary-teal); border-bottom: 1px solid var(--border-teal); padding-bottom: 10px; }
+        .tech-card::before, .tech-card::after {
+            content: ''; position: absolute; width: 20px; height: 20px;
+            border: 2px solid var(--lavender-bright);
+            filter: drop-shadow(0 0 5px var(--node-blue));
+            z-index: 5;
+        }
+        .tech-card::before { top: -2px; left: -2px; border-right: none; border-bottom: none; }
+        .tech-card::after { bottom: -2px; right: -2px; border-left: none; border-top: none; }
+        .phase-id { display: inline-block; background: var(--node-blue); color: white; padding: 4px 16px; font-size: 11px; font-weight: bold; letter-spacing: 3px; margin-bottom: 15px; border-radius: 2px; text-transform: uppercase; }
+        .date-text { display: block; color: var(--lavender-bright); font-size: clamp(1rem,4vw,1.15rem); font-weight: 800; margin-bottom: 12px; }
+        .tech-card h2 { margin: 0 0 18px; font-size: clamp(1.2rem,5vw,1.5rem); text-transform: uppercase; letter-spacing: 2px; color: var(--pure-white); border-bottom: 1px solid var(--border-muted); padding-bottom: 8px; }
         .details-list { list-style: none; padding: 0; margin: 0; }
-        .details-list li { position: relative; padding-left: 28px; margin-bottom: 12px; font-size: 0.95rem; line-height: 1.6; color: var(--slate-grey); }
-        .details-list li::before { content: "■"; position: absolute; left: 0; top: 0.35em; color: var(--teal-mid); font-size: 1.1rem; line-height: 1; }
+        .details-list li { position: relative; padding-left: 25px; margin-bottom: 12px; font-size: 0.95rem; line-height: 1.6; color: #e0e0e0; }
+        .details-list li::before {
+            content: ''; position: absolute; left: 0; top: 7px;
+            width: 6px; height: 6px; background: var(--lavender-bright);
+            box-shadow: 0 0 8px var(--node-blue); transform: rotate(45deg);
+        }
         .tech-card--spacious .details-list { min-height: 150px; padding-top: 18px; padding-bottom: 18px; }
         .tech-card--spacious .details-list li { margin-bottom: 22px; padding-top: 5px; padding-bottom: 5px; }
         .cta-section { text-align: center; padding: 100px 20px; }
-        .cta-title { font-size: clamp(1.8rem,7vw,2.4rem); letter-spacing: 8px; text-transform: uppercase; margin-bottom: 40px; color: var(--icy-highlight); font-weight: 900; text-shadow: 0 0 20px rgba(179, 136, 255, 0.4); }
+        .cta-title { font-size: clamp(1.8rem,7vw,2.4rem); letter-spacing: 8px; text-transform: uppercase; margin-bottom: 40px; color: var(--lavender-bright); font-weight: 900; }
         .signup-btn {
             display: inline-block; padding: 18px 50px; border-radius: 50px; text-decoration: none;
             text-transform: uppercase; letter-spacing: 4px; font-weight: 800; font-size: 0.95rem;
             transition: all 0.3s ease; min-width: 240px; text-align: center;
-            background: var(--icy-highlight); color: var(--bg-deep); border: 1px solid var(--icy-highlight);
-            box-shadow: 0 10px 30px rgba(179, 136, 255, 0.25);
+            background: var(--lavender-bright); color: var(--bg-darker); border: 1px solid var(--lavender-bright);
+            box-shadow: 0 10px 30px rgba(179, 136, 255, 0.3);
         }
-        .signup-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(179, 136, 255, 0.45); background: white; }
-        .note-box { text-align: center; max-width: 800px; margin: 30px auto 60px; padding: 0 20px; color: var(--teal-dark); font-size: 0.95rem; line-height: 1.7; }
+        .signup-btn:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(179, 136, 255, 0.5); background: white; }
+        .note-box { text-align: center; max-width: 800px; margin: 30px auto 60px; padding: 0 20px; color: #ccc; font-size: 0.95rem; line-height: 1.7; }
         @media (max-width: 850px) {
             .timeline-wrapper::before { display: none; }
             .module-container, .module-container:nth-child(even) { justify-content: center; margin-bottom: 60px; }
@@ -123,35 +133,11 @@
     <div class="note-box reveal">Note: IQCOL accolades are based only on scores from the Olympiad Exhibition; ETO accolades are based on Sponsors' scores from the Olympiad Symposium.</div>
     <div class="cta-section reveal">
         <h2 class="cta-title">Ready to Begin Your Journey?</h2>
-        <a href="registration.html" class="signup-btn">Register NOW</a>
+        <a href="registration.html" class="signup-btn">Register NOW!</a>
     </div>
 </div>
 </div>
 
-<footer>
-    <div class="footer-divider"></div>
-    <div class="footer-inner">
-        <div class="footer-cols">
-            <div class="footer-col">
-                <h4>IQCOL: International Quantum Computing Olympiad</h4>
-                <div class="footer-icons">
-                    <a href="https://2026.iqcol.org/iqcol" target="_blank" rel="noopener"><i data-lucide="globe"></i></a>
-                    <a href="https://ee.linkedin.com/company/iqcol-org" target="_blank" rel="noopener"><i data-lucide="linkedin"></i></a>
-                    <a href="https://www.instagram.com/iqcol_org/" target="_blank" rel="noopener"><i data-lucide="instagram"></i></a>
-                </div>
-            </div>
-            <div class="footer-col">
-                <h4>KBI: Königsberger Bridges Institute</h4>
-                <div class="footer-icons">
-                    <a href="https://www.kb.institute/" target="_blank" rel="noopener"><i data-lucide="globe"></i></a>
-                    <a href="https://www.linkedin.com/company/kbi-eu/" target="_blank" rel="noopener"><i data-lucide="linkedin"></i></a>
-                    <a href="https://www.instagram.com/kbi.eu/" target="_blank" rel="noopener"><i data-lucide="instagram"></i></a>
-                </div>
-            </div>
-        </div>
-        <p class="footer-copy">© 2026 International Quantum Computing Olympiad (IQCOL Foundation). All Rights Reserved.</p>
-    </div>
-</footer>
 <script src="js/nav.js"></script>
 <script src="js/shared.js"></script>
 </body>

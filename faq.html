@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="css/shared.css">
     <style>
         .section-header { margin: 80px 0 60px; }
-        .section-header h2 { font-size: clamp(2rem, 6vw, 2.7rem); letter-spacing: 10px; }
 
         .container {
             max-width: 1100px;
@@ -21,18 +20,18 @@
         }
 
         @media (max-width: 600px) {
-            .section-header h2 { font-size: 1.8rem; letter-spacing: 5px; }
+            .container { padding: 0 15px 80px; }
         }
         footer {
             width: 100%;
             margin-top: auto;
             padding: 0px 20px;
             box-sizing: border-box;
-            
-            background: var(--glass-frost); 
+
+            background: var(--glass-frost);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
-            
+
         }
         .footer-inner {
             max-width: 1200px;
@@ -107,30 +106,6 @@
         });
     });
 </script>
-<footer>
-    <div class="footer-divider"></div>
-    <div class="footer-inner">
-        <div class="footer-cols">
-            <div class="footer-col">
-                <h4>IQCOL: International Quantum Computing Olympiad</h4>
-                <div class="footer-icons">
-                    <a href="https://2026.iqcol.org/iqcol" target="_blank" rel="noopener"><i data-lucide="globe"></i></a>
-                    <a href="https://ee.linkedin.com/company/iqcol-org" target="_blank" rel="noopener"><i data-lucide="linkedin"></i></a>
-                    <a href="https://www.instagram.com/iqcol_org/" target="_blank" rel="noopener"><i data-lucide="instagram"></i></a>
-                </div>
-            </div>
-            <div class="footer-col">
-                <h4>KBI: Königsberger Bridges Institute</h4>
-                <div class="footer-icons">
-                    <a href="https://www.kb.institute/" target="_blank" rel="noopener"><i data-lucide="globe"></i></a>
-                    <a href="https://www.linkedin.com/company/kbi-eu/" target="_blank" rel="noopener"><i data-lucide="linkedin"></i></a>
-                    <a href="https://www.instagram.com/kbi.eu/" target="_blank" rel="noopener"><i data-lucide="instagram"></i></a>
-                </div>
-            </div>
-        </div>
-        <p class="footer-copy">© 2026 International Quantum Computing Olympiad (IQCOL Foundation). All Rights Reserved.</p>
-    </div>
-</footer>
 <script src="js/nav.js"></script>
 <script src="js/shared.js"></script>
 </body>

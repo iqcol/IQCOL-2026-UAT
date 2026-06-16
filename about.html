@@ -11,11 +11,10 @@
             font-size: clamp(2.2rem, 7vw, 2.7rem);
             text-transform: uppercase;
             letter-spacing: clamp(6px, 2vw, 12px);
-            color: var(--icy-highlight);
+            color: var(--lavender-bright);
             margin: 0 0 20px;
             font-weight: 900;
-            text-shadow: 0 0 20px rgba(179, 136, 255, 0.35);
-            background: linear-gradient(90deg, transparent, var(--teal-mid), transparent);
+            background: linear-gradient(90deg, transparent, var(--node-blue), transparent);
             background-size: 100% 1px;
             background-repeat: no-repeat;
             background-position: bottom;
@@ -23,8 +22,8 @@
             display: inline-block;
         }
         .section-subheading {
-            font-size: 0.95rem;
-            color: var(--teal-mid);
+            font-size: 0.8rem;
+            color: var(--lavender-orig);
             text-transform: uppercase;
             letter-spacing: 3px;
             margin: 0 0 20px;
@@ -45,7 +44,7 @@
         .flex-half--headings-center .org-list li,
         .flex-half--headings-center .org-list .sub-text { text-align: left; }
         section[style*="text-align:center"] .section-subheading { text-align: center; }
-        .sub-text { font-size: 0.95rem; color: var(--slate-grey); line-height: 1.75; }
+        .sub-text { font-size: 0.95rem; color: #e5e5e5; line-height: 1.75; }
         .flex-grid { display: flex; gap: 50px; align-items: center; flex-wrap: wrap; margin-bottom: 70px; }
         .container > section.flex-grid:first-of-type {
             min-height: calc(100vh - var(--nav-height));
@@ -56,8 +55,8 @@
         .flex-half { flex: 1; min-width: 320px; }
         .side-logo { width: 100%; max-width: 480px; height: auto; }
         .org-list { list-style: none; padding: 0; }
-        .org-list li { margin-bottom: 14px; position: relative; padding-left: 24px; color: var(--slate-grey); }
-        .org-list li::before { content: "■"; position: absolute; left: 0; color: var(--teal-mid); font-size: 1.1rem; }
+        .org-list li { margin-bottom: 14px; position: relative; padding-left: 24px; color: #e5e5e5; }
+        .org-list li::before { content: "■"; position: absolute; left: 0; color: var(--lavender-orig); font-size: 1.1rem; }
         .committee-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -65,24 +64,24 @@
             margin-top: 50px;
         }
         .member-card {
-            background: var(--glass-frost); border: 1px solid var(--border-teal);
+            background: var(--glass-deep); border: 1px solid var(--border-bright);
             padding: 30px 20px; text-align: center; border-radius: 4px;
-            backdrop-filter: blur(15px); opacity: 0; transform: scale(0.92);
+            backdrop-filter: blur(20px); box-shadow: 0 10px 30px rgba(0,0,0,0.5); opacity: 0; transform: scale(0.92);
             transition: all 0.5s ease-out;
         }
         .member-card.revealed { opacity: 1; transform: scale(1); }
         .member-card img {
             width: 120px; height: 120px; border-radius: 50%;
-            border: 2px solid var(--primary-teal); margin-bottom: 16px;
+            border: 2px solid var(--lavender-bright); margin-bottom: 16px;
             object-fit: cover; box-shadow: 0 0 20px rgba(179, 136, 255, 0.25);
         }
-        .member-name { color: var(--icy-highlight); font-size: 1.3rem; font-weight: 800; margin-bottom: 6px; }
-        .member-role { color: var(--primary-teal); text-transform: uppercase; font-size: 0.85rem; letter-spacing: 2px; font-weight: 700; }
+        .member-name { color: var(--lavender-bright); font-size: 1.3rem; font-weight: 800; margin-bottom: 6px; }
+        .member-role { color: var(--lavender-orig); text-transform: uppercase; font-size: 0.85rem; letter-spacing: 2px; font-weight: 700; }
         @media (max-width: 850px) {
             .flex-grid { flex-direction: column; text-align: center; gap: 40px; }
             .container > section.flex-grid:first-of-type { flex-direction: column-reverse; }
             .container > section.flex-grid:first-of-type .section-subheading { text-align: center; }
-            section[style*="flex-direction:row-reverse"] { flex-direction: column !important; }
+            .organizer-grid { flex-direction: column !important; }
             .side-logo { max-width: 320px; }
             .committee-grid { grid-template-columns: 1fr; }
             h2 { font-size: 2.1rem; letter-spacing: 8px; }
@@ -131,7 +130,7 @@
 
     <div class="divider reveal"></div>
 
-    <section class="flex-grid reveal" style="flex-direction:row-reverse;">
+    <section class="flex-grid organizer-grid reveal">
         <div class="flex-half flex-half--headings-center">
             <h2>Official Organizer</h2>
             <p class="section-subheading">Flagship Competitions</p>
@@ -195,32 +194,7 @@ const revealObserver = new IntersectionObserver((entries) => {
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 </script>
 
-<footer>
-    <div class="footer-divider"></div>
-    <div class="footer-inner">
-        <div class="footer-cols">
-            <div class="footer-col">
-                <h4>IQCOL: International Quantum Computing Olympiad</h4>
-                <div class="footer-icons">
-                    <a href="https://2026.iqcol.org/iqcol" target="_blank" rel="noopener"><i data-lucide="globe"></i></a>
-                    <a href="https://ee.linkedin.com/company/iqcol-org" target="_blank" rel="noopener"><i data-lucide="linkedin"></i></a>
-                    <a href="https://www.instagram.com/iqcol_org/" target="_blank" rel="noopener"><i data-lucide="instagram"></i></a>
-                </div>
-            </div>
-            <div class="footer-col">
-                <h4>KBI: Königsberger Bridges Institute</h4>
-                <div class="footer-icons">
-                    <a href="https://www.kb.institute/" target="_blank" rel="noopener"><i data-lucide="globe"></i></a>
-                    <a href="https://www.linkedin.com/company/kbi-eu/" target="_blank" rel="noopener"><i data-lucide="linkedin"></i></a>
-                    <a href="https://www.instagram.com/kbi.eu/" target="_blank" rel="noopener"><i data-lucide="instagram"></i></a>
-                </div>
-            </div>
-        </div>
-        <p class="footer-copy">© 2026 International Quantum Computing Olympiad (IQCOL Foundation). All Rights Reserved.</p>
-    </div>
-</footer>
 <script src="js/nav.js"></script>
-<script src="js/registration-fee.js"></script>
 <script src="js/shared.js"></script>
 </body>
 </html>

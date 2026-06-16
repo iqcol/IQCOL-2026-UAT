@@ -10,29 +10,29 @@
         .roi-container { margin: 50px auto; max-width: 800px; }
         .roi-card {
             display: flex; flex-direction: column; align-items: center; padding: 50px 30px;
-            background: var(--glass-frost); border: 1px solid var(--border-teal); border-radius: 12px;
+            background: var(--glass-deep); border: 1px solid var(--border-bright); border-radius: 12px;
             text-align: center; backdrop-filter: blur(15px); text-decoration: none;
             transition: all 0.4s cubic-bezier(0.165,0.84,0.44,1); position: relative; overflow: hidden;
         }
-        .roi-card:hover { transform: translateY(-5px); border-color: var(--primary-teal); box-shadow: 0 0 30px rgba(92,201,231,0.2); }
-        .roi-icon { color: var(--primary-teal); margin-bottom: 20px; filter: drop-shadow(0 0 8px rgba(92,201,231,0.5)); }
+        .roi-card:hover { transform: translateY(-5px); border-color: var(--lavender-bright); box-shadow: 0 0 30px rgba(98, 0, 234, 0.25); }
+        .roi-icon { color: var(--lavender-bright); margin-bottom: 20px; filter: drop-shadow(0 0 8px rgba(98, 0, 234, 0.5)); }
         .roi-card h3 { color: var(--icy-highlight); font-size: 2rem; text-transform: uppercase; letter-spacing: 4px; margin: 0 0 15px; font-weight: 800; }
         .roi-card p { color: var(--slate-grey); font-size: 1.1rem; margin: 0 0 30px; max-width: 500px; }
-        .btn-roi { background: var(--primary-teal); color: var(--bg-deep); padding: 16px 50px; border-radius: 50px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; font-size: 1rem; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(92,201,231,0.2); }
-        .roi-card:hover .btn-roi { background: var(--icy-highlight); transform: scale(1.05); box-shadow: 0 0 20px var(--primary-teal); }
-        .status-badge { margin-top: 30px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; color: var(--teal-mid); font-weight: 700; display: flex; align-items: center; gap: 10px; }
-        .pulse-square { width: 10px; height: 10px; background: var(--primary-teal); animation: pulse-sq 2s infinite; }
-        @keyframes pulse-sq { 0% { transform:scale(0.9); box-shadow:0 0 0 0 rgba(92,201,231,0.7); } 70% { transform:scale(1.1); box-shadow:0 0 0 8px rgba(92,201,231,0); } 100% { transform:scale(0.9); } }
+        .btn-roi { background: var(--lavender-bright); color: var(--bg-darker); padding: 16px 50px; border-radius: 50px; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; font-size: 1rem; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(179, 136, 255, 0.3); }
+        .roi-card:hover .btn-roi { background: white; transform: scale(1.05); box-shadow: 0 0 20px rgba(179, 136, 255, 0.5); }
+        .status-badge { margin-top: 30px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 2px; color: var(--lavender-orig); font-weight: 700; display: flex; align-items: center; gap: 10px; }
+        .pulse-square { width: 10px; height: 10px; background: var(--node-blue); animation: pulse-sq 2s infinite; }
+        @keyframes pulse-sq { 0% { transform:scale(0.9); box-shadow:0 0 0 0 rgba(98, 0, 234, 0.7); } 70% { transform:scale(1.1); box-shadow:0 0 0 8px rgba(98, 0, 234, 0); } 100% { transform:scale(0.9); } }
         .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 35px; margin-bottom: 50px; }
-        .info-box h3 { color: var(--primary-teal); text-transform: uppercase; letter-spacing: 2px; border-bottom: 1px solid var(--teal-mid); padding-bottom: 10px; margin-bottom: 15px; font-size: 1.25rem; font-weight: 800; }
+        .info-box h3 { color: var(--lavender-bright); text-transform: uppercase; letter-spacing: 2px; border-bottom: 1px solid var(--node-blue); padding-bottom: 10px; margin-bottom: 15px; font-size: 1.25rem; font-weight: 800; }
         .category-list { list-style: none; padding: 0; margin: 12px 0; }
         .category-list li { margin-bottom: 10px; font-weight: 600; color: var(--icy-highlight); }
-        .category-list li::before { content: "■ "; color: var(--teal-mid); margin-right: 10px; }
+        .category-list li::before { content: "■ "; color: var(--lavender-orig); margin-right: 10px; }
         .collapsible-container { margin-top: 30px; }
-        .collapsible-item { background: var(--glass-frost); border: 1px solid var(--border-teal); margin-bottom: 12px; backdrop-filter: blur(15px); }
+        .collapsible-item { background: var(--glass-deep); border: 1px solid var(--border-bright); margin-bottom: 12px; backdrop-filter: blur(20px); }
         .collapsible-trigger {
-            width: 100%; padding: 18px 24px; background: rgba(92,201,231,0.12); border: none;
-            color: var(--primary-teal); text-align: left; cursor: pointer;
+            width: 100%; padding: 18px 24px; background: rgba(98, 0, 234, 0.15); border: none;
+            color: var(--lavender-bright); text-align: left; cursor: pointer;
             display: flex; justify-content: space-between; align-items: center;
             font-weight: 800; text-transform: uppercase; letter-spacing: 2px; font-size: 0.95rem;
             font-family: var(--font-main);
@@ -41,27 +41,27 @@
         .collapsible-item.active .collapsible-content { max-height: 4800px; padding: 24px; }
         .fee-section { margin-bottom: 28px; }
         .fee-section b { color: var(--icy-highlight); display: block; margin-bottom: 10px; font-size: 1.05rem; }
-        .note-box { text-align: center; max-width: 800px; margin: 60px auto; padding: 0 20px; color: var(--teal-dark); font-size: 0.85rem; line-height: 1.7; }
-        .pricing-table { width: 100%; border-collapse: collapse; background: var(--glass-frost); border: 1px solid var(--border-teal); margin: 24px 0; font-size: 0.95rem; }
-        .pricing-table th, .pricing-table td { padding: 14px 18px; border-bottom: 1px solid var(--border-teal); text-align: left; }
-        .pricing-table th { background: rgba(92,201,231,0.12); color: var(--icy-highlight); text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.78rem; font-weight: 800; }
+        .note-box { text-align: center; max-width: 800px; margin: 60px auto; padding: 0 20px; color: #ccc; font-size: 0.85rem; line-height: 1.7; }
+        .pricing-table { width: 100%; border-collapse: collapse; background: rgba(179, 136, 255, 0.08); border: 1px solid var(--border-bright); margin: 24px 0; font-size: 0.95rem; }
+        .pricing-table th, .pricing-table td { padding: 14px 18px; border-bottom: 1px solid var(--border-muted); text-align: left; }
+        .pricing-table th { background: rgba(98, 0, 234, 0.25); color: var(--lavender-bright); text-transform: uppercase; letter-spacing: 1.5px; font-size: 0.78rem; font-weight: 800; }
         .pricing-table td:last-child, .pricing-table th:last-child { text-align: right; }
         .payment-callout {
-            background: rgba(92,201,231,0.1); border: 1px solid var(--primary-teal); padding: 24px 28px;
+            background: rgba(98, 0, 234, 0.15); border: 1px solid var(--node-blue); padding: 24px 28px;
             border-radius: 8px; margin: 30px auto; max-width: 720px;
         }
         .payment-callout h3 { margin: 0 0 12px; color: var(--icy-highlight); font-size: 1.1rem; text-transform: uppercase; letter-spacing: 2px; }
         .fee-content { max-width: 900px; margin: 0 auto; text-align: center; display: flex; flex-direction: column; gap: 24px; }
         .fee-subsection {
-            background: var(--glass-frost);
-            border: 1px solid var(--border-teal); border-radius: 8px;
-            padding: 28px 32px; backdrop-filter: blur(15px); text-align: center;
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+            background: var(--glass-deep);
+            border: 1px solid var(--border-bright); border-radius: 8px;
+            padding: 28px 32px; backdrop-filter: blur(20px); text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
         }
         .fee-subsection-head {
-            color: var(--primary-teal); text-transform: uppercase; letter-spacing: 2px;
+            color: var(--lavender-bright); text-transform: uppercase; letter-spacing: 2px;
             font-size: 1rem; font-weight: 800; margin: 0 0 18px; padding-bottom: 12px;
-            border-bottom: 1px solid var(--teal-mid);
+            border-bottom: 1px solid var(--node-blue);
         }
         .fee-subsection p { color: var(--slate-grey); line-height: 1.7; margin: 0 0 16px; }
         .fee-subsection p:last-child { margin-bottom: 0; }
@@ -70,11 +70,11 @@
         .price-high { color: #e87070; font-weight: 700; }
         .price-low { color: #6dd49a; font-weight: 700; }
         .calc-panel {
-            background: var(--glass-frost);
-            border: 1px solid var(--border-teal); backdrop-filter: blur(15px);
+            background: var(--glass-deep);
+            border: 1px solid var(--border-bright); backdrop-filter: blur(20px);
             padding: 32px; border-radius: 8px; max-width: 640px; margin: 0 auto 50px;
         }
-        .calc-panel h3 { color: var(--primary-teal); text-transform: uppercase; letter-spacing: 2px; margin: 0 0 24px; font-size: 1.2rem; }
+        .calc-panel h3 { color: var(--lavender-bright); text-transform: uppercase; letter-spacing: 2px; margin: 0 0 24px; font-size: 1.2rem; }
         .calc-field { margin-bottom: 18px; }
         .calc-field label { display: block; color: var(--icy-highlight); font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
         .calc-field input, .calc-field select {
@@ -212,7 +212,7 @@
         </div>
 
         <div class="fee-subsection reveal">
-            <h3 class="fee-subsection-head">Technical report resubmission fee</h3>
+            <h3 class="fee-subsection-head">Whitepaper resubmission fee</h3>
             <p>For Phase 3 (IQCOL International), late resubmissions after <b>30 Nov 2026</b> incur:</p>
             <p><b>EUR:</b> <span class="price-high">€2.71828</span> × number of days past deadline<br>
             <b>HKD:</b> <span class="price-high">HK$27.1828</span> × number of days past deadline</p>
@@ -268,30 +268,6 @@
 </div>
 </div>
 
-<footer>
-    <div class="footer-divider"></div>
-    <div class="footer-inner">
-        <div class="footer-cols">
-            <div class="footer-col">
-                <h4>IQCOL: International Quantum Computing Olympiad</h4>
-                <div class="footer-icons">
-                    <a href="https://2026.iqcol.org/iqcol" target="_blank" rel="noopener"><i data-lucide="globe"></i></a>
-                    <a href="https://ee.linkedin.com/company/iqcol-org" target="_blank" rel="noopener"><i data-lucide="linkedin"></i></a>
-                    <a href="https://www.instagram.com/iqcol_org/" target="_blank" rel="noopener"><i data-lucide="instagram"></i></a>
-                </div>
-            </div>
-            <div class="footer-col">
-                <h4>KBI: Königsberger Bridges Institute</h4>
-                <div class="footer-icons">
-                    <a href="https://www.kb.institute/" target="_blank" rel="noopener"><i data-lucide="globe"></i></a>
-                    <a href="https://www.linkedin.com/company/kbi-eu/" target="_blank" rel="noopener"><i data-lucide="linkedin"></i></a>
-                    <a href="https://www.instagram.com/kbi.eu/" target="_blank" rel="noopener"><i data-lucide="instagram"></i></a>
-                </div>
-            </div>
-        </div>
-        <p class="footer-copy">© 2026 International Quantum Computing Olympiad (IQCOL Foundation). All Rights Reserved.</p>
-    </div>
-</footer>
 <script src="js/nav.js"></script>
 <script src="js/registration-fee.js"></script>
 <script src="js/shared.js"></script>

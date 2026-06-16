@@ -4,25 +4,28 @@
     --bg-main: #030008;
     --lavender-orig: #b388ff;
     --lavender-bright: #d1b3ff;
-    --node-purple: #6200ea;
+    --node-blue: #6200ea;
+    --node-purple: var(--node-blue);
     --accent-purple: #7c3aed;
-    --border-glow: rgba(179, 136, 255, 0.28);
+    --border-bright: rgba(179, 136, 255, 0.3);
+    --border-muted: rgba(179, 136, 255, 0.2);
+    --border-glow: var(--border-bright);
     --glass-bg: rgba(10, 5, 25, 0.85);
     --glass-deep: rgba(30, 15, 50, 0.95);
     --pure-white: #ffffff;
-    --text-soft: #e0d7ff;
+    --text-soft: #e0e0e0;
     --neon-lavender: #a78bfa;
     --font-main: 'Segoe UI', system-ui, sans-serif;
     --font-mono: "Roboto Mono", ui-monospace, monospace;
     --nav-height: 68px;
     --bg-deep: var(--bg-main);
     --primary-teal: var(--lavender-bright);
-    --teal-dark: #6b5899;
+    --teal-dark: #9a7fd4;
     --teal-mid: var(--lavender-orig);
-    --slate-grey: var(--text-soft);
+    --slate-grey: #e5e5e5;
     --icy-highlight: var(--lavender-bright);
-    --glass-frost: rgba(10, 5, 25, 0.82);
-    --border-teal: var(--border-glow);
+    --glass-frost: rgba(179, 136, 255, 0.08);
+    --border-teal: var(--border-bright);
 }
 
 * { box-sizing: border-box; }
@@ -31,7 +34,7 @@ body {
     margin: 0;
     background-color: var(--bg-deep);
     font-family: var(--font-main);
-    color: var(--slate-grey);
+    color: white;
     line-height: 1.6;
     overflow-x: hidden;
     min-height: 100vh;
@@ -355,19 +358,20 @@ nav#main-nav {
     height: 1px;
     width: 100%;
     max-width: 600px;
-    margin: 70px auto;
-    background: linear-gradient(90deg, transparent, var(--teal-mid), transparent);
+    margin: 80px auto;
+    background: linear-gradient(90deg, transparent, var(--lavender-orig), transparent);
     position: relative;
 }
 .divider::after {
     content: '';
     position: absolute;
     top: 50%; left: 50%;
-    transform: translate(-50%, -50%) rotate(45deg);
-    width: 14px; height: 14px;
-    background: var(--icy-highlight);
-    border: 1px solid var(--primary-teal);
-    box-shadow: 0 0 16px rgba(179, 136, 255, 0.7);
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 14px;
+    background: #030008;
+    border-left: 2px solid var(--lavender-bright);
+    border-right: 2px solid var(--lavender-bright);
 }
 
 /* ── SECTION HEADER ── */
@@ -379,24 +383,21 @@ nav#main-nav {
 .section-header h2 {
     font-size: clamp(1.8rem, 7vw, 2.7rem);
     text-transform: uppercase;
-    letter-spacing: clamp(6px, 2vw, 12px);
-    color: var(--icy-highlight);
+    letter-spacing: clamp(4px, 2vw, 10px);
+    color: var(--lavender-bright);
     margin: 0;
     font-weight: 900;
-    text-shadow: 0 0 20px rgba(179, 136, 255, 0.35);
+    text-shadow: none;
     display: inline-block;
-    background: linear-gradient(90deg, transparent, var(--teal-mid), transparent);
-    background-size: 100% 1px;
-    background-repeat: no-repeat;
-    background-position: bottom;
+    background: linear-gradient(90deg, transparent, var(--node-blue), transparent) bottom/100% 1px no-repeat;
     padding-bottom: 15px;
 }
 .section-header p {
-    font-size: 0.95rem;
-    color: var(--teal-mid);
+    font-size: 0.8rem;
+    color: var(--lavender-orig);
     text-transform: uppercase;
     letter-spacing: 3px;
-    margin-top: 20px;
+    margin-top: 10px;
     font-weight: 700;
 }
 
@@ -417,11 +418,11 @@ nav#main-nav {
     background: var(--icy-highlight);
     color: var(--bg-deep);
     border: 1px solid var(--icy-highlight);
-    box-shadow: 0 10px 30px rgba(209, 179, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(179, 136, 255, 0.3);
 }
 .btn-primary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 15px 40px rgba(209, 179, 255, 0.4);
+    box-shadow: 0 15px 40px rgba(179, 136, 255, 0.5);
     background: white;
 }
 .btn-outline {
@@ -431,7 +432,7 @@ nav#main-nav {
 }
 .btn-outline:hover {
     transform: translateY(-3px);
-    box-shadow: 0 5px 20px rgba(209, 179, 255, 0.2);
+    box-shadow: 0 5px 20px rgba(179, 136, 255, 0.2);
 }
 
 /* ── FAQ ACCORDION ── */
@@ -441,8 +442,8 @@ nav#main-nav {
     gap: 12px;
 }
 .faq-item {
-    background: var(--glass-frost);
-    border: 1px solid var(--border-teal);
+    background: var(--glass-deep);
+    border: 1px solid var(--border-bright);
     border-radius: 8px;
     overflow: hidden;
     backdrop-filter: blur(12px);
@@ -451,7 +452,7 @@ nav#main-nav {
 }
 .faq-item:hover { border-color: rgba(179, 136, 255, 0.5); }
 .faq-item.active {
-    border-color: var(--primary-teal);
+    border-color: var(--lavender-bright);
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
 }
 .faq-trigger {

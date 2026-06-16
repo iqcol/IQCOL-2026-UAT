@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="css/shared.css">
     <style>
         .section-header { margin: 80px 0 60px; }
-        .section-header h2 { font-size: clamp(2rem, 6vw, 2.7rem); letter-spacing: 10px; }
 
         .container {
             max-width: 1100px;
@@ -24,8 +23,8 @@
         .info-card-link { text-decoration: none; color: inherit; display: block; }
         .info-card {
             padding: 50px 30px;
-            background: rgba(10, 5, 25, 0.6);
-            border: 1px solid var(--border-teal);
+            background: rgba(5, 0, 15, 0.8);
+            border: 1px solid var(--border-bright);
             border-radius: 4px;
             text-align: center;
             backdrop-filter: blur(10px);
@@ -36,19 +35,19 @@
         }
         .info-card-link:hover .info-card {
             transform: translateY(-8px);
-            border-color: var(--primary-teal);
-            background: rgba(10, 5, 25, 0.85);
+            border-color: var(--lavender-bright);
+            background: rgba(30, 15, 50, 0.95);
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
         }
-        .info-card i { color: var(--icy-highlight); margin-bottom: 20px; }
+        .info-card i { color: var(--lavender-bright); margin-bottom: 20px; }
         .info-card h3 {
-            color: var(--icy-highlight);
+            color: var(--lavender-bright);
             text-transform: uppercase;
             letter-spacing: 2px;
             margin: 0 0 12px;
             font-size: 1rem;
         }
-        .info-card p { color: var(--slate-grey); font-size: 0.9rem; margin: 0; line-height: 1.6; }
+        .info-card p { color: #e0e0e0; font-size: 0.9rem; margin: 0; line-height: 1.6; }
         .info-card .contact-value {
             color: #fff;
             font-size: 0.95rem;
@@ -58,21 +57,21 @@
         }
 
         .extra-section { margin-top: 80px; text-align: center; }
-        .extra-section h3 { color: var(--icy-highlight); text-transform: uppercase; letter-spacing: 4px; font-size: 1.2rem; margin-bottom: 20px; }
-        .extra-section p { color: var(--slate-grey); font-size: 0.93rem; max-width: 600px; margin: 0 auto 30px; line-height: 1.7; }
+        .extra-section h3 { color: var(--lavender-bright); text-transform: uppercase; letter-spacing: 4px; font-size: 1.2rem; margin-bottom: 20px; }
+        .extra-section p { color: #e0e0e0; font-size: 0.93rem; max-width: 600px; margin: 0 auto 30px; line-height: 1.7; }
         .social-row { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
         .social-btn {
             display: inline-flex; align-items: center; gap: 8px;
             padding: 12px 24px; border-radius: 50px; text-decoration: none;
             font-size: 0.82rem; font-weight: 700; letter-spacing: 1.5px;
             text-transform: uppercase; transition: all 0.3s;
-            border: 1px solid var(--border-teal); color: var(--icy-highlight);
-            background: rgba(179, 136, 255, 0.06);
+            border: 1px solid var(--border-bright); color: var(--lavender-bright);
+            background: rgba(179, 136, 255, 0.08);
         }
-        .social-btn:hover { background: rgba(179, 136, 255, 0.14); border-color: var(--primary-teal); color: #fff; transform: translateY(-2px); }
+        .social-btn:hover { background: rgba(98, 0, 234, 0.15); border-color: var(--node-blue); color: #fff; transform: translateY(-2px); }
 
         @media (max-width: 900px) { .contact-info-grid { grid-template-columns: 1fr; } }
-        @media (max-width: 600px) { .section-header h2 { font-size: 1.8rem; letter-spacing: 5px; } }
+        @media (max-width: 600px) { .container { padding: 0 15px 80px; } }
         footer {
             width: 100%;
             margin-top: auto;
@@ -98,55 +97,31 @@
             <a href="mailto:2026@iqcol.org?subject=General%20Inquiry%20-%20IQCOL%202026" class="info-card-link reveal">
                 <div class="info-card">
                     <i data-lucide="mail" style="width:40px;height:40px;"></i>
-                    <h3>General Enquiries</h3>
+                    <h3>General Inquiries</h3>
                     <p>For all general questions about IQCOL 2026.</p>
                     <div class="contact-value">2026@iqcol.org</div>
                 </div>
             </a>
-            <a href="mailto:volunteer@iqcol.org?subject=Volunteer%20Application%20-%20IQCOL%202026" class="info-card-link reveal">
+            <a href="mailto:2026@iqcol.org?subject=Registration%20Inquiry%20-%20IQCOL%202026" class="info-card-link reveal">
                 <div class="info-card">
-                    <i data-lucide="users" style="width:40px;height:40px;"></i>
-                    <h3>Join as a Volunteer</h3>
-                    <p>Interested in supporting IQCOL 2026 as a volunteer?</p>
-                    <div class="contact-value">volunteer@iqcol.org</div>
+                    <i data-lucide="user-plus" style="width:40px;height:40px;"></i>
+                    <h3>Registration Support</h3>
+                    <p>Questions about team registration, fees, or eligibility.</p>
+                    <div class="contact-value">2026@iqcol.org</div>
                 </div>
             </a>
-            <a href="mailto:pr@iqcol.org?subject=Media%20Inquiry%20-%20IQCOL%202026" class="info-card-link reveal">
+            <a href="mailto:partnerships@kb.institute?subject=IQCOL%202026%20Partnership%20Inquiry" class="info-card-link reveal">
                 <div class="info-card">
-                    <i data-lucide="award" style="width:40px;height:40px;"></i>
-                    <h3>Media &amp; Press</h3>
-                    <p>Press enquiries and media partnership requests.</p>
-                    <div class="contact-value">pr@iqcol.org</div>
+                    <i data-lucide="handshake" style="width:40px;height:40px;"></i>
+                    <h3>Partnerships &amp; Sponsors</h3>
+                    <p>Interested in becoming a partner or sponsor of IQCOL 2026?</p>
+                    <div class="contact-value">partnerships@kb.institute</div>
                 </div>
             </a>
         </div>
     </div>
 </div>
 
-<footer>
-    <div class="footer-divider"></div>
-    <div class="footer-inner">
-        <div class="footer-cols">
-            <div class="footer-col">
-                <h4>IQCOL: International Quantum Computing Olympiad</h4>
-                <div class="footer-icons">
-                    <a href="https://2026.iqcol.org/iqcol" target="_blank" rel="noopener"><i data-lucide="globe"></i></a>
-                    <a href="https://ee.linkedin.com/company/iqcol-org" target="_blank" rel="noopener"><i data-lucide="linkedin"></i></a>
-                    <a href="https://www.instagram.com/iqcol_org/" target="_blank" rel="noopener"><i data-lucide="instagram"></i></a>
-                </div>
-            </div>
-            <div class="footer-col">
-                <h4>KBI: Königsberger Bridges Institute</h4>
-                <div class="footer-icons">
-                    <a href="https://www.kb.institute/" target="_blank" rel="noopener"><i data-lucide="globe"></i></a>
-                    <a href="https://www.linkedin.com/company/kbi-eu/" target="_blank" rel="noopener"><i data-lucide="linkedin"></i></a>
-                    <a href="https://www.instagram.com/kbi.eu/" target="_blank" rel="noopener"><i data-lucide="instagram"></i></a>
-                </div>
-            </div>
-        </div>
-        <p class="footer-copy">© 2026 International Quantum Computing Olympiad (IQCOL Foundation). All Rights Reserved.</p>
-    </div>
-</footer>
 <script src="js/nav.js"></script>
 <script src="js/shared.js"></script>
 </body>
