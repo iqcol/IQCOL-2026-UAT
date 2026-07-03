@@ -36,14 +36,21 @@
         .date-text { display: block; color: var(--lavender-bright); font-size: clamp(1rem,4vw,1.15rem); font-weight: 800; margin-bottom: 12px; }
         .tech-card h2 { margin: 0 0 18px; font-size: clamp(1.2rem,5vw,1.5rem); text-transform: uppercase; letter-spacing: 2px; color: var(--pure-white); border-bottom: 1px solid var(--border-muted); padding-bottom: 8px; }
         .details-list { list-style: none; padding: 0; margin: 0; }
-        .details-list li { position: relative; padding-left: 25px; margin-bottom: 12px; font-size: 0.95rem; line-height: 1.6; color: #e0e0e0; }
+        .details-list li { position: relative; padding-left: 28px; margin-bottom: 12px; font-size: 0.95rem; line-height: 1.6; color: #e0e0e0; }
         .details-list li::before {
-            content: ''; position: absolute; left: 0; top: 7px;
+            content: ''; position: absolute; left: 0; top: 0.5em;
             width: 6px; height: 6px; background: var(--lavender-bright);
-            box-shadow: 0 0 8px var(--node-blue); transform: rotate(45deg);
+            box-shadow: 0 0 8px var(--node-blue); transform: translateY(-50%) rotate(45deg);
         }
-        .tech-card--spacious .details-list { min-height: 150px; padding-top: 18px; padding-bottom: 18px; }
-        .tech-card--spacious .details-list li { margin-bottom: 22px; padding-top: 5px; padding-bottom: 5px; }
+        .tech-card--spacious .details-list { min-height: 150px; padding: 18px 0 18px 16px; }
+        .tech-card--spacious .details-list li {
+            margin-bottom: 22px;
+            line-height: 1.35;
+        }
+        .tech-card--spacious .details-list li::before {
+            top: 0.55em;
+            transform: translateY(-50%) rotate(45deg);
+        }
         .cta-section { text-align: center; padding: 100px 20px; }
         .cta-title { font-size: clamp(1.8rem,7vw,2.4rem); letter-spacing: 8px; text-transform: uppercase; margin-bottom: 40px; color: var(--lavender-bright); font-weight: 900; }
         .signup-btn {
@@ -88,7 +95,7 @@
                 <h2>Pre-IQCOL</h2>
                 <ul class="details-list">
                     <li><strong>28 Jun</strong> — Briefing session 1 (online)</li>
-                    <li><strong>5 Jul</strong> — Briefing session 2</li>
+                    <li><strong>3 Jul</strong> — Briefing session 2</li>
                 </ul>
             </div>
         </div>
@@ -98,7 +105,7 @@
                 <span class="date-text">JUL – SEP 2026</span>
                 <h2>IQCOL Qualifiers</h2>
                 <ul class="details-list">
-                    <li><strong>7 Jul</strong> — Early bird payment deadline</li>
+                    <li><strong>21 Jul</strong> — Early bird payment deadline</li>
                     <li><strong>8 Aug</strong> — Regular payment deadline</li>
                     <li><strong>30 Aug</strong> — Regular technical report submission</li>
                     <li><strong>9 Sep</strong> — Late bird payment deadline</li>

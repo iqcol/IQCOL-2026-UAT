@@ -209,8 +209,9 @@ nav#main-nav {
     display: inline-flex;
     align-items: center;
     padding: 9px 22px;
-    background: var(--primary-teal);
+    background: var(--lavender-bright);
     color: var(--bg-deep) !important;
+    border: 1px solid var(--lavender-bright);
     border-radius: 50px;
     font-size: 0.78rem;
     font-weight: 800;
@@ -219,13 +220,14 @@ nav#main-nav {
     text-decoration: none;
     transition: all 0.3s ease;
     white-space: nowrap;
-    box-shadow: 0 4px 15px rgba(179, 136, 255, 0.25);
+    box-shadow: 0 10px 30px rgba(179, 136, 255, 0.3);
 }
 
 .nav-register a:hover {
-    background: var(--icy-highlight);
-    box-shadow: 0 6px 20px rgba(179, 136, 255, 0.4);
-    transform: translateY(-2px);
+    background: white !important;
+    border-color: white;
+    box-shadow: 0 15px 40px rgba(179, 136, 255, 0.5);
+    transform: translateY(-3px);
 }
 
 /* Hamburger */
@@ -327,7 +329,7 @@ nav#main-nav {
     display: block;
     text-align: center;
     padding: 14px;
-    background: var(--primary-teal);
+    background: var(--lavender-bright);
     color: var(--bg-deep);
     font-weight: 800;
     text-transform: uppercase;
@@ -335,6 +337,16 @@ nav#main-nav {
     border-radius: 50px;
     text-decoration: none;
     font-size: 0.85rem;
+    border: 1px solid var(--lavender-bright);
+    box-shadow: 0 10px 30px rgba(179, 136, 255, 0.3);
+    transition: all 0.3s ease;
+}
+
+.nav-mobile-register a:hover {
+    background: white;
+    border-color: white;
+    box-shadow: 0 15px 40px rgba(179, 136, 255, 0.5);
+    transform: translateY(-3px);
 }
 
 /* Page body offset for fixed nav */
